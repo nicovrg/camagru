@@ -39,5 +39,5 @@ class Router
 			require_once('views/viewError.php');
 		}
 	}
-
 }
+?>
