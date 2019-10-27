@@ -1,0 +1,34 @@
+version: '2'
+
+services:
+    web:
+        image: lavoweb/php-5.6
+        ports:
+            - "80:80"
+        volumes:
+            - ./:/var/www/html
+        links:
+            - db:db
+    db:
+        image: mysql:5.7
+        ports:
+            - "3306:3306"
+        environment:
+            - MYSQL_DATABASE=camagru
+            - MYSQL_ROOT=root
+            - MYSQL_ROOT_PASSWORD=root42
+            - MYSQL_USER=camagru
+            - MYSQL_PASSWORD=camagru42
+    myadmin:
+        image: phpmyadmin/phpmyadmin
+        ports:
+            - "8080:80"
+        links:
+            - db:db
+
+
+# checker pdo
+# faire le fichier config bdd
+# docker-machine create
+# eval $(docker-machine env server)
+# docker-compose up

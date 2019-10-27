@@ -32,33 +32,3 @@ docker-compose up:
 	this command will take the docker-compose.yml file and execute the instructions in it
 	in our case it will pull lavoweb, mysql and myadmin images from the dockerhub
 	then it will build these images and run them in three different containers
-
-
-
-## docker-compose.yml:
-version: '2'
-
-services:
-	web:
-		image: lavoweb/php-5.6
-		ports:
-			- "80:80"
-		volumes:
-			- ./camagru/:/var/www/html
-		links:
-			- db:db
-	db:
-		image: mysql:5.7
-		ports:
-			- "3306:3306"
-		environment:
-			- MYSQL_USER=camagru
-			- MYSQL_ROOT_PASSWORD=root42
-			- MYSQL_DATABASE=camagru
-			- MYSQL_PASSWORD=camagru42
-	myadmin:
-		image: phpmyadmin/phpmyadmin
-		ports:
-			- "8080:80"
-		links:
-			- db:db
