@@ -5,7 +5,7 @@ abstract class Model
 
 	private static function setDb()
     {
-        require_once('config/database_info.php');
+        require_once('config/database.php');
         self::$db = new PDO($DB_HOST.$DB_NAME, $DB_USER, $DB_PWD);
         self::$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_WARNING);
     }

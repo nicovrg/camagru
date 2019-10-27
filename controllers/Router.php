@@ -1,5 +1,4 @@
 <?php
-
 class Router
 {
 	private $_ctrl;
@@ -7,6 +6,7 @@ class Router
 
 	public function routeReq()
 	{
+		session_start();
 		try
 		{
 			spl_autoload_register(function($class){require_once('models/'.$class.'.php');});
@@ -23,9 +23,7 @@ class Router
 					$this->_ctrl = new $controllerClass($url);
 				}
 				else
-				{
 					throw new Exception('Page not found');
-				}
 			}
 			else
 			{
@@ -33,7 +31,7 @@ class Router
 				$this->_ctrl = new $controllerAcceuil($url);
 			}
 		}
-		catch (Exception $exception)
+		catch (Exception $e)
 		{
 			$error_Msg = $e->getMessage();
 			require_once('views/viewError.php');
