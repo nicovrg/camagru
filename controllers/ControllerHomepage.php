@@ -1,4 +1,6 @@
 <?php
+
+require_once('views/View');
 class ControllerHomepage extends Model
 {
 	private $_view;
@@ -17,7 +19,10 @@ class ControllerHomepage extends Model
 		$this->_userManager = new UserManager;
 		$users = $this->_userManager->getUsers();
 		
-		require_once('views/viewHomepage.php');
+		$this->_view = new View('Home');
+		$this->_view->generate(array('users' => $users));
+		
+		// require_once('views/viewHomepage.php');
 	}
 }
 ?>
