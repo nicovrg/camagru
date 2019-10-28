@@ -1,5 +1,5 @@
 <?php
-class AccountManager extends Model
+class UserManager extends Model
 {
 	private $_user;
     private $_query;
@@ -104,17 +104,18 @@ class AccountManager extends Model
             throw new Exception('Query error');
         }
     }
-
-
-// sign in - sign out - login - logout 
-// check password - send email confirmation sign in - send email to renew pwd
-// disconnect from everywhere
-// modif account info
 }
 ?>
 
-<!-- 
 
+
+<!--
+	 
+	sign in - sign out - login - logout 
+	check password - send email confirmation sign in - send email to renew pwd
+	disconnect from everywhere
+	modif account info
+	
 CREATE TABLE `accounts` (
   `id` int(10) UNSIGNED NOT NULL,
   `username` varchar(255) NOT NULL,

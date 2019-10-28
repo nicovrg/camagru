@@ -6,10 +6,10 @@ class Router
 
 	public function routeReq()
 	{
-		session_start();
 		try
 		{
 			spl_autoload_register(function($class){require_once('models/'.$class.'.php');});
+			$url = '';
 			if (isset($_GET['url']))
 			{
 				$url = explode('/', filter_var($_GET['url']), FILTER_SANITIZE_URL);
@@ -27,8 +27,8 @@ class Router
 			}
 			else
 			{
-				require_once('controllers/ControllerAcceuil.php');
-				$this->_ctrl = new $controllerAcceuil($url);
+				require_once('controllers/ControllerHomepage.php');
+				$this->_ctrl = new ControllerHomepage($url);
 			}
 		}
 		catch (Exception $e)
@@ -39,3 +39,11 @@ class Router
 	}
 }
 ?>
+
+<!-- user will always be on index.php -->
+<!-- splt_autoload_register load classes required -->
+<!-- controller is included according to user action -->
+<!-- we explode the url on /, then apply a filter to secure what happen -->
+<!-- if the page requested by user in url exist we require the file of the correspondig class -->
+<!-- if there is no url, we load the default page -->
+<!-- if there is an exception we redirect to the default view -->
