@@ -1,5 +1,5 @@
 <?php
-require_once('views/View');
+require_once('views/View.php');
 
 class Router
 {
@@ -8,6 +8,7 @@ class Router
 
 	public function routeReq()
 	{
+		
 		try
 		{
 			spl_autoload_register(function($class){require_once('models/'.$class.'.php');});
@@ -35,7 +36,7 @@ class Router
 		}
 		catch (Exception $e)
 		{
-			$error_Msg = $e->getMessage();
+			$errorMsg = $e->getMessage();
 			$this->_view = new View('Error');
 			$this->_view->generate(array('errorMsg' => $errorMsg));
 		}

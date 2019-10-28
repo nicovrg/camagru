@@ -4,8 +4,6 @@ class User
 	private $_id;
 	private $_username;
 	private $_email;
-	private $_password;
-	private $_reg_time;
 
 	public function __construct(array $data)
 	{
@@ -37,28 +35,10 @@ class User
             $this->_username = $username;
     }
 	
-	public function setPic($pic)
-    {
-        if (is_string($pic))
-            $this->_pic = $pic;
-    }
-	
-	public function setBio($bio)
-    {
-        if (is_string($bio))
-            $this->_bio = $bio;
-    }
-	
 	public function setEmail($email)
     {
         if (is_string($email))
             $this->_email = $email;
-    }
-	
-	public function setAuth($bool)
-    {
-        if (is_bool($bool))
-            $this->_authenticated = $bool;
     }
 
 	//GETTERS	
@@ -72,24 +52,9 @@ class User
         return $this->_username;
     }
 	
-	public function pic()
-    {
-        return $this->_pic;
-    }
-	
-	public function bio()
-    {
-        return $this->_bio;
-    }
-	
 	public function email()
     {
         return $this->_email;
-    }
-	
-	public function isAuthenticated()
-    {
-        return $this->_authenticated;
     }
 }
 

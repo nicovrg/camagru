@@ -6,10 +6,13 @@
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title><?= $t ?></title>
 </head>
+<body>
 <header>
-	<h1><a href="index.php">Welcome</a></h1>
+	<a href="/">Home</a>
+	<a href="/register">Register</a>
 </header>
 <?= $content ?>
 <footer>
 </footer>
+</body>
 </html>

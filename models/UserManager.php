@@ -1,33 +1,19 @@
 <?php
 class UserManager extends Model
 {
-	private $_user;
-    private $_query;
 
-	public function getUsers()
-    {
-        return $this->getAll('accounts', 'User');
-    }
-
-	public function newUser_Verify($array)
-	{
-
-	}
-
-	public function newUser_Register($array)
-	{
-
-	}
-	
 	public function isUsernameValid($username)
 	{
 		$len = strlen($username);
 		return ($len < 8 || $len > 16) ? false : true;
 	}
 
-    public function isPasswordValid($password)
+    public function isPasswordValid($password, $password_conf)
     {
-        return (preg_match_all("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{10,})", htmlspecialchars($password))) ? true : false;
+        // if (preg_match_all('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{10,})/', htmlspecialchars($password)) && $password == $password_conf)
+            return true;
+        // else
+        //     return false;
     }
 
     public function isEmailValid($email)
@@ -40,7 +26,7 @@ class UserManager extends Model
         $values = array(':email' => $email);
         try
         {
-            $req = $this->getBdd()->prepare('SELECT id FROM accounts WHERE (email = :email)');
+            $req = $this->getDb()->prepare('SELECT id FROM users WHERE (email = :email)');
             $req->execute($values);
         }
         catch (PDOException $e)
@@ -59,7 +45,7 @@ class UserManager extends Model
         $values = array(':username' => $username);
         try
         {
-            $req = $this->getBdd()->prepare('SELECT id FROM accounts WHERE (username = :username)');
+            $req = $this->getDb()->prepare('SELECT id FROM users WHERE (username = :username)');
             $req->execute($values);
         }
         catch (PDOException $e)
@@ -73,15 +59,16 @@ class UserManager extends Model
         $req->closeCursor();
     }
 
-	public function register($username, $password, $email)
+	public function register($username, $password, $password_conf, $email)
     {
         $email = trim($email);
         $username = trim($username);
         $password = trim($password);
+        $password_conf = trim($password_conf);
 
-        if (!$this->isNameValid($username))
+        if (!$this->isUsernameValid($username))
             throw new Exception('Invalid Username');
-        if (!$this->isPasswdValid($password))
+        if (!$this->isPasswordValid($password, $password_conf))
             throw new Exception('Invalid Password');
         if (!$this->isEmailValid($email))
             throw new Exception('Invalid Email');
@@ -95,7 +82,7 @@ class UserManager extends Model
 
         try
         {
-            $req = $this->getBdd()->prepare('INSERT INTO accounts (username, password, email) VALUES (:username, :password, :email)');
+            $req = $this->getDb()->prepare('INSERT INTO users (username, password, email) VALUES (:username, :password, :email)');
             $req->execute($values);
             $req->closeCursor();
         }
@@ -116,7 +103,7 @@ class UserManager extends Model
 	disconnect from everywhere
 	modif account info
 	
-CREATE TABLE `accounts` (
+CREATE TABLE `users` (
   `id` int(10) UNSIGNED NOT NULL,
   `username` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
@@ -124,12 +111,12 @@ CREATE TABLE `accounts` (
   `reg_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-ALTER TABLE `accounts`
+ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
   ADD UNIQUE KEY `username` (`username`),
   ADD UNIQUE KEY `email` (`email`);
 
-ALTER TABLE `accounts`
+ALTER TABLE `users`
   MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 COMMIT;
 

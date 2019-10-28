@@ -1,10 +1,9 @@
 <?php
-
-require_once('views/View');
-class ControllerHomepage extends Model
+require_once('views/View.php');
+class ControllerHomepage
 {
 	private $_view;
-	private $_userManager;
+	private $_pictureManager;
 
 	public function __construct($url)
 	{
@@ -14,15 +13,10 @@ class ControllerHomepage extends Model
 			$this->users();
 	}
 
-	private function user()
+	private function users()
 	{
-		$this->_userManager = new UserManager;
-		$users = $this->_userManager->getUsers();
-		
-		$this->_view = new View('Home');
-		$this->_view->generate(array('users' => $users));
-		
-		// require_once('views/viewHomepage.php');
+		$this->_view = new View('Homepage');
+		$this->_view->generate(array());
 	}
 }
 ?>
