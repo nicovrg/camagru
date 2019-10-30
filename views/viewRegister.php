@@ -1,6 +1,6 @@
 <?php $this->_t = "Register" ?>
 <div>
-	<form action="/register" method="POST" id="sign-in">
+	<form action="/register" method="POST" id="register">
 		username: <input id="username" type="text" name="username">
 		email: <input id="email" type="text" name="email">
 		password: <input id="password" type="text" name="password">

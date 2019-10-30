@@ -1,5 +1,4 @@
 <?php
-require_once('views/View.php');
 class ControllerRegister
 {
 	private $_view;
@@ -17,7 +16,7 @@ class ControllerRegister
 	{
 		$this->_userManager = new UserManager;
 		if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirm_password']) && isset($_POST['confirm']))
-			$this->_userManager->register($_POST['username'], $_POST['password'], $_POST['password_conf'], $_POST['email']);
+			$this->_userManager->register($_POST['username'], $_POST['password'], $_POST['confirm_password'], $_POST['email']);
 		$this->_view = new View('Register');
 		$this->_view->generate(array());
 	}

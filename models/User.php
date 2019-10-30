@@ -21,41 +21,41 @@ class User
 	}
 
 	//SETTERS
-    public function setId($id)
-    {
-        $id = (int)$id;
+	public function setId($id)
+	{
+		$id = (int)$id;
 
-        if ($id > 0)
-            $this->_id = $id;
-    }
+		if ($id > 0)
+			$this->_id = $id;
+	}
 	
 	public function setUsername($username)
-    {
-        if (is_string($username))
-            $this->_username = $username;
-    }
+	{
+		if (is_string($username))
+			$this->_username = $username;
+	}
 	
 	public function setEmail($email)
-    {
-        if (is_string($email))
-            $this->_email = $email;
-    }
+	{
+		if (is_string($email))
+			$this->_email = $email;
+	}
 
 	//GETTERS	
 	public function id()
-    {
-        return $this->_id;
-    }
+	{
+		return $this->_id;
+	}
 	
 	public function username()
-    {
-        return $this->_username;
-    }
+	{
+		return $this->_username;
+	}
 	
 	public function email()
-    {
-        return $this->_email;
-    }
+	{
+		return $this->_email;
+	}
 }
 
 ?>
