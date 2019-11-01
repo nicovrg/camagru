@@ -13,9 +13,9 @@ class ControllerLogin
 
 	private function login()
 	{
-		$this->_userManager = new UserManager;
-		if (isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirm']))
-			$this->_userManager->login($_POST['email'], $_POST['password']);
+		$this->_loginManager = new LoginManager;
+		if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['confirm']))
+			$this->_loginManager->login($_POST['username'], $_POST['password']);
 		$this->_view = new View('Login');
 		$this->_view->generate(array());
 	}	

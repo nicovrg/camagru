@@ -1,14 +1,19 @@
 <?php
-class UserManager extends Model
+class RegisterManager extends Model
 {
+	/*
+		This class contain function to check syntax of user input,
+		also to check that email and username are not already used by another user,
+		and a register function to call all of the previously mentionned methods
+	*/
 
-	public function isUsernameValid($username)
+	public function checkUsernameSyntax($username)
 	{
 		$len = strlen($username);
 		return ($len < 4 || $len > 16) ? false : true;
 	}
 
-	public function isPasswordValid($password, $password_conf)
+	public function checkPasswordSyntax($password, $password_conf)
 	{
 		if (preg_match_all('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{10,})/', htmlspecialchars($password)) && $password == $password_conf)
 			return true;
@@ -16,31 +21,12 @@ class UserManager extends Model
 			return false;
 	}
 
-	public function isEmailValid($email)
+	public function checkEmailSyntax($email)
 	{
 		return (preg_match('/\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/', htmlspecialchars($email))) ? true : false;
 	}
 
-	public function getIdFromEmail($email)
-	{
-		$values = array(':email' => $email);
-		try
-		{
-			$req = $this->getDb()->prepare('SELECT id FROM users WHERE (email = :email)');
-			$req->execute($values);
-		}
-		catch (PDOException $e)
-		{
-			throw new Exception('Query error');
-		}
-		$data = $req->fetch(PDO::FETCH_ASSOC);
-		if (is_array($data))
-			$id = intval($data['id'], 10);
-		return $id;
-		$req->closeCursor();
-	}
-
-	public function getIdFromUsername($username)
+	public function checkUsernameTaken($username)
 	{
 		$values = array(':username' => $username);
 		try
@@ -59,26 +45,43 @@ class UserManager extends Model
 		$req->closeCursor();
 	}
 
+
+	public function checkEmailTaken($email)
+	{
+		$values = array(':email' => $email);
+		try
+		{
+			$req = $this->getDb()->prepare('SELECT id FROM users WHERE (email = :email)');
+			$req->execute($values);
+		}
+		catch (PDOException $e)
+		{
+			throw new Exception('Query error');
+		}
+		$data = $req->fetch(PDO::FETCH_ASSOC);
+		if (is_array($data))
+			$id = intval($data['id'], 10);
+		return $id;
+		$req->closeCursor();
+	}
+
 	public function register($username, $password, $password_conf, $email)
 	{
 		$email = trim($email);
 		$username = trim($username);
-		$password = trim($password);
-		$password_conf = trim($password_conf);
 
-		if (!$this->isUsernameValid($username))
+		if (!$this->checkUsernameSyntax($username))
 			throw new Exception('Invalid Username');
-		if (!$this->isPasswordValid($password, $password_conf))
+		if (!$this->checkPasswordSyntax($password, $password_conf))
 			throw new Exception('Invalid Password');
-		if (!$this->isEmailValid($email))
+		if (!$this->checkEmailSyntax($email))
 			throw new Exception('Invalid Email');
-		if (!is_null($this->getIdFromUsername($username)))
+		if (!is_null($this->checkUsernameTaken($username)))
 			throw new Exception('Username already exist');
-		if (!is_null($this->getIdFromEmail($email)))
+		if (!is_null($this->checkEmailTaken($email)))
 			throw new Exception('Email already exist');
-		$hash = password_hash($password, PASSWORD_BCRYPT);
+		$hash = hash('sha256', $password);
 		$values = array(':username' => $username, ':password' => $hash, ':email' => $email);
-
 		try
 		{
 			$req = $this->getDb()->prepare('INSERT INTO users (username, password, email) VALUES (:username, :password, :email)');
@@ -90,41 +93,5 @@ class UserManager extends Model
 			throw new Exception('Query error');
 		}
 	}
-
-	public function login($email, $password)
-	{
-		$email = trim($email);
-		
-
-	}
-
 }
 ?>
-
-
-
-<!--
-	 
-	sign in - sign out - login - logout 
-	check password - send email confirmation sign in - send email to renew pwd
-	disconnect from everywhere
-	modif account info
-	
-CREATE TABLE `users` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `username` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `reg_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
-ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `username` (`username`),
-  ADD UNIQUE KEY `email` (`email`);
-
-ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-COMMIT;
-
- -->

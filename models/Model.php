@@ -26,7 +26,8 @@ abstract class Model
 			$array[] = new $obj($data);
 		return $array;
 		$req->closeCursor();
-	} 
+	}
+
 }
 ?>
 
