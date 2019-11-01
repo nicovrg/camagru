@@ -13,6 +13,7 @@
 			<a href="/register">Register</a>
 			<a href="/connexion">Login</a>
 			<a href="/connexion">Logout</a>
+			<a href="/modify">Modify</a>
 		</header>
 		<?= $content ?>
 		<footer>
