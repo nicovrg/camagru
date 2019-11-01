@@ -1,5 +1,5 @@
 <?php
-class ControllerLogin
+class ControllerConnexion
 {
 	private $_view;
 
@@ -13,11 +13,19 @@ class ControllerLogin
 
 	private function login()
 	{
-		$this->_loginManager = new LoginManager;
+		$this->_connexionManager = new ConnexionManager;
 		if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['confirm']))
-			$this->_loginManager->login($_POST['username'], $_POST['password']);
+			$this->_connexionManager->login($_POST['username'], $_POST['password']);
 		$this->_view = new View('Login');
 		$this->_view->generate(array());
 	}	
+
+	private function logout()
+	{
+		$this->_connexionManager = new ConnexionManager;
+		// $this->_connexionManager->logout();
+		$this->_view = new View('Logout');
+		$this->_view->generate(array());
+	}
 }
 ?>

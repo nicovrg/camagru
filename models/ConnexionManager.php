@@ -1,7 +1,6 @@
 <?php
-class LoginManager extends Model
+class ConnexionManager extends Model
 {
-
 	public function startSession($username)
     {
         session_start();
@@ -23,14 +22,14 @@ class LoginManager extends Model
 				throw new Exception('Query error');
 		}
 		$data = $req->fetch(PDO::FETCH_ASSOC);
+		$req->closeCursor();
 		if (is_array($data))
 			if ($data["password"] === $password)
 				return TRUE;
 		return FALSE;			
-		$req->closeCursor();
 	}
 
-	public function checkSessionActivity($username)
+	public function isUserLog($username)
 	{
 		$values = array(':username' => $username);
 		try
@@ -67,15 +66,35 @@ class LoginManager extends Model
 		$req->closeCursor();
 	}
 
-
 	public function login($username, $password)
 	{
 		if ($this->checkInfo($username, $password) === FALSE)
 			throw new Exception('Invalid Credentials');
-		if ($this->checkSessionActivity($username) === TRUE)
+		if ($this->isUserLog($username) === TRUE)
 			throw new Exception('Already log');
 		else 
 			$this->logUser($username);
+	}
+
+	public function logout($username)
+	{
+		// session_start();
+        // if (isset($_SESSION['username']))
+        //     $_SESSION['username'] = NULL;
+		if ($this->isUserLog($username) === TRUE)
+		{
+			$values = array(':username' => $username, ':active' => TRUE);
+			try
+			{
+				$req = $this->getDb()->prepare(' DELETE FROM session WHERE (username, active) VALUES (:username, :active)');
+				$req->execute($values);
+			}
+			catch (PDOException $e)
+			{
+				throw new Exception('Query error');
+			}
+			$req->closeCursor();
+		}
 	}
 }
 ?>

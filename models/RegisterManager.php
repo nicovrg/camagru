@@ -1,11 +1,9 @@
 <?php
 class RegisterManager extends Model
 {
-	/*
-		This class contain function to check syntax of user input,
-		also to check that email and username are not already used by another user,
-		and a register function to call all of the previously mentionned methods
-	*/
+	/* This class contain function to check syntax of user input,
+	also to check that email and username are not already used by another user,
+	and a register function to call all of the previously mentionned methods */
 
 	public function checkUsernameSyntax($username)
 	{
