@@ -24,7 +24,7 @@ class ModifyManager extends Model
 	
 	public function updateUsername()
 	{
-		session_start();
+		// session_start();
 		$old_username = $_SESSION['username'];
 		$new_username = htmlentities($_POST['new_username']);
 		$values = array(':new_username' => $new_username, ':old_username' => $old_username);
@@ -44,7 +44,7 @@ class ModifyManager extends Model
 	
 	public function updatePassword()
 	{
-		session_start();
+		// session_start();
 		$username = $_SESSION['username'];
 		$old_password = hash('sha256', htmlentities($_POST['old_password']));
 		$new_password = hash('sha256', htmlentities($_POST['new_password']));
@@ -112,7 +112,7 @@ class ModifyManager extends Model
 	
 	public function updateEmail()
 	{
-		session_start();
+		// session_start();
 		$username =  $_SESSION['username'];
 		$new_email = htmlentities($_POST['email']);
 		$values = array(':new_email' => $new_email, ':user_logged' => $username);
@@ -128,10 +128,10 @@ class ModifyManager extends Model
 		}
 		echo "<script>window.alert('Your new email is ".$new_email." ')</script>";
 	}
-	
+
 	public function delAccount() 
 	{
-		session_start();
+		// session_start();
 		$username = $_SESSION['username'];
 		$id = $this->getUserId($username);
 		$values = array(':id' => $id);

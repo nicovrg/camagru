@@ -5,12 +5,14 @@ class ConnexionManager extends Model
 
 	public function startSession()
     {
-        session_start();
+        // session_start();
         $_SESSION['username'] = $this->_user->connectUser();
     }
 
     public function connectUser()
     {
+        echo var_dump($_POST);
+		echo "</br>";
         $this->_user = new User($_POST);
         $username = $this->_user->username();
         $password = $this->_user->password();
@@ -38,7 +40,7 @@ class ConnexionManager extends Model
     
     public function disconnectUser()
     {
-        session_start();
+        // session_start();
         if (isset($_SESSION['username']))
             $_SESSION['username'] = NULL;
     }

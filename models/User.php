@@ -13,11 +13,23 @@ class User
 
 	public function hydrate(array $data)
 	{
+		var_dump($data);
 		foreach ($data as $key => $value)
 		{
 			$method = 'set'.ucfirst($key);
+			echo "</br>";			
+			echo "key = ";			
+			echo $key;
+			echo "</br>";
+			echo "method = ";			
+			echo $method;
+			echo "</br>";
+			echo "value = ";			
+			echo $value;
+			echo "</br>";
 			if (method_exists($this, $method))
 				$this->method($value);
+			// $this->method($value);
 		}
 	}
 
@@ -32,6 +44,7 @@ class User
 	
 	public function setUsername($username)
 	{
+		echo "inside setUsername";
 		if (is_string($username))
 			$this->_username = $username;
 	}

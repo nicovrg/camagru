@@ -1,9 +1,6 @@
 <?php
 class RegisterManager extends Model
 {
-	/* This class contain function to check syntax of user input,
-	also to check that email and username are not already used by another user,
-	and a register function to call all of the previously mentionned methods */
 
 	public function checkUsernameSyntax($username)
 	{
@@ -29,7 +26,7 @@ class RegisterManager extends Model
 		$values = array(':username' => $username);
 		try
 		{
-			$req = $this->getDb()->prepare('SELECT id FROM users WHERE (username = :username)');
+			$req = $this->getDb()->prepare('SELECT `id` FROM `users` WHERE (`username` = `:username`)');
 			$req->execute($values);
 		}
 		catch (PDOException $e)
@@ -49,7 +46,7 @@ class RegisterManager extends Model
 		$values = array(':email' => $email);
 		try
 		{
-			$req = $this->getDb()->prepare('SELECT id FROM users WHERE (email = :email)');
+			$req = $this->getDb()->prepare('SELECT `id` FROM `users` WHERE (`email` = `:email`)');
 			$req->execute($values);
 		}
 		catch (PDOException $e)
@@ -82,7 +79,7 @@ class RegisterManager extends Model
 		$values = array(':username' => $username, ':password' => $hash, ':email' => $email);
 		try
 		{
-			$req = $this->getDb()->prepare('INSERT INTO users (username, password, email) VALUES (:username, :password, :email)');
+			$req = $this->getDb()->prepare('INSERT INTO `users` (`username`, `password`, `email`) VALUES (`:username`, `:password`, `:email`)');
 			$req->execute($values);
 			$req->closeCursor();
 		}
