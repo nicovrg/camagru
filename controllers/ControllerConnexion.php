@@ -15,7 +15,7 @@ class ControllerConnexion
 	{
 		$this->_connexionManager = new ConnexionManager;
 		if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['confirm']))
-			$this->_connexionManager->login($_POST['username'], $_POST['password']);
+			$this->_connexionManager->connectUser($_POST['username'], $_POST['password']);
 		$this->_view = new View('Login');
 		$this->_view->generate(array());
 	}	
@@ -23,7 +23,7 @@ class ControllerConnexion
 	private function logout()
 	{
 		$this->_connexionManager = new ConnexionManager;
-		// $this->_connexionManager->logout();
+		// $this->_connexionManager->disconnectUser();
 		$this->_view = new View('Logout');
 		$this->_view->generate(array());
 	}

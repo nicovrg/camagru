@@ -4,6 +4,7 @@ class User
 	private $_id;
 	private $_username;
 	private $_email;
+	private $_password;
 
 	public function __construct(array $data)
 	{
@@ -41,6 +42,12 @@ class User
 			$this->_email = $email;
 	}
 
+	public function setPassword($password)
+	{
+		if (is_string($password))
+			$this->_password = $password;
+	}
+
 	//GETTERS	
 	public function id()
 	{
@@ -55,6 +62,11 @@ class User
 	public function email()
 	{
 		return $this->_email;
+	}
+
+	public function password()
+	{
+		return $this->_password;
 	}
 }
 

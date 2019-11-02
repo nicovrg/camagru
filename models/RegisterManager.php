@@ -65,8 +65,8 @@ class RegisterManager extends Model
 
 	public function register($username, $password, $password_conf, $email)
 	{
-		$email = trim($email);
-		$username = trim($username);
+		$email = trim(htmlentities($email));
+		$username = trim(htmlentities($username));
 
 		if (!$this->checkUsernameSyntax($username))
 			throw new Exception('Invalid Username');
@@ -78,7 +78,7 @@ class RegisterManager extends Model
 			throw new Exception('Username already exist');
 		if (!is_null($this->checkEmailTaken($email)))
 			throw new Exception('Email already exist');
-		$hash = hash('sha256', $password);
+		$hash = hash('sha256', htmlentities($password));
 		$values = array(':username' => $username, ':password' => $hash, ':email' => $email);
 		try
 		{

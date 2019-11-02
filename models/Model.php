@@ -12,7 +12,7 @@ abstract class Model
 
 	protected function getDb()
 	{
-		if (self::$db == null)
+		if (self::$db == NULL)
 			self::setDb();
 		return self::$db;
 	}

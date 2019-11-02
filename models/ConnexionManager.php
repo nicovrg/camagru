@@ -1,100 +1,47 @@
 <?php
 class ConnexionManager extends Model
 {
-	public function startSession($username)
+    private $_user;
+
+	public function startSession()
     {
         session_start();
-        $_SESSION['username'] = $username;
+        $_SESSION['username'] = $this->_user->connectUser();
     }
 
-	public function checkInfo($username, $password)
-	{
-		$username = trim($username);
-		$password = hash('sha256', $password);
-		$values = array(':username' => $username);
+    public function connectUser()
+    {
+        $this->_user = new User($_POST);
+        $username = $this->_user->username();
+        $password = $this->_user->password();
+		$values = array(':username' => $username, ':password' => $password);
 		try
 		{
-			$req = $this->getDb()->prepare('SELECT * FROM users WHERE username = :username');
-			$req->execute($values);
-		}
-		catch (PDOException $e)
-		{
-				throw new Exception('Query error');
-		}
-		$data = $req->fetch(PDO::FETCH_ASSOC);
-		$req->closeCursor();
-		if (is_array($data))
-			if ($data["password"] === $password)
-				return TRUE;
-		return FALSE;			
-	}
-
-	public function isUserLog($username)
-	{
-		$values = array(':username' => $username);
-		try
-		{
-			$req = $this->getDb()->prepare('SELECT * FROM session WHERE username = :username');
-			$req->execute($values);
-		}
-		catch (PDOException $e)
-		{
-			throw new Exception('Query error');
-		}
-		$data = $req->fetch(PDO::FETCH_ASSOC);
-		if (is_array($data))
-			throw new Exception('Your account is already log');
-		else
-			$this->logUser($username);
-		$req->closeCursor();
-	}
-
-	public function logUser($username)
-	{
-		$values = array(':username' => $username, ':active' => TRUE);
-		try
-		{
-			$req = $this->getDb()->prepare('INSERT INTO session (username, active) VALUES (:username, :active)');
-			$req->execute($values);
-		}
-		catch (PDOException $e)
-		{
-			throw new Exception('Query error');
-		}
-		// $this->startSession($username);
-		// echo "<script>console.log('--|log user|--' );</script>";
-		$req->closeCursor();
-	}
-
-	public function login($username, $password)
-	{
-		if ($this->checkInfo($username, $password) === FALSE)
-			throw new Exception('Invalid Credentials');
-		if ($this->isUserLog($username) === TRUE)
-			throw new Exception('Already log');
-		else 
-			$this->logUser($username);
-	}
-
-	public function logout($username)
-	{
-		// session_start();
-        // if (isset($_SESSION['username']))
-        //     $_SESSION['username'] = NULL;
-		if ($this->isUserLog($username) === TRUE)
-		{
-			$values = array(':username' => $username, ':active' => TRUE);
-			try
-			{
-				$req = $this->getDb()->prepare(' DELETE FROM session WHERE (username, active) VALUES (:username, :active)');
-				$req->execute($values);
-			}
-			catch (PDOException $e)
-			{
-				throw new Exception('Query error');
-			}
+			$req = $this->getDb()->prepare('SELECT * FROM `users` WHERE `username` = `:username` AND `password` = `:password`');
+	        $req->execute($values);
+	        $res = $req->fetch(PDO::FETCH_ASSOC);
 			$req->closeCursor();
+
 		}
-	}
+		catch (PDOException $e)
+		{
+			throw new Exception('Query error');
+		}
+        if ($res != false)
+        {
+            $this->startSession();
+            return $res;
+        }
+        else
+            return NULL;
+    }
+    
+    public function disconnectUser()
+    {
+        session_start();
+        if (isset($_SESSION['username']))
+            $_SESSION['username'] = NULL;
+    }
+        
 }
 ?>
