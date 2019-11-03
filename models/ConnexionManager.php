@@ -3,7 +3,7 @@ class ConnexionManager extends Model
 {
 	public function startSession($username)
     {
-        session_start();
+        // session_start();
         $_SESSION['username'] = $username;
     }
 

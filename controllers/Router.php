@@ -1,5 +1,7 @@
 <?php
 require_once('views/View.php');
+if(!isset($_SESSION)) 
+	session_start();
 
 class Router
 {
@@ -8,7 +10,6 @@ class Router
 
 	public function routeReq()
 	{
-		
 		try
 		{
 			spl_autoload_register(function($class){require_once('models/'.$class.'.php');});

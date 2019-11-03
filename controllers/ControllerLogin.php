@@ -1,5 +1,5 @@
 <?php
-class ControllerConnexion
+class ControllerLogin
 {
 	private $_view;
 
@@ -19,13 +19,5 @@ class ControllerConnexion
 		$this->_view = new View('Login');
 		$this->_view->generate(array());
 	}	
-
-	private function logout()
-	{
-		$this->_connexionManager = new ConnexionManager;
-		// $this->_connexionManager->logout();
-		$this->_view = new View('Logout');
-		$this->_view->generate(array());
-	}
 }
 ?>

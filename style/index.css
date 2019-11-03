@@ -5,7 +5,8 @@
 	flex-direction: column;
 	font-family: Helvetica Neue;
 	font-size: 0.5em;
-	color: gray;
+	color: rgb(246, 246, 246);
+	/* color: gray; */
 	/* font-family: cursive; */
 	/* justify-content: flex-start; */
 	/* color:blue; */
