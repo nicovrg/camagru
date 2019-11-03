@@ -1,100 +1,145 @@
 <?php
 class ConnexionManager extends Model
 {
-	public function startSession($username)
-    {
-        // session_start();
-        $_SESSION['username'] = $username;
-    }
-
-	public function checkInfo($username, $password)
+    public function login(string $username, string $password): bool
 	{
+		global $pdo;
 		$username = trim($username);
-		$password = hash('sha256', $password);
-		$values = array(':username' => $username);
+		
+		if (!$this->isNameValid($usernaname))
+			return FALSE;
+		if (!$this->isPasswordValid($password))
+			return FALSE;
+        $values = array(':username' => $username);
+        $query = "SELECT * FROM `session` WHERE (`username` = `:username`)";
 		try
 		{
-			$req = $this->getDb()->prepare('SELECT * FROM users WHERE username = :username');
+			$req = $pdo->prepare($query);
 			$req->execute($values);
 		}
 		catch (PDOException $e)
 		{
-				throw new Exception('Query error');
+		   throw new Exception('Database query error');
 		}
-		$data = $req->fetch(PDO::FETCH_ASSOC);
-		$req->closeCursor();
-		if (is_array($data))
-			if ($data["password"] === $password)
+		$res = $req->fetch(PDO::FETCH_ASSOC);
+		if (is_array($res))
+		{
+            if (hash('sha256', $password) === hash('sha256', $res['account_password']))
+			{
+				$this->id = intval($res['account_id'], 10);
+				$this->username = $username;
+				$this->authenticated = TRUE;
+				$this->registerLoginSession();
 				return TRUE;
-		return FALSE;			
-	}
-
-	public function isUserLog($username)
-	{
-		$values = array(':username' => $username);
-		try
-		{
-			$req = $this->getDb()->prepare('SELECT * FROM session WHERE username = :username');
-			$req->execute($values);
+			}
 		}
-		catch (PDOException $e)
-		{
-			throw new Exception('Query error');
-		}
-		$data = $req->fetch(PDO::FETCH_ASSOC);
-		if (is_array($data))
-			throw new Exception('Your account is already log');
-		else
-			$this->logUser($username);
-		$req->closeCursor();
+		return FALSE;
 	}
-
-	public function logUser($username)
+	
+	public function isNameValid(string $name): bool
 	{
-		$values = array(':username' => $username, ':active' => TRUE);
-		try
+		$valid = TRUE;
+		/* Example check: the length must be between 8 and 16 chars */
+		$len = mb_strlen($name);
+		
+		if (($len < 8) || ($len > 16))
 		{
-			$req = $this->getDb()->prepare('INSERT INTO session (username, active) VALUES (:username, :active)');
-			$req->execute($values);
+			$valid = FALSE;
 		}
-		catch (PDOException $e)
+		
+		/* You can add more checks here */
+		
+		return $valid;
+	}
+	
+	/* A sanitization check for the account password */
+	public function isPasswordValid(string $password): bool
+	{
+		/* Initialize the return variable */
+		$valid = TRUE;
+		
+		/* Example check: the length must be between 8 and 16 chars */
+		$len = mb_strlen($password);
+		
+		if (($len < 8) || ($len > 16))
 		{
-			throw new Exception('Query error');
+			$valid = FALSE;
 		}
-		// $this->startSession($username);
-		// echo "<script>console.log('--|log user|--' );</script>";
-		$req->closeCursor();
+		
+		/* You can add more checks here */
+		
+		return $valid;
 	}
-
-	public function login($username, $password)
+	
+	/* A sanitization check for the account ID */
+	public function isIdValid(int $id): bool
 	{
-		if ($this->checkInfo($username, $password) === FALSE)
-			throw new Exception('Invalid Credentials');
-		if ($this->isUserLog($username) === TRUE)
-			throw new Exception('Already log');
-		else 
-			$this->logUser($username);
-	}
-
-	public function logout($username)
-	{
-		// session_start();
-        // if (isset($_SESSION['username']))
-        //     $_SESSION['username'] = NULL;
-		if ($this->isUserLog($username) === TRUE)
+		/* Initialize the return variable */
+		$valid = TRUE;
+		
+		/* Example check: the ID must be between 1 and 1000000 */
+		
+		if (($id < 1) || ($id > 1000000))
 		{
-			$values = array(':username' => $username, ':active' => TRUE);
+			$valid = FALSE;
+		}
+		
+		/* You can add more checks here */
+		
+		return $valid;
+	}
+	
+	/* Login using Sessions */
+	public function sessionLogin(): bool
+	{
+		/* Global $pdo object */
+		global $pdo;
+		
+		/* Check that the Session has been started */
+		if (session_status() == PHP_SESSION_ACTIVE)
+		{
+			/* 
+				Query template to look for the current session ID on the account_sessions table.
+				The query also make sure the Session is not older than 7 days
+			*/
+			$query = 
+			
+			'SELECT * FROM myschema.account_sessions, myschema.accounts WHERE (account_sessions.session_id = :sid) ' . 
+			'AND (account_sessions.login_time >= (NOW() - INTERVAL 7 DAY)) AND (account_sessions.account_id = accounts.account_id) ' . 
+			'AND (accounts.account_enabled = 1)';
+			
+			/* Values array for PDO */
+			$values = array(':sid' => session_id());
+			
+			/* Execute the query */
 			try
 			{
-				$req = $this->getDb()->prepare(' DELETE FROM session WHERE (username, active) VALUES (:username, :active)');
-				$req->execute($values);
+				$res = $pdo->prepare($query);
+				$res->execute($values);
 			}
 			catch (PDOException $e)
 			{
-				throw new Exception('Query error');
+			   /* If there is a PDO exception, throw a standard exception */
+			   throw new Exception('Database query error');
 			}
-			$req->closeCursor();
+			
+			$row = $res->fetch(PDO::FETCH_ASSOC);
+			
+			if (is_array($row))
+			{
+				/* Authentication succeeded. Set the class properties (id and name) and return TRUE*/
+				$this->id = intval($row['account_id'], 10);
+				$this->name = $row['account_name'];
+				$this->authenticated = TRUE;
+				
+				return TRUE;
+			}
 		}
+		
+		/* If we are here, the authentication failed */
+		return FALSE;
 	}
+
+
 }
 ?>

@@ -20,7 +20,8 @@ abstract class Model
 	protected function getAll($table, $obj)
 	{
 		$array = [];
-		$req = $this->getDb()->prepare('SELECT * FROM '.$table.' ORDER BY ID DESC');
+		$query = "SELECT * FROM '.$table.' ORDER BY ID DESC";
+		$req = $this->getDb()->prepare($query);
 		$req->execute();
 		while ($data = $req->fetch(PDO::FETCH_ASSOC))
 			$array[] = new $obj($data);

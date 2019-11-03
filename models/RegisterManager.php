@@ -24,32 +24,34 @@ class RegisterManager extends Model
 		return (preg_match('/\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/', htmlspecialchars($email))) ? true : false;
 	}
 
-	public function checkUsernameTaken($username)
+	public function checkUsernameAvailable($username)
 	{
 		$values = array(':username' => $username);
+		$query = "SELECT `id` FROM `users` WHERE (`username` = :username)";
 		try
 		{
-			$req = $this->getDb()->prepare('SELECT id FROM users WHERE (username = :username)');
+			$req = $this->getDb()->prepare($query);
 			$req->execute($values);
 		}
 		catch (PDOException $e)
 		{
 			throw new Exception('Query error');
 		}
-		$data = $req->fetch(PDO::FETCH_ASSOC);
-		if (is_array($data))
-			$id = intval($data['id'], 10);
-		return $id;
+		$res = $req->fetch(PDO::FETCH_ASSOC);
+		if (is_array($res))
+			$id = intval($res['id'], 10);
 		$req->closeCursor();
+		return $id;
 	}
 
 
-	public function checkEmailTaken($email)
+	public function checkEmailAvailable($email)
 	{
 		$values = array(':email' => $email);
+		$query = "SELECT `id` FROM `users` WHERE (`email` = :email)";
 		try
 		{
-			$req = $this->getDb()->prepare('SELECT id FROM users WHERE (email = :email)');
+			$req = $this->getDb()->prepare($query);
 			$req->execute($values);
 		}
 		catch (PDOException $e)
@@ -74,15 +76,16 @@ class RegisterManager extends Model
 			throw new Exception('Invalid Password');
 		if (!$this->checkEmailSyntax($email))
 			throw new Exception('Invalid Email');
-		if (!is_null($this->checkUsernameTaken($username)))
+		if (!is_null($this->checkUsernameAvailable($username)))
 			throw new Exception('Username already exist');
-		if (!is_null($this->checkEmailTaken($email)))
+		if (!is_null($this->checkEmailAvailable($email)))
 			throw new Exception('Email already exist');
 		$hash = hash('sha256', $password);
 		$values = array(':username' => $username, ':password' => $hash, ':email' => $email);
+		$query = "INSERT INTO `users` (`username`, `password`, `email`) VALUES (:username, :password, :email)";
 		try
 		{
-			$req = $this->getDb()->prepare('INSERT INTO users (username, password, email) VALUES (:username, :password, :email)');
+			$req = $this->getDb()->prepare($query);
 			$req->execute($values);
 			$req->closeCursor();
 		}
