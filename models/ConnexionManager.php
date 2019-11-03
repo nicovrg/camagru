@@ -1,17 +1,21 @@
 <?php
 class ConnexionManager extends Model
 {
-    public function login(string $username, string $password): bool
+	private $id;
+	private $name;
+	private $authenticated;
+	
+    public function login(string $username, string $password)
 	{
 		global $pdo;
 		$username = trim($username);
 		
-		if (!$this->isNameValid($usernaname))
-			return FALSE;
-		if (!$this->isPasswordValid($password))
-			return FALSE;
+		// if (!$this->isNameValid($username))
+		// 	return FALSE;
+		// if (!$this->isPasswordValid($password))
+		// 	return FALSE;
         $values = array(':username' => $username);
-        $query = "SELECT * FROM `session` WHERE (`username` = `:username`)";
+        $query = "SELECT * FROM `users` WHERE (`username` = :username)";
 		try
 		{
 			$req = $pdo->prepare($query);
@@ -26,7 +30,7 @@ class ConnexionManager extends Model
 		{
             if (hash('sha256', $password) === hash('sha256', $res['account_password']))
 			{
-				$this->id = intval($res['account_id'], 10);
+				$this->id = intval($res['id'], 10);
 				$this->username = $username;
 				$this->authenticated = TRUE;
 				$this->registerLoginSession();
@@ -36,66 +40,34 @@ class ConnexionManager extends Model
 		return FALSE;
 	}
 	
-	public function isNameValid(string $name): bool
+	public function isNameValid(string $name)
 	{
-		$valid = TRUE;
-		/* Example check: the length must be between 8 and 16 chars */
 		$len = mb_strlen($name);
-		
-		if (($len < 8) || ($len > 16))
-		{
-			$valid = FALSE;
-		}
-		
-		/* You can add more checks here */
-		
-		return $valid;
+		if (($len < 4) || ($len > 16))
+			return FALSE;
+		return TRUE;
 	}
 	
-	/* A sanitization check for the account password */
-	public function isPasswordValid(string $password): bool
+	public function isPasswordValid(string $password)
 	{
-		/* Initialize the return variable */
 		$valid = TRUE;
-		
-		/* Example check: the length must be between 8 and 16 chars */
 		$len = mb_strlen($password);
-		
 		if (($len < 8) || ($len > 16))
-		{
 			$valid = FALSE;
-		}
-		
-		/* You can add more checks here */
-		
 		return $valid;
 	}
 	
-	/* A sanitization check for the account ID */
-	public function isIdValid(int $id): bool
+	public function isIdValid(int $id)
 	{
-		/* Initialize the return variable */
 		$valid = TRUE;
-		
-		/* Example check: the ID must be between 1 and 1000000 */
-		
 		if (($id < 1) || ($id > 1000000))
-		{
 			$valid = FALSE;
-		}
-		
-		/* You can add more checks here */
-		
 		return $valid;
 	}
 	
-	/* Login using Sessions */
-	public function sessionLogin(): bool
+	public function sessionLogin()
 	{
-		/* Global $pdo object */
 		global $pdo;
-		
-		/* Check that the Session has been started */
 		if (session_status() == PHP_SESSION_ACTIVE)
 		{
 			/* 

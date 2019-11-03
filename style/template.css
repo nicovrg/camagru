@@ -1,20 +1,26 @@
-#header_div
+.header_div
 {
+	display: flex;
 	background-color: #1DA1FE;
 }
 
-#main_div
+.main_div
 {
-	height: 90vh;
-	color: white;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	font-family: Helvetica Neue;
 	background-color: rgb(30, 56, 83);
+	color: white;
+	height: 90vh;
+
 }
 
-#footer_div
+.footer_div
 {
+	display: flex;
 	background-color: #1DA1FE;
 }
-
 
 
 
