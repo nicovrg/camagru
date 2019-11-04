@@ -44,7 +44,6 @@ class RegisterManager extends Model
 		return $id;
 	}
 
-
 	public function checkEmailAvailable($email)
 	{
 		$values = array(':email' => $email);

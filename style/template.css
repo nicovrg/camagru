@@ -1,6 +1,7 @@
 .header_div
 {
 	display: flex;
+	justify-content: space-around;
 	background-color: #1DA1FE;
 }
 
@@ -9,17 +10,22 @@
 	display: flex;
 	align-items: center;
 	flex-direction: column;
+	justify-content: space-around;
 	font-family: Helvetica Neue;
 	background-color: rgb(30, 56, 83);
 	color: white;
 	height: 90vh;
-
 }
 
 .footer_div
 {
 	display: flex;
 	background-color: #1DA1FE;
+}
+
+body
+{
+	margin: 0;
 }
 
 

@@ -7,15 +7,16 @@
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
 		<link rel="stylesheet" type="text/css" href="/style/template.css">
 		<link rel="stylesheet" type="text/css" href="/style/modify.css">
+		<link rel="stylesheet" type="text/css" href="/style/register.css">
 		<title><?= $t ?></title>
 	</head>
 	<body>
 		<header class="header_div">
 			<a href="/">Home</a>
 			<a href="/register">Register</a>
+			<a href="/modify">Modify</a>
 			<a href="/login">Login</a>
 			<a href="/logout">Logout</a>
-			<a href="/modify">Modify</a>
 		</header>
 			<div class="main_div">
 				<?= $content ?>
