@@ -4,6 +4,7 @@
 	// login() => filter input, get user hash pwd from db and compare them
 	// registerLoginSession() => update session_id and account_id in sessions table
 	// sessionLogin() => check if user session is valid and active (return true if yes)
+	// logout() => reset ConnexionManager attributes to null/false and delete from db user session
 
 class ConnexionManager extends Checker
 {
@@ -93,16 +94,16 @@ class ConnexionManager extends Checker
 		return false;
 	}
 
-	public function check()
-	{
-		echo "logout</br>";
-		// echo $_SESSION['test'];
-		if ($this->sessionLogin() === true)
-			echo "user is log";
-		else
-			echo "user is not log";
+	// public function check()
+	// {
+	// 	echo "logout</br>";
+	// 	// echo $_SESSION['test'];
+	// 	if ($this->sessionLogin() === true)
+	// 		echo "user is log";
+	// 	else
+	// 		echo "user is not log";
 		
-	}
+	// }
 
 	public function logout()
 	{

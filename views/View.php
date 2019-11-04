@@ -28,5 +28,7 @@ class View
 		else
 			throw new Exception('File '.$file.' not found');
 	}
+
+	//private function get data?
 }
 ?>

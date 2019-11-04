@@ -11,6 +11,8 @@ class ModifyManager extends Checker
 
 	private function modify_account($username, $password)
 	{
+		if ($this->sessionLogin() === true)
+			$lala = "lala";
 	}
 }
 ?>
