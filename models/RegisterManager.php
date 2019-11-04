@@ -1,6 +1,8 @@
 <?php
 
-// This class contain a method to register a user, calling methods from Checker class
+// This class contain the following method:
+	//register() will call methods from Checker class to verify if inputs are valid and authorized
+	//then register() will add the user in the database
  
 class RegisterManager extends Checker
 {
@@ -20,6 +22,7 @@ class RegisterManager extends Checker
 		if (!is_null($this->getEmailId($email)))
 			throw new Exception('Email already exist');
 		$hash = hash('sha256', $password);
+		// $hash = $password;
 		$values = array(':username' => $username, ':password' => $hash, ':email' => $email);
 		$query = "INSERT INTO `users` (`username`, `password`, `email`) VALUES (:username, :password, :email)";
 		try

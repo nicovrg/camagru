@@ -1,7 +1,8 @@
 <?php
 require_once('views/View.php');
-if(!isset($_SESSION)) 
-	session_start();
+
+//the Router load all Model classes, and parse the url to find what Controller need to be loaded
+	//then it instanciate a new Controller from this url action, or load the homepage or errorpage if an error occured
 
 class Router
 {
@@ -10,6 +11,7 @@ class Router
 
 	public function routeReq()
 	{
+		session_start();
 		try
 		{
 			spl_autoload_register(function($class){require_once('models/'.$class.'.php');});

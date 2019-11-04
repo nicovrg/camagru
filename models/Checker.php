@@ -6,6 +6,14 @@
 
 class Checker extends Model
 {
+
+	public function isIdValid(int $id)
+	{
+		if (($id < 1) || ($id > 1000000))
+			return false;
+		return true;
+	}
+	
 	public function getUsernameId($username)
 	{
 		$values = array(':username' => $username);
