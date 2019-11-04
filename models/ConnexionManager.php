@@ -68,10 +68,9 @@ class ConnexionManager extends Checker
 	{
 		if (session_status() == PHP_SESSION_ACTIVE)
 		{
-			$query = "SELECT * FROM `users`, `sessions` WHERE (`sessions.session_id` = :sid)";
-			$query = $query." AND (`sessions.login_time` >= (NOW() - INTERVAL 7 DAY))";
-			$query = $query." AND (`sessions.account_id` = `sessions.account_id`)";
-			echo $query;
+			$query = "SELECT * FROM `users`, `sessions` WHERE (`session_id` = :sid)";
+			$query = $query." AND (`login_time` >= (NOW() - INTERVAL 7 DAY))";
+			$query = $query." AND (`account_id` = `account_id`)";
 			$values = array(':sid' => session_id());
 			try
 			{
@@ -93,5 +92,42 @@ class ConnexionManager extends Checker
 		}
 		return false;
 	}
+
+	public function check()
+	{
+		echo "logout</br>";
+		// echo $_SESSION['test'];
+		if ($this->sessionLogin() === true)
+			echo "user is log";
+		else
+			echo "user is not log";
+		
+	}
+
+	public function logout()
+	{
+		if (is_null($this->id))
+			return ;
+
+		$this->id = NULL;
+		$this->name = NULL;
+		$this->authenticated = FALSE;
+
+		if (session_status() == PHP_SESSION_ACTIVE)
+		{
+			$query = "DELETE FROM `sessions` WHERE (`session_id` = :sid)";
+			$values = array(':sid' => session_id());
+			try
+			{
+				$req = $this->getDb()->prepare($query);
+				$req->execute($values);
+			}
+			catch (PDOException $e)
+			{
+			   throw new Exception('Database query error');
+			}
+		}
+	}
+
 }
 ?>

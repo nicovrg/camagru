@@ -1,3 +1,9 @@
+body
+{
+	font-family: Courier;
+	margin: 0;
+}
+
 .header_div
 {
 	display: flex;
@@ -23,15 +29,11 @@
 .footer_div
 {
 	display: flex;
+	justify-content: center;
+	align-items: center;
 	background-color: #1DA1FE;
 	margin: 0;
 }
-
-body
-{
-	margin: 0;
-}
-
 
 
 /* twitter dark blue #15202B */
