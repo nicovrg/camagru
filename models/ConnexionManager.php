@@ -88,9 +88,12 @@ class ConnexionManager extends Checker
 				$this->id = intval($res['account_id'], 10);
 				$this->name = $res['account_name'];
 				$this->authenticated = true;
+				echo $this->id;
+				echo "true";
 				return true;
 			}
 		}
+		echo "false";
 		return false;
 	}
 
@@ -107,15 +110,18 @@ class ConnexionManager extends Checker
 
 	public function logout()
 	{
+		var_dump($this->id);
+		global $id;
+		var_dump($this->id);
 		if (is_null($this->id))
 			return ;
-
 		$this->id = NULL;
-		$this->name = NULL;
-		$this->authenticated = FALSE;
-
+		$this->username = NULL;
+		$this->authenticated = false;
+		echo "<p>before</p>";
 		if (session_status() == PHP_SESSION_ACTIVE)
 		{
+			echo "<p>after</p>";
 			$query = "DELETE FROM `sessions` WHERE (`session_id` = :sid)";
 			$values = array(':sid' => session_id());
 			try

@@ -3,10 +3,13 @@ class View
 {
 	private $_t;
 	private $_file;
+	private $_array;
 
 	public function __construct($action)
 	{
 		$this->_file = 'views/view'.$action.'.php';
+		$this->_array = $_POST;
+		var_dump($this->_array);
 	}
 
 	public function generate($data)

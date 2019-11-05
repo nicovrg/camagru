@@ -15,8 +15,13 @@
 			<a href="/">Home</a>
 			<a href="/register">Register</a>
 			<a href="/modify">Modify</a>
-			<a href="/login">Login</a>
-			<a href="/logout">Logout</a>
+			<?php
+				$connexion = new ConnexionManager;
+				if ($connexion->sessionLogin() === false) 
+					echo "<a href='/login'>Login</a>";
+				else
+					echo "<a href='/logout'>Logout</a>";
+			?>
 		</header>
 			<div class="main_div">
 				<?= $content ?>
