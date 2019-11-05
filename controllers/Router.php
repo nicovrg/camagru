@@ -45,12 +45,14 @@ class Router
 		}
 	}
 }
-?>
 
-<!-- user will always be on index.php -->
-<!-- splt_autoload_register load classes required -->
-<!-- controller is included according to user action -->
-<!-- we explode the url on /, then apply a filter to secure what happen -->
-<!-- if the page requested by user in url exist we require the file of the correspondig class -->
-<!-- if there is no url, we load the default page -->
-<!-- if there is an exception we redirect to the default view -->
+
+// <!-- user will always be on index.php -->
+// <!-- splt_autoload_register load classes required -->
+// <!-- controller is included according to user action -->
+// <!-- we explode the url on /, then apply a filter to secure what happen -->
+// <!-- if the page requested by user in url exist we require the file of the correspondig class -->
+// <!-- if there is no url, we load the default page -->
+// <!-- if there is an exception we redirect to the default view -->
+
+?>

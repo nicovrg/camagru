@@ -15,9 +15,15 @@ class ControllerLogin
 	{
 		$this->_connexionManager = new ConnexionManager;
 		if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['confirm']))
-			$this->_connexionManager->login($_POST['username'], $_POST['password']);
-		$this->_view = new View('Login');
-		$this->_view->generate(array());
-	}	
+		{
+			if ($this->_connexionManager->login($_POST['username'], $_POST['password']))
+				header('Location: /');
+		}
+		else
+		{
+			$this->_view = new View('Login');
+			$this->_view->generate(array());
+		}
+	}
 }
 ?>

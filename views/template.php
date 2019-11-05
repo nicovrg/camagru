@@ -5,6 +5,7 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		<link rel="icon" type="image/png" href="../favicon.png" />
 		<link rel="stylesheet" type="text/css" href="/style/template.css">
 		<link rel="stylesheet" type="text/css" href="/style/modify.css">
 		<link rel="stylesheet" type="text/css" href="/style/register.css">
@@ -14,14 +15,9 @@
 		<header class="header_div">
 			<a href="/">Home</a>
 			<a href="/register">Register</a>
-			<a href="/modify">Modify</a>
-			<?php
-				$connexion = new ConnexionManager;
-				if ($connexion->sessionLogin() === false) 
-					echo "<a href='/login'>Login</a>";
-				else
-					echo "<a href='/logout'>Logout</a>";
-			?>
+			<?php $manager = new ConnexionManager; ?>
+			<?= $manager->sessionLogin() ? '<a href="/modify">' . $manager->sessionLogin()->username() . "</a>" : "" ?>
+			<a <?= $manager->sessionLogin() ? 'href="/logout">Logout</a>' : 'href="/login">Login</a> ' ?>
 		</header>
 			<div class="main_div">
 				<?= $content ?>

@@ -9,7 +9,7 @@ class View
 	{
 		$this->_file = 'views/view'.$action.'.php';
 		$this->_array = $_POST;
-		var_dump($this->_array);
+		//var_dump($this->_array);
 	}
 
 	public function generate($data)

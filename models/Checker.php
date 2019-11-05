@@ -4,7 +4,7 @@
 	// check syntax of user input (username, password, email)
 	// check availability of user info (username, email)
 
-class Checker extends Model
+	abstract class Checker extends Model
 {
 
 	public function isIdValid(int $id)
@@ -13,7 +13,7 @@ class Checker extends Model
 			return false;
 		return true;
 	}
-	
+
 	public function getUsernameId($username)
 	{
 		$values = array(':username' => $username);

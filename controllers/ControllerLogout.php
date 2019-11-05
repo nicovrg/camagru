@@ -15,7 +15,8 @@ class ControllerLogout
 	{
 		$this->_connexionManager = new ConnexionManager;
 		// $this->_connexionManager->check();
-		$this->_connexionManager->logout();
+		if ($this->_connexionManager->sessionLogin())
+			$this->_connexionManager->logout();
 		$this->_view = new View('Logout');
 		$this->_view->generate(array());
 	}

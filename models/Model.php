@@ -30,9 +30,10 @@ abstract class Model
 	}
 
 }
-?>
 
-<!-- model class define connexion to the database methods for it's child classes -->
-<!-- setDB establish connection with the database -->
-<!-- getDB return the connexion identifier to the db -->
-<!-- getALL return all data from a table within the db -->
+// <!-- model class define connexion to the database methods for it's child classes -->
+// <!-- setDB establish connection with the database -->
+// <!-- getDB return the connexion identifier to the db -->
+// <!-- getALL return all data from a table within the db -->
+
+?>

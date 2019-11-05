@@ -1,5 +1,4 @@
 <?php
-
 // This class contain the following methods:
 	// login() => filter input, get user hash pwd from db and compare them
 	// registerLoginSession() => update session_id and account_id in sessions table
@@ -8,11 +7,8 @@
 
 class ConnexionManager extends Checker
 {
-	private $id;
-	private $username;
-	private $authenticated;
 	
-    public function login($username, $password)
+	public function login($username, $password)
 	{
 		$username = trim($username);
 		
@@ -20,8 +16,8 @@ class ConnexionManager extends Checker
 			return false;
 		if (!$this->checkPasswordSyntax($password, $password))
 			return false;
-        $values = array(':username' => $username);
-		$query = "SELECT * FROM `users` WHERE (`username` = :username)";		
+		$values = array(':username' => $username);
+		$query = "SELECT * FROM `users` WHERE (`username` = :username)";
 		try
 		{
 			$req = $this->getDb()->prepare($query);
@@ -29,30 +25,28 @@ class ConnexionManager extends Checker
 		}
 		catch (PDOException $e)
 		{
-		   throw new Exception('Database query error');
+			throw new Exception('Database query error');
 		}
-		$res = $req->fetch(PDO::FETCH_ASSOC);
-		if (is_array($res))
+		$data = $req->fetch(PDO::FETCH_ASSOC);
+		if (is_array($data))
 		{
-			if (hash('sha256', $password) === $res['password'])
+			$user = new User($data);
+			if (hash('sha256', $password) === $data['password'])
 			{
-				$this->id = intval($res['id'], 10);
-				$this->username = $username;
-				$this->authenticated = true;
-				$this->registerLoginSession();
-				return true;
+				if ($this->registerLoginSession($user->id()))
+					return true;
 			}
 		}
 		echo "<script>alert('fail to log')</script>";
 		return false;
 	}
 	
-	private function registerLoginSession()
+	private function registerLoginSession($id)
 	{
 		if (session_status() == PHP_SESSION_ACTIVE)
 		{
-			$query = 'REPLACE INTO `sessions` (`session_id`, `account_id`, login_time) VALUES (:sessionId, :accountId, NOW())';
-			$values = array(':sessionId' => session_id(), ':accountId' => $this->id);
+			$query = 'INSERT INTO `sessions` (`session_id`, `account_id`) VALUES (:sessionId, :accountId)';
+			$values = array(':sessionId' => session_id(), ':accountId' => $id);
 			try
 			{
 				$req = $this->getDb()->prepare($query);
@@ -60,9 +54,11 @@ class ConnexionManager extends Checker
 			}
 			catch (PDOException $e)
 			{
-			   throw new Exception('Database query error');
+				throw new Exception('Database query error');
 			}
+			return true;
 		}
+		return false;
 	}
 
 	public function sessionLogin()
@@ -80,21 +76,13 @@ class ConnexionManager extends Checker
 			}
 			catch (PDOException $e)
 			{
-			   throw new Exception('Database query error');
+				throw new Exception('Database query error');
 			}
-			$res = $req->fetch(PDO::FETCH_ASSOC);
-			if (is_array($res))
-			{
-				$this->id = intval($res['account_id'], 10);
-				$this->name = $res['account_name'];
-				$this->authenticated = true;
-				echo $this->id;
-				echo "true";
-				return true;
-			}
+			$data = $req->fetch(PDO::FETCH_ASSOC);
+			if (is_array($data))
+				return new User($data);
 		}
-		echo "false";
-		return false;
+		return null;
 	}
 
 	// public function check()
@@ -110,18 +98,8 @@ class ConnexionManager extends Checker
 
 	public function logout()
 	{
-		var_dump($this->id);
-		global $id;
-		var_dump($this->id);
-		if (is_null($this->id))
-			return ;
-		$this->id = NULL;
-		$this->username = NULL;
-		$this->authenticated = false;
-		echo "<p>before</p>";
 		if (session_status() == PHP_SESSION_ACTIVE)
 		{
-			echo "<p>after</p>";
 			$query = "DELETE FROM `sessions` WHERE (`session_id` = :sid)";
 			$values = array(':sid' => session_id());
 			try
@@ -131,10 +109,9 @@ class ConnexionManager extends Checker
 			}
 			catch (PDOException $e)
 			{
-			   throw new Exception('Database query error');
+				throw new Exception('Database query error');
 			}
 		}
 	}
-
 }
 ?>
