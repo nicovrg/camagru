@@ -5,8 +5,6 @@
 	<form action="/modify" method="POST" id="modify">
 		username: <input class="modify_form_cell" type="text" name="username" value="<?= $user->username() ?>">
 		email: <input class="modify_form_cell" type="text" name="email" value="<?= $user->email() ?>">
-		password: <input class="modify_form_cell" type="text" name="password">
-		confirm password: <input class="modify_form_cell" type="text" name="confirm_password">
 		<input type="submit" name="confirm">
 	</form>
 </div>

@@ -65,10 +65,10 @@ class ConnexionManager extends Checker
 	{
 		if (session_status() == PHP_SESSION_ACTIVE)
 		{
+			$values = array(':sid' => session_id());
 			$query = "SELECT * FROM `users`, `sessions` WHERE (`session_id` = :sid)";
 			$query = $query." AND (`login_time` >= (NOW() - INTERVAL 7 DAY))";
-			$query = $query." AND (`account_id` = `account_id`)";
-			$values = array(':sid' => session_id());
+			$query = $query." AND (users.id = sessions.account_id)";
 			try
 			{
 				$req = $this->getDb()->prepare($query);
@@ -112,6 +112,7 @@ class ConnexionManager extends Checker
 				throw new Exception('Database query error');
 			}
 		}
+		return true;
 	}
 }
 ?>
