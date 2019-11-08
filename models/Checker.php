@@ -14,6 +14,27 @@
 		return true;
 	}
 
+	public function getId($session_id)
+	{
+		$user_id;
+		$values = array(':session_id' => $session_id);
+		$query = "SELECT `account_id` FROM `sessions` WHERE (`session_id` = :session_id)";
+		try
+		{
+			$req = $this->getDb()->prepare($query);
+			$req->execute($values);
+		}
+		catch (PDOException $e)
+		{
+			throw new Exception('Query error');
+		}
+		$data = $req->fetch(PDO::FETCH_ASSOC);
+		if (is_array($data))
+			$user_id = intval($data['session_id'], 10);
+		$req->closeCursor();
+		return $user_id;
+	}
+
 	public function getUsernameId($username)
 	{
 		$values = array(':username' => $username);

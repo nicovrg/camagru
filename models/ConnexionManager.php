@@ -88,24 +88,11 @@ class ConnexionManager extends Checker
 		return null;
 	}
 
-	// public function check()
-	// {
-	// 	echo "logout</br>";
-	// 	// echo $_SESSION['test'];
-	// 	if ($this->sessionLogin() === true)
-	// 		echo "user is log";
-	// 	else
-	// 		echo "user is not log";
-		
-	// }
-
 	public function logout()
 	{
 		if (session_status() == PHP_SESSION_ACTIVE)
 		{
 			$values = array(':sid' => session_id());
-			echo (session_id());
-			// $query = "DELETE FROM `sessions` WHERE (`session_id` = :sid)";
 			$query = "DELETE FROM `sessions` WHERE (`session_id` = :sid)";
 			try
 			{

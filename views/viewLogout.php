@@ -1,2 +1,3 @@
 <?php $this->_t = "Logout" ?>
-<?php header('Location: /'); ?>
+<?= "you've logged out" ?>
+<!-- header('Location: /');  -->
