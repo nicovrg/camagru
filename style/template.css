@@ -44,20 +44,21 @@ body
 
 .main_div
 {
-	padding: 3em 0;
-	display: flex;
-	flex: 1;
-	align-items: center;
-	flex-direction: column;
-	justify-content: space-around;
-	background-color: rgb(30, 56, 83);
-	color: white;
+		padding: 4em 0;
+		display: flex;
+		flex: 1;
+		align-items: center;
+		flex-direction: column;
+		justify-content: space-around;
+		background-color: rgb(30, 56, 83);
+		color: white;
 }
 
 .footer_div
 {
 	position: fixed;
 	width: 100vw;
+	height: 4em;
 	bottom: 0;
 	left: 0;
 	display: flex;
@@ -65,6 +66,22 @@ body
 	align-items: center;
 	background-color: #1DA1FE;
 	margin: 0;
+}
+
+.footer_div a
+{
+	color : white;
+	text-decoration: none;
+	font-weight: 300;
+	transition: all .3s;	
+}
+
+.footer_div a:hover
+{
+	color: rgb(30, 56, 83);
+	font-weight: 600;
+	transform: scale(1.1);
+	transition: all .3s;
 }
 
 /* twitter dark blue #15202B */

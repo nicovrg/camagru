@@ -8,7 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="/style/template.css">
 		<link rel="stylesheet" type="text/css" href="/style/modify.css">
 		<link rel="stylesheet" type="text/css" href="/style/register.css">
-		<link rel="stylesheet" type="text/css" href="/trash/nyan.css">
+		<link rel="stylesheet" type="text/css" href="/style/nyan.css">
 		<title><?= $t ?></title>
 	</head>
 	<body>
