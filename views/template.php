@@ -8,6 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="/style/template.css">
 		<link rel="stylesheet" type="text/css" href="/style/modify.css">
 		<link rel="stylesheet" type="text/css" href="/style/register.css">
+		<link rel="stylesheet" type="text/css" href="/trash/nyan.css">
 		<title><?= $t ?></title>
 	</head>
 	<body>
@@ -22,7 +23,8 @@
 				<?= $content ?>
 			</div>
 		<footer class="footer_div">
-			<p>footer</p>
+			<p></p>
+			<a href="/nyancat">Miaou</a>
 		</footer>
 	</body>
 </html>

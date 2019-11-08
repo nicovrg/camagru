@@ -16,7 +16,10 @@ class ControllerRegister
 	{
 		$this->_registerManager = new RegisterManager;
 		if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirm_password']) && isset($_POST['confirm']))
+		{
 			$this->_registerManager->register($_POST['username'], $_POST['password'], $_POST['confirm_password'], $_POST['email']);
+			header("Location: /login");
+		}	
 		$this->_view = new View('Register');
 		$this->_view->generate(array());
 	}

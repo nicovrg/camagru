@@ -103,8 +103,10 @@ class ConnexionManager extends Checker
 	{
 		if (session_status() == PHP_SESSION_ACTIVE)
 		{
-			$query = "DELETE FROM `sessions` WHERE (`session_id` = :sid)";
 			$values = array(':sid' => session_id());
+			echo (session_id());
+			// $query = "DELETE FROM `sessions` WHERE (`session_id` = :sid)";
+			$query = "DELETE FROM `sessions` WHERE (`session_id` = :sid)";
 			try
 			{
 				$req = $this->getDb()->prepare($query);

@@ -1,5 +1,6 @@
 <?php $this->_t = "Register" ?>
 <div>
+	<p style="display:flex; justify-content: center;">register</p>
 	<form action="/register" method="POST" id="register">
 		username: <input class="register_form_cell" type="text" name="username">
 		email: <input class="register_form_cell" type="text" name="email">
