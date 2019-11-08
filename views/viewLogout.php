@@ -1,2 +1,2 @@
 <?php $this->_t = "Logout" ?>
-<?= $_SESSION["test"] ?>
+<?php header('Location: /'); ?>

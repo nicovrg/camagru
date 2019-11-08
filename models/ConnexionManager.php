@@ -45,8 +45,8 @@ class ConnexionManager extends Checker
 	{
 		if (session_status() == PHP_SESSION_ACTIVE)
 		{
-			$query = 'INSERT INTO `sessions` (`session_id`, `account_id`) VALUES (:sessionId, :accountId)';
 			$values = array(':sessionId' => session_id(), ':accountId' => $id);
+			$query = 'INSERT INTO `sessions` (`session_id`, `account_id`) VALUES (:sessionId, :accountId)';
 			try
 			{
 				$req = $this->getDb()->prepare($query);
@@ -80,7 +80,10 @@ class ConnexionManager extends Checker
 			}
 			$data = $req->fetch(PDO::FETCH_ASSOC);
 			if (is_array($data))
+			{
+				// echo ("<script type='javascript'>console.log(" . var_dump($data) . ")</script>");
 				return new User($data);
+			}
 		}
 		return null;
 	}

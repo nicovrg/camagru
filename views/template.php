@@ -15,7 +15,7 @@
 			<a href="/">Home</a>
 			<?php $manager = new ConnexionManager; ?>
 			<?= $manager->sessionLogin() ? "" : "<a href='/register'>" . "register" . "</a>" ?>
-			<?= $manager->sessionLogin() ? '<a href="/modify">' . $manager->sessionLogin()->username() . "</a>" : "" ?>
+			<?= $manager->sessionLogin() ? "<a href='/modify'>" . $manager->sessionLogin()->username() . "</a>" : "" ?>
 			<a <?= $manager->sessionLogin() ? 'href="/logout">Logout</a>' : 'href="/login">Login</a> '?> </a>
 		</header>
 			<div class="main_div">
