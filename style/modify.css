@@ -5,6 +5,12 @@
 	flex-direction: column;
 }
 
+.modify_title
+{
+	display:flex;
+	justify-content: center;
+}
+
 .modify_form_cell
 {
 	display: flex;

@@ -1,9 +1,11 @@
 <?php $this->_t = "Login" ?>
-<div>
-	<p style="display:flex; justify-content: center;">login</p>
+<div class="login">
+	<p class="login_title">login</p>
 	<form action="/login" method="POST" id="login">
-		username: <input id="username" type="text" name="username">
-		password: <input id="password" type="text" name="password">
-		<input type="submit" name="confirm">
+		<p class="login_field_name">username: </p>
+		<input class="login_form_cell" type="text" name="username">
+		<p class="login_field_name">password: </p>
+		<input class="login_form_cell" type="text" name="password">
+		<input class="login_form_cell" type="submit" name="confirm">
 	</form>
 </div>

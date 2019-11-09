@@ -16,8 +16,15 @@ class ControllerLogin
 		$this->_connexionManager = new ConnexionManager;
 		if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['confirm']))
 		{
-			if ($this->_connexionManager->login($_POST['username'], $_POST['password']))
-				header('Location: /');
+			if (!$this->_connexionManager->sessionLogin())
+			{
+				if ($this->_connexionManager->login($_POST['username'], $_POST['password']))
+					header('Location: /');
+				else
+					throw new Exception('Problem during authentification');
+			}
+			else
+				throw new Exception('User already log');
 		}
 		else
 		{

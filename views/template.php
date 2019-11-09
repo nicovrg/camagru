@@ -8,6 +8,7 @@
 		<link rel="stylesheet" type="text/css" href="/style/template.css">
 		<link rel="stylesheet" type="text/css" href="/style/modify.css">
 		<link rel="stylesheet" type="text/css" href="/style/register.css">
+		<link rel="stylesheet" type="text/css" href="/style/login.css">
 		<link rel="stylesheet" type="text/css" href="/style/nyan.css">
 		<title><?= $t ?></title>
 	</head>
@@ -15,7 +16,7 @@
 		<header class="header_div">
 			<a href="/">Home</a>
 			<?php $manager = new ConnexionManager; ?>
-			<?= $manager->sessionLogin() ? "" : "<a href='/register'>" . "register" . "</a>" ?>
+			<?= $manager->sessionLogin() ? "" : "<a href='/register'>" . "Register" . "</a>" ?>
 			<?= $manager->sessionLogin() ? "<a href='/modify'>" . $manager->sessionLogin()->username() . "</a>" : "" ?>
 			<a <?= $manager->sessionLogin() ? 'href="/logout">Logout</a>' : 'href="/login">Login</a> '?> </a>
 		</header>
