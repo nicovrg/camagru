@@ -8,21 +8,11 @@
 
 .login_title
 {
-	color: grey;
-}
-
-.login_field_name
-{
-	display: flex;	
-	justify-content: center;
-	color: #1DA1FE;
+	color: #001628;
 }
 
 .login_form_cell
 {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin-top: 1em;
-	margin-bottom: 1em;
+	margin-top: 1.2em;
+	margin-bottom: 1.2em;
 }
