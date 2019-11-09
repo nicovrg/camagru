@@ -30,7 +30,7 @@
 		}
 		$data = $req->fetch(PDO::FETCH_ASSOC);
 		if (is_array($data))
-			$user_id = intval($data['session_id'], 10);
+			$user_id = intval($data['account_id'], 10);
 		$req->closeCursor();
 		return $user_id;
 	}

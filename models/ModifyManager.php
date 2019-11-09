@@ -11,9 +11,6 @@ class ModifyManager extends Checker
 
 	public function modify_account($username, $email)
 	{
-		echo ("username = " . $username . "\n");
-		echo ("email = " . $email . "\n");
-		echo ("session_id = " . session_id() . "\n");
 		if (session_status() == PHP_SESSION_ACTIVE && $username != NULL && $email != NULL)
 		{
 			if (!$this->checkUsernameSyntax($username))
@@ -21,11 +18,9 @@ class ModifyManager extends Checker
 			if (!$this->checkEmailSyntax($email))
 				throw new Exception('Invalid Email');
 			$session_id = session_id();
-			echo ("session_id = " . $session_id . "\n");
 			$account_id = $this->getId($session_id);
-			echo ("account_id = " . $account_id . "\n");
-			$values = array(':username' => $username, ':account_id' => $account_id);
-			$query = "UPDATE `users` SET `username` = :username WHERE `id` = :account_id";
+			$values = array(':username' => $username, ':email' => $email, ':account_id' => $account_id);
+			$query = "UPDATE `users` SET `username` = :username, `email` = :email WHERE `id` = :account_id";
 			try
 			{
 				$req = $this->getDb()->prepare($query);
@@ -37,6 +32,5 @@ class ModifyManager extends Checker
 			}
 		}
 	}
-	// ':email' => $email,
 }
 ?>
