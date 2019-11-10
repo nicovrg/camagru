@@ -11,7 +11,6 @@ body
 	height: 100vh;
 }
 
-
 .header_div
 {
 	position: fixed;
@@ -130,7 +129,7 @@ body
 	display: block;
 	text-align: left;
 }
-  
+
 .dropdown-content a:hover 
 {
 	background-color: #ddd;
