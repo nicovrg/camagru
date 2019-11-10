@@ -17,8 +17,8 @@
 			<a href="/">Home</a>
 			<?php $manager = new ConnexionManager; ?>
 			<?= $manager->sessionLogin() ? "" : "<a href='/register'>" . "Register" . "</a>" ?>
-			<?= $manager->sessionLogin() ? "<a href='/modify'>" . $manager->sessionLogin()->username() . "</a>" : "" ?>
-			<a <?= $manager->sessionLogin() ? 'href="/logout">Logout</a>' : 'href="/login">Login</a> '?> </a>
+			<?php $manager->sessionLogin() ? require_once("template_account.php") : "" ?>
+			<?= $manager->sessionLogin() ? "<a href='/logout'>Logout</a>" : "<a href='/login'>Login</a>"?> 
 		</header>
 			<div class="main_div">
 				<?= $content ?>
