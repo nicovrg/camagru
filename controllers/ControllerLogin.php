@@ -19,9 +19,9 @@ class ControllerLogin
 			if (!$this->_connexionManager->sessionLogin())
 			{
 				if ($this->_connexionManager->login($_POST['username'], $_POST['password']))
-					header("Refresh: 1; URL='/'");
+					header("Location: /");
 				else
-					throw new Exception('Problem during authentification');
+					throw new Exception('Login fail');
 			}
 			else
 				throw new Exception('User already log');

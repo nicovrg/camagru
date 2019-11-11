@@ -42,17 +42,17 @@ class User
 	}
 
 	//GETTERS	
-	public function account_id()
+	public function getAccount_id()
 	{
 		return $this->_account_id;
 	}
 	
-	public function username()
+	public function getUsername()
 	{
 		return $this->_username;
 	}
 	
-	public function email()
+	public function getEmail()
 	{
 		return $this->_email;
 	}

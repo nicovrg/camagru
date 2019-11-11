@@ -1,2 +1,2 @@
 <?php $this->_t = "Delete" ?>
-<?= "account successfully deleted out" ?>
+<?= "account successfully deleted" ?>

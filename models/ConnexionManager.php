@@ -33,7 +33,7 @@ class ConnexionManager extends Checker
 			$user = new User($data);
 			if (hash('sha256', $password) === $data['password'])
 			{
-				if ($this->registerLoginSession($user->account_id()))
+				if ($this->registerLoginSession($user->getAccount_id()))
 					return true;
 			}
 		}
