@@ -20,7 +20,7 @@ class ModifyManager extends Checker
 			$session_id = session_id();
 			$account_id = $this->getId($session_id);
 			$values = array(':username' => $username, ':email' => $email, ':account_id' => $account_id);
-			$query = "UPDATE `users` SET `username` = :username, `email` = :email WHERE `id` = :account_id";
+			$query = "UPDATE `users` SET `username` = :username, `email` = :email WHERE `account_id` = :account_id";
 			try
 			{
 				$req = $this->getDb()->prepare($query);

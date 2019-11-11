@@ -38,9 +38,6 @@ CREATE TABLE `sessions` (
 -- Déchargement des données de la table `sessions`
 --
 
-INSERT INTO `sessions` (`session_id`, `account_id`, `login_time`) VALUES
-('6c1e2312722ff849a8af27d9a4e24994', 34, '2019-11-05 01:50:06');
-
 -- --------------------------------------------------------
 
 --
@@ -48,7 +45,7 @@ INSERT INTO `sessions` (`session_id`, `account_id`, `login_time`) VALUES
 --
 
 CREATE TABLE `users` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `account_id` int(10) UNSIGNED NOT NULL,
   `email` varchar(255) CHARACTER SET utf8 NOT NULL,
   `username` varchar(255) CHARACTER SET utf8 NOT NULL,
   `password` varchar(255) CHARACTER SET utf8 NOT NULL,
@@ -58,9 +55,6 @@ CREATE TABLE `users` (
 --
 -- Déchargement des données de la table `users`
 --
-
-INSERT INTO `users` (`id`, `email`, `username`, `password`, `reg_time`) VALUES
-(34, 'nico@nico.com', 'nico', '87000e071ec6da2ebe9d605b68f7ab1665268eb5f4591d3d6e7ad1add00f453d', '2019-11-04 22:06:22');
 
 --
 -- Index pour les tables déchargées
@@ -76,7 +70,7 @@ ALTER TABLE `sessions`
 -- Index pour la table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`account_id`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -86,7 +80,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
+  MODIFY `account_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=35;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

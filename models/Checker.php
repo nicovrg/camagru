@@ -38,7 +38,7 @@
 	public function getUsernameId($username)
 	{
 		$values = array(':username' => $username);
-		$query = "SELECT `id` FROM `users` WHERE (`username` = :username)";
+		$query = "SELECT `account_id` FROM `users` WHERE (`username` = :username)";
 		try
 		{
 			$req = $this->getDb()->prepare($query);
@@ -58,7 +58,7 @@
 	public function getEmailId($email)
 	{
 		$values = array(':email' => $email);
-		$query = "SELECT `id` FROM `users` WHERE (`email` = :email)";
+		$query = "SELECT `account_id` FROM `users` WHERE (`email` = :email)";
 		try
 		{
 			$req = $this->getDb()->prepare($query);

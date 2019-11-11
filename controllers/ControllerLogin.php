@@ -19,7 +19,7 @@ class ControllerLogin
 			if (!$this->_connexionManager->sessionLogin())
 			{
 				if ($this->_connexionManager->login($_POST['username'], $_POST['password']))
-					header('Location: /');
+					header("Refresh: 1; URL='/'");
 				else
 					throw new Exception('Problem during authentification');
 			}

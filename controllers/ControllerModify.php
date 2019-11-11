@@ -20,12 +20,15 @@ class ControllerModify
 		if ($user = $this->_connexionManager->sessionLogin())
 		{
 			if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['confirm']))
+			{
 				$this->_modifyManager->modify_account($_POST['username'], $_POST['email']);
+				header("Refresh: 2; URL='/modify'");
+			}
 			$this->_view = new View('Modify');
 			$this->_view->generate(array('user' => $user));
 		}
 		else
-			header('Location: /login');
+			header("Refresh: 1; URL='/login'");
 	}	
 }
 ?>

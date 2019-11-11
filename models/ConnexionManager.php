@@ -33,7 +33,7 @@ class ConnexionManager extends Checker
 			$user = new User($data);
 			if (hash('sha256', $password) === $data['password'])
 			{
-				if ($this->registerLoginSession($user->id()))
+				if ($this->registerLoginSession($user->account_id()))
 					return true;
 			}
 		}
@@ -41,12 +41,12 @@ class ConnexionManager extends Checker
 		return false;
 	}
 	
-	private function registerLoginSession($id)
+	private function registerLoginSession($account_id)
 	{
 		if (session_status() == PHP_SESSION_ACTIVE)
 		{
-			$values = array(':sessionId' => session_id(), ':accountId' => $id);
-			$query = 'INSERT INTO `sessions` (`session_id`, `account_id`) VALUES (:sessionId, :accountId)';
+			$values = array(':session_id' => session_id(), ':account_id' => $account_id);
+			$query = 'INSERT INTO `sessions` (`session_id`, `account_id`) VALUES (:session_id, :account_id)';
 			try
 			{
 				$req = $this->getDb()->prepare($query);
@@ -68,7 +68,7 @@ class ConnexionManager extends Checker
 			$values = array(':sid' => session_id());
 			$query = "SELECT * FROM `users`, `sessions` WHERE (`session_id` = :sid)";
 			$query = $query." AND (`login_time` >= (NOW() - INTERVAL 7 DAY))";
-			$query = $query." AND (users.id = sessions.account_id)";
+			$query = $query." AND (users.account_id = sessions.account_id)";
 			try
 			{
 				$req = $this->getDb()->prepare($query);

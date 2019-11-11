@@ -7,7 +7,7 @@ class DeleteManager extends Checker
 		{
 			$account_id = $this->getId(session_id());
 			$values = array(':account_id' => $account_id);
-			$query = "DELETE FROM `users` WHERE `id` = :account_id";
+			$query = "DELETE FROM `users` WHERE `account_id` = :account_id";
 			try
 			{
 				$req = $this->getDb()->prepare($query);

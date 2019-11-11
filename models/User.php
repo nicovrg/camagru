@@ -1,7 +1,7 @@
 <?php
 class User
 {
-	private $_id;
+	private $_account_id;
 	private $_username;
 	private $_email;
 
@@ -21,12 +21,12 @@ class User
 	}
 
 	//SETTERS
-	public function setId($id)
+	public function setAccount_id($account_id)
 	{
-		$id = (int)$id;
-
-		if ($id > 0)
-			$this->_id = $id;
+		$account_id = (int)$account_id;
+		
+		if ($account_id > 0)
+			$this->_account_id = $account_id;
 	}
 	
 	public function setUsername($username)
@@ -42,9 +42,9 @@ class User
 	}
 
 	//GETTERS	
-	public function id()
+	public function account_id()
 	{
-		return $this->_id;
+		return $this->_account_id;
 	}
 	
 	public function username()
