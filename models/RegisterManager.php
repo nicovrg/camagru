@@ -8,8 +8,8 @@ class RegisterManager extends Checker
 {
 	public function register($username, $password, $password_conf, $email)
 	{
-		$email = trim(htmlentities($email));
-		$username = trim(htmlentities($username));
+		$email = trim($email);
+		$username = trim($username);
 
 		if (!$this->checkUsernameSyntax($username))
 			throw new Exception('Invalid Username');
@@ -21,7 +21,7 @@ class RegisterManager extends Checker
 			throw new Exception('Username already exist');
 		if (!is_null($this->getEmailId($email)))
 			throw new Exception('Email already exist');
-		$hash = hash('sha256', htmlentities($password));
+		$hash = hash('sha256', $password);
 		$values = array(':username' => $username, ':password' => $hash, ':email' => $email);
 		$query = "INSERT INTO `users` (`username`, `password`, `email`) VALUES (:username, :password, :email)";
 		try

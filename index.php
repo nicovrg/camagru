@@ -1,11 +1,10 @@
 <?php
-if (session_status() != PHP_SESSION_ACTIVE) 
-	session_start();
 define('URL', str_replace("index.php", "", (isset($_SERVER['HTTPS']) ? "https" : "http" . "://$_SERVER[HTTP_HOST]$_SERVER[PHP_SELF]")));
 if (!isset($_SESSION))
 	session_start();
 	$_SESSION['test'] = 'test';
 require_once('controllers/Router.php');
+
 $router = new Router();
 $router->routeReq(); 
 ?>
