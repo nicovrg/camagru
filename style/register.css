@@ -1,0 +1,21 @@
+.register
+{
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	flex-direction: column;
+}
+
+.register_title
+{
+	display: flex;
+	justify-content: center;
+	color: #001628;
+}
+
+.register_form_cell
+{
+	display: flex;
+	margin-top: 1.2em;
+	margin-bottom: 1.2em;
+}

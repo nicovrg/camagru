@@ -1,65 +1,11 @@
 <?php
-class RegisterManager extends Model
+
+// This class contain the following method:
+	//register() => call methods from Checker class to verify if inputs are valid and authorized
+	//then register() => add the user in the database
+ 
+class RegisterManager extends Checker
 {
-
-	public function checkUsernameSyntax($username)
-	{
-		$len = strlen($username);
-		return ($len < 4 || $len > 16) ? false : true;
-	}
-
-	public function checkPasswordSyntax($password, $password_conf)
-	{
-		if (preg_match_all('/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{10,})/', htmlspecialchars($password)) && $password == $password_conf)
-			return true;
-		else
-			return false;
-	}
-
-	public function checkEmailSyntax($email)
-	{
-		return (preg_match('/\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/', htmlspecialchars($email))) ? true : false;
-	}
-
-	public function checkUsernameTaken($username)
-	{
-		$values = array(':username' => $username);
-		try
-		{
-			$req = $this->getDb()->prepare('SELECT `id` FROM `users` WHERE (`username` = `:username`)');
-			$req->execute($values);
-		}
-		catch (PDOException $e)
-		{
-			throw new Exception('Query error');
-		}
-		$data = $req->fetch(PDO::FETCH_ASSOC);
-		if (is_array($data))
-			$id = intval($data['id'], 10);
-		return $id;
-		$req->closeCursor();
-	}
-
-
-	public function checkEmailTaken($email)
-	{
-		$values = array(':email' => $email);
-		try
-		{
-			$req = $this->getDb()->prepare('SELECT `id` FROM `users` WHERE (`email` = `:email`)');
-			$req->execute($values);
-		}
-		catch (PDOException $e)
-		{
-			throw new Exception('Query error');
-		}
-		$data = $req->fetch(PDO::FETCH_ASSOC);
-		if (is_array($data))
-			$id = intval($data['id'], 10);
-		return $id;
-		$req->closeCursor();
-	}
-
 	public function register($username, $password, $password_conf, $email)
 	{
 		$email = trim(htmlentities($email));
@@ -71,15 +17,16 @@ class RegisterManager extends Model
 			throw new Exception('Invalid Password');
 		if (!$this->checkEmailSyntax($email))
 			throw new Exception('Invalid Email');
-		if (!is_null($this->checkUsernameTaken($username)))
+		if (!is_null($this->getUsernameId($username)))
 			throw new Exception('Username already exist');
-		if (!is_null($this->checkEmailTaken($email)))
+		if (!is_null($this->getEmailId($email)))
 			throw new Exception('Email already exist');
 		$hash = hash('sha256', htmlentities($password));
 		$values = array(':username' => $username, ':password' => $hash, ':email' => $email);
+		$query = "INSERT INTO `users` (`username`, `password`, `email`) VALUES (:username, :password, :email)";
 		try
 		{
-			$req = $this->getDb()->prepare('INSERT INTO `users` (`username`, `password`, `email`) VALUES (`:username`, `:password`, `:email`)');
+			$req = $this->getDb()->prepare($query);
 			$req->execute($values);
 			$req->closeCursor();
 		}

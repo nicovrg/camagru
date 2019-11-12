@@ -1,8 +1,9 @@
 <?php $this->_t = "Login" ?>
-<div>
-	<form action="/connexion" method="POST" id="login">
-		username: <input id="username" type="text" name="username">
-		password: <input id="password" type="text" name="password">
+<div class="login">
+	<h3 class="login_title">login</h3>
+	<form action="/login" method="POST" class="login">
+		username: <input class="login_form_cell" type="text" name="username">
+		password: <input class="login_form_cell" type="text" name="password">
 		<input type="submit" name="confirm">
 	</form>
 </div>

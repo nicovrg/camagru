@@ -1,10 +1,9 @@
 -- phpMyAdmin SQL Dump
-
 -- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db
--- Généré le :  mer. 30 oct. 2019 à 19:36
+-- Généré le :  mar. 05 nov. 2019 à 14:52
 -- Version du serveur :  5.7.28
 -- Version de PHP :  7.2.23
 
@@ -26,11 +25,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `sessions`
+--
+
+CREATE TABLE `sessions` (
+  `session_id` varchar(255) NOT NULL,
+  `account_id` int(10) UNSIGNED NOT NULL,
+  `login_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Déchargement des données de la table `sessions`
+--
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `users`
 --
 
 CREATE TABLE `users` (
-  `id` int(10) UNSIGNED NOT NULL,
+  `account_id` int(10) UNSIGNED NOT NULL,
   `email` varchar(255) CHARACTER SET utf8 NOT NULL,
   `username` varchar(255) CHARACTER SET utf8 NOT NULL,
   `password` varchar(255) CHARACTER SET utf8 NOT NULL,
@@ -41,18 +56,21 @@ CREATE TABLE `users` (
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `username`, `password`, `reg_time`) VALUES
-(9, 'test@test.com', 'test', '$2y$10$ofsmvget7T0cZ.mBCLSxsemB8r0Lqtt/o3klkaCGQdTc4Si.aEPl2', '2019-10-30 18:58:42');
-
 --
 -- Index pour les tables déchargées
 --
 
 --
+-- Index pour la table `sessions`
+--
+ALTER TABLE `sessions`
+  ADD PRIMARY KEY (`session_id`);
+
+--
 -- Index pour la table `users`
 --
 ALTER TABLE `users`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`account_id`);
 
 --
 -- AUTO_INCREMENT pour les tables déchargées
@@ -62,7 +80,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `account_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

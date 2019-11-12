@@ -2,6 +2,8 @@
 class ControllerModify
 {
 	private $_view;
+	private $_modifyManager;
+	private $_connexionManager;
 
 	public function __construct($url)
 	{
@@ -14,10 +16,19 @@ class ControllerModify
 	private function modify()
 	{
 		$this->_modifyManager = new ModifyManager;
-		if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['confirm']))
-			$this->_modifyManager->modify_account($_POST['username'], $_POST['password']);
-		$this->_view = new View('Login');
-		$this->_view->generate(array());
+		$this->_connexionManager = new ConnexionManager;
+		if ($user = $this->_connexionManager->sessionLogin())
+		{
+			if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['confirm']))
+			{
+				$this->_modifyManager->modify_account($_POST['username'], $_POST['email']);
+				header("Refresh: 2; URL='/modify'");
+			}
+			$this->_view = new View('Modify');
+			$this->_view->generate(array('user' => $user));
+		}
+		else
+			header("Refresh: 1; URL='/login'");
 	}	
 }
 ?>

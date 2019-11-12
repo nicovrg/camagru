@@ -1,7 +1,7 @@
 <?php
 class User
 {
-	private $_id;
+	private $_account_id;
 	private $_username;
 	private $_email;
 	private $_password;
@@ -28,18 +28,17 @@ class User
 			echo $value;
 			echo "</br>";
 			if (method_exists($this, $method))
-				$this->method($value);
-			// $this->method($value);
+				$this->$method($value);
 		}
 	}
 
 	//SETTERS
-	public function setId($id)
+	public function setAccount_id($account_id)
 	{
-		$id = (int)$id;
-
-		if ($id > 0)
-			$this->_id = $id;
+		$account_id = (int)$account_id;
+		
+		if ($account_id > 0)
+			$this->_account_id = $account_id;
 	}
 	
 	public function setUsername($username)
@@ -62,17 +61,17 @@ class User
 	}
 
 	//GETTERS	
-	public function id()
+	public function getAccount_id()
 	{
-		return $this->_id;
+		return $this->_account_id;
 	}
 	
-	public function username()
+	public function getUsername()
 	{
 		return $this->_username;
 	}
 	
-	public function email()
+	public function getEmail()
 	{
 		return $this->_email;
 	}

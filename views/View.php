@@ -3,10 +3,12 @@ class View
 {
 	private $_t;
 	private $_file;
+	private $_array;
 
 	public function __construct($action)
 	{
 		$this->_file = 'views/view'.$action.'.php';
+		$this->_array = $_POST;
 	}
 
 	public function generate($data)
@@ -28,5 +30,7 @@ class View
 		else
 			throw new Exception('File '.$file.' not found');
 	}
+
+	//private function get data?
 }
 ?>

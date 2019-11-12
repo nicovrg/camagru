@@ -1,6 +1,9 @@
 <?php
 require_once('views/View.php');
 
+//the Router load all Model classes, and parse the url to find what Controller need to be loaded
+	//then it instanciate a new Controller from this url action, or load the homepage or errorpage if an error occured
+
 class Router
 {
 	private $_ctrl;
@@ -8,7 +11,7 @@ class Router
 
 	public function routeReq()
 	{
-		// session_start();
+		session_start();
 		try
 		{
 			spl_autoload_register(function($class){require_once('models/'.$class.'.php');});
@@ -42,12 +45,14 @@ class Router
 		}
 	}
 }
-?>
 
-<!-- user will always be on index.php -->
-<!-- splt_autoload_register load classes required -->
-<!-- controller is included according to user action -->
-<!-- we explode the url on /, then apply a filter to secure what happen -->
-<!-- if the page requested by user in url exist we require the file of the correspondig class -->
-<!-- if there is no url, we load the default page -->
-<!-- if there is an exception we redirect to the default view -->
+
+// <!-- user will always be on index.php -->
+// <!-- splt_autoload_register load classes required -->
+// <!-- controller is included according to user action -->
+// <!-- we explode the url on /, then apply a filter to secure what happen -->
+// <!-- if the page requested by user in url exist we require the file of the correspondig class -->
+// <!-- if there is no url, we load the default page -->
+// <!-- if there is an exception we redirect to the default view -->
+
+?>

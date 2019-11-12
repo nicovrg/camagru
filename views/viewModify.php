@@ -1,9 +1,10 @@
 <?php $this->_t = "Modify" ?>
+
 <div>
-	<p>For safety reasons, please log again</p>
+	<p class="modify.title">Edit the field you want to change and submit</p>
 	<form action="/modify" method="POST" id="modify">
-		username: <input id="username" type="text" name="username">
-		password: <input id="password" type="text" name="password">
+		username: <input class="modify_form_cell" type="text" name="username" value="<?= $user->getUsername() ?>">
+		email: <input class="modify_form_cell" type="text" name="email" value="<?= $user->getEmail() ?>">
 		<input type="submit" name="confirm">
 	</form>
 </div>
