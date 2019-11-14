@@ -2,19 +2,28 @@
 class PictureManager extends Model
 {
 
-	public function getPicture()
+
+	public function uploadPicture()
 	{
 
-			$values = array(':username' => $username);
-			$query = "UPDATE `users` SET `username` = :username, `email` = :email WHERE `account_id` = :account_id";
+	}
+
+	public function getPicture()
+	{
+			$query = "SELECT * FROM `pictures`";
 			try
 			{
 				$req = $this->getDb()->prepare($query);
-				$req->execute($values);
+				$req->execute();
 			}
 			catch (PDOException $e)
 			{
 				throw new Exception('Database query error');
+			}
+			if (is_array($data))
+			{
+				$pictures = $data['picture_name'];
+				var_dump($pictures);
 			}
 	}
 }
