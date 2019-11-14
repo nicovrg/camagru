@@ -19,7 +19,7 @@ class ControllerRegister
 		{
 			$this->_registerManager->register($_POST['username'], $_POST['password'], $_POST['confirm_password'], $_POST['email']);
 			header("Refresh: 1; URL='/login'");
-		}	
+		}
 		$this->_view = new View('Register');
 		$this->_view->generate(array());
 	}

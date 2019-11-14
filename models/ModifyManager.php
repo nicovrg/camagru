@@ -1,7 +1,6 @@
 <?php
 class ModifyManager extends Checker
 {
-	// require_once("ConnexionManager.php");
 	private $connexion;
 	
 	public function __construct()
