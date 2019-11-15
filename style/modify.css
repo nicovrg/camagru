@@ -1,14 +1,15 @@
+.modify_title
+{
+	margin-top: 35vh;
+}
+
 #modify
 {
 	display: flex;
-	align-items: center;
 	flex-direction: column;
-}
-
-.modify_title
-{
-	display:flex;
 	justify-content: center;
+	align-items: center;
+	/* margin-top: 10em; */
 }
 
 .modify_form_cell

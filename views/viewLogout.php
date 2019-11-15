@@ -1,2 +1,2 @@
 <?php $this->_t = "Logout" ?>
-<?= "you've logged out" ?>
+<?= "<p style='margin_top: 35vh;' >you've logged out</p>" ?>
