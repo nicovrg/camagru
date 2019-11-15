@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `comments` (
+  `picture_id` int(10) UNSIGNED NOT NULL,
   `comment_id` int(10) UNSIGNED NOT NULL,
   `comment_content` varchar(255) CHARACTER SET utf8 NOT NULL,
   `comment_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
@@ -42,8 +43,8 @@ CREATE TABLE `comments` (
 --
 
 CREATE TABLE `likes` (
+  `picture_id` int(10) UNSIGNED NOT NULL,
   `like_id` int(10) NOT NULL,
-  `like_content` varchar(255) CHARACTER SET utf8 NOT NULL,
   `like_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `owner_account_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

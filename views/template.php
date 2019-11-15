@@ -10,6 +10,7 @@
 		<link rel="stylesheet" type="text/css" href="/style/register.css">
 		<link rel="stylesheet" type="text/css" href="/style/login.css">
 		<link rel="stylesheet" type="text/css" href="/style/nyan.css">
+		<script type="text/javascript" src="/scripts/particules.js"></script>
 		<title><?= $t ?></title>
 	</head>
 	<body>
@@ -20,9 +21,14 @@
 			<?php $manager->sessionLogin() ? require_once("template_account.php") : "" ?>
 			<?= $manager->sessionLogin() ? "<a href='/logout'>Logout</a>" : "<a href='/login'>Login</a>"?> 
 		</header>
-			<div class="main_div">
-				<?= $content ?>
+		<div class="main_div">
+			<div class="over">
+				<canvas id="canvas"></canvas>
+				<div class="layout" >
+					<?= $content ?>
+				</div>
 			</div>
+		</div>
 		<footer class="footer_div">
 			<p></p>
 			<a href="/nyancat">Miaou</a>
