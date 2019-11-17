@@ -6,12 +6,14 @@
 	flex-direction: column;
 }
 
-.register_title
+/* .register_title
 {
 	display: flex;
 	justify-content: center;
-	color: #001628;
-}
+	margin-bottom: 2em;
+	font-weight: bold;
+	font-size: large;
+} */
 
 .register_form_cell
 {

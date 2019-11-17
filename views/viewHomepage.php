@@ -1,18 +1,6 @@
 <?php $this->_t = "Home" ?>
-<script>
-var canvas_elem = document.getElementById(canvas);
-canvas_elem.style.height = 205%;
+<!-- <script type="text/javascript">document.getElementById(canvas).style.height = 205%;</script> -->
 
-</script>
-<img src="../img/allan.png" alt="">
-<img src="../img/allan.png" alt="">
-<img src="../img/allan.png" alt="">
-<img src="../img/allan.png" alt="">
-<img src="../img/allan.png" alt="">
-<img src="../img/allan.png" alt="">
-<img src="../img/allan.png" alt="">
-<img src="../img/allan.png" alt="">
-<img src="../img/allan.png" alt="">
-<img src="../img/allan.png" alt="">
-<img src="../img/allan.png" alt="">
-<img src="../img/allan.png" alt="">
+<div class="test">
+	<?php foreach ($pictures as $picture) { echo "<img src='../img/" . $picture . "'>"; } ?>
+</div>

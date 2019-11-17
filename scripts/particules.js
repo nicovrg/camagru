@@ -46,7 +46,7 @@ window.onload = ()=> {
 	  
 	  var scene = new Scene(),
 		particles = [],
-		len = 100,
+		len = 200,
 		height = document.body.offsetHeight,
 		width = document.body.offsetWidth;
 	  
