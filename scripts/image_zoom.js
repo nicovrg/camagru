@@ -6,7 +6,8 @@ function load_image_zoom() {
 	var img = document.getElementById('myImg');
 	var modalImg = document.getElementById("img01");
 	var captionText = document.getElementById("caption");
-	img.onclick = function(){
+	
+	img.onclick = function() {
 	  modal.style.display = "block";
 	  modalImg.src = this.src;
 	  captionText.innerHTML = this.alt;
@@ -18,5 +19,14 @@ function load_image_zoom() {
 	// When the user clicks on <span> (x), close the modal
 	span.onclick = function() {
 	  modal.style.display = "none";
-	} 
+	}
+	
+	console.log("modal = ");
+	console.log(modal);
+	console.log("modalImg = ");
+	console.log(modalImg);
+	console.log("captionText = ");
+	console.log(captionText);
+	console.log("span = ");
+	console.log(span);
 }
