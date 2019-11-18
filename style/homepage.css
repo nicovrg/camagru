@@ -1,0 +1,19 @@
+.gallery
+{
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: center;
+	height: 60%;
+	padding: 10em, 10em;
+}
+
+/* .gallery  */
+.gallery_img
+{
+	margin-top: 5em;
+	margin-bottom: 5em;	
+	margin-left: 5em;	
+	margin-right: 5em;
+}

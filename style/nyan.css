@@ -241,8 +241,7 @@ body,html{
 	}
 	.theNyan{
 		position: absolute;
-		left: 150px;
-	  margin-top: 10%;
+	  	/* margin-top: 10%; */
 		/* right: 0; */
 		/* margin: auto; */
 		/* width: 30%; */
@@ -250,7 +249,7 @@ body,html{
 		top: 14vh;
 		left: 570px;
 	
-		-moz-animation:theNyan 0.3s infinite;
+		-moz-animation:theNyan 0.1s infinite;
 		-webkit-animation:theNyan 0.3s infinite;
 		animation:theNyan 0.3s infinite;
 	}
@@ -434,7 +433,7 @@ body,html{
 	.redBow,.orangeBow, .yellowBow,.greenBow,.blueBow,.purpleBow{
 		background: #F00;
 		height: 17px
-	;	width: 65px;
+	;	width: 105px;
 	}
 	.orangeBow{
 		background:#f90;
@@ -579,26 +578,23 @@ body,html{
 	
 	@keyframes theNyan{
 		0%,10%,20%,30%{top:70px}
-		40%,50%,60%,70%{top:80px}
-		80%,90%,100%{top:70px}
+			/* 80%,90%,100%{top:70px} */
 	}
 	@-moz-keyframes theNyan{
 		0%,10%,20%,30%{top:70px}
-		40%,50%,60%,70%{top:80px}
-		80%,90%,100%{top:70px}
+			/* 80%,90%,100%{top:70px} */
 	}
 	@-webkit-keyframes "theNyan"{
 		0%,10%,20%,30%{top:70px}
-		40%,50%,60%,70%{top:80px}
-		80%,90%,100%{top:70px}
+			/* 80%,90%,100%{1op:70px} */
 	}
 	@keyframes renbow1{
 		0%,10%,20%,30%{top:0px}
-		40%,50%,60%,70%{top:5px}
+		40%,50%,60%,10%{top:5px}
 		80%,90%,100%{top:0px}
 	}
 	@-webkit-keyframes "renbow1"{
-		0%,10%,20%,30%{top:0px}
+		0%,10%,20%,10%{top:0px}
 		40%,50%,60%,70%{top:5px}
 		80%,90%,100%{top:0px}
 	}

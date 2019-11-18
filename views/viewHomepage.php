@@ -1,6 +1,21 @@
 <?php $this->_t = "Home" ?>
-<!-- <script type="text/javascript">document.getElementById(canvas).style.height = 205%;</script> -->
-
-<div class="test">
-	<?php foreach ($pictures as $picture) { echo "<img src='../img/" . $picture . "'>"; } ?>
+<div class="gallery">
+<?php 
+	foreach ($data as $pass)
+		foreach ($pass as $dbline)
+			foreach ($dbline as $key => $val)
+				if ($key === "picture_name")
+					$array_pic[] = $val;
+	foreach ($array_pic as $picture)
+		echo "<img src='/img/" . $picture . "' class='gallery_img'>";
+?>
 </div>
+
+
+
+
+
+
+
+
+<!-- <script type="text/javascript">document.getElementById(canvas).style.height = 205%;</script> -->

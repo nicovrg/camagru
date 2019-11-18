@@ -156,14 +156,14 @@ body
 	background-color: black;
 }
 
-.over
+.canvas_container
 {
 	position: relative;
 	width: 100vw;
 	height: 100vh;
 }
 
-.over .layout
+.canvas_container .layout
 {
 	position: absolute;
 	top: 0;
@@ -176,14 +176,14 @@ body
 	justify-content: space-evenly;
 }
 
-.over .layout img
+.canvas_container .layout img
 {
 	align-items: center;
 	justify-content: center;
 	height: 10%;
 	width: 10%;
 	height: auto;
-	margin: 2em 2em;
+	/* margin: 2em 2em; */
 }
 
 /* .test
