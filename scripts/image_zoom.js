@@ -1,4 +1,4 @@
-window.onload = ()=> {
+function load_image_zoom() {
 	// Get the modal
 	var modal = document.getElementById('myModal');
 	

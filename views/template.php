@@ -7,14 +7,16 @@
 		<link rel="icon" type="image/png" href="/img_common/mew.png" />
 		<link rel="stylesheet" type="text/css" href="/style/template.css">
 		<link rel="stylesheet" type="text/css" href="/style/homepage.css">
+		<link rel="stylesheet" type="text/css" href="/style/image_zoom.css">
 		<link rel="stylesheet" type="text/css" href="/style/camera.css">
 		<link rel="stylesheet" type="text/css" href="/style/register.css">
 		<link rel="stylesheet" type="text/css" href="/style/modify.css">
 		<link rel="stylesheet" type="text/css" href="/style/login.css">
 		<link rel="stylesheet" type="text/css" href="/style/nyan.css">
 		<script type="text/javascript" src="/scripts/account.js"></script>
-		<script type="text/javascript" src="/scripts/imageZoom.js"></script>
+		<script type="text/javascript" src="/scripts/image_zoom.js"></script>
 		<script type="text/javascript" src="/scripts/particules.js"></script>
+		<script type="text/javascript" src="/scripts/app.js"></script>
 		<title><?= $t ?></title>
 	</head>
 	<body>
