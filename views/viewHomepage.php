@@ -1,15 +1,9 @@
 <?php $this->_t = "Home" ?>
 <div class="gallery">
-	<?php 
-		$i = 0;
-		foreach ($data as $pass)
-			foreach ($pass as $dbline)
-				foreach ($dbline as $key => $val)
-					if ($key === "picture_name")
-						$array_pic[] = $val;
-		foreach ($array_pic as $picture)
+	<?php
+		foreach ($pictures as $picture)
 		{
-			echo "<img src='/img/" . $picture . "' class='gallery_img'>";
+			echo "<img src='/img/" . $picture->name() . "' class='gallery_img'>";
 			$i++;
 		}
 	?>

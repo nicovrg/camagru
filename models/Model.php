@@ -20,7 +20,7 @@ abstract class Model
 	protected function getAll($table, $obj)
 	{
 		$array = [];
-		$query = "SELECT * FROM '.$table.' ORDER BY ID DESC";
+		$query = 'SELECT * FROM '.$table;
 		$req = $this->getDb()->prepare($query);
 		$req->execute();
 		while ($data = $req->fetch(PDO::FETCH_ASSOC))
