@@ -14,6 +14,7 @@
 		<link rel="stylesheet" type="text/css" href="/style/login.css">
 		<link rel="stylesheet" type="text/css" href="/style/nyan.css">
 		<script type="text/javascript" src="/scripts/account.js"></script>
+		<script type="text/javascript" src="/scripts/camera.js"></script>
 		<script type="text/javascript" src="/scripts/image_zoom.js"></script>
 		<script type="text/javascript" src="/scripts/particules.js"></script>
 		<script type="text/javascript" src="/scripts/app.js"></script>
@@ -36,8 +37,9 @@
 			</div>
 		</div>
 		<footer class="footer_div">
-			<p></p>
-			<a href="/nyancat">Miaou</a>
+			<!-- <button style="margin: 0em 0em 0em 0em;">down</button> -->
+			<!-- <button style="margin: 0em 140em 0em 0em;">up</button> -->
+			<a href="/nyancat">miaou</a>
 		</footer>
 	</body>
 </html>

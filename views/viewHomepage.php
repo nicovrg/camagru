@@ -13,11 +13,6 @@
 			$i++;
 		}
 	?>
-<!-- </div> -->
-
-	<!-- Image -->
-
-	<!-- The Modal -->
 	<div class="modal">
 		<img class="modal-content">
 		<div class="caption"></div>
