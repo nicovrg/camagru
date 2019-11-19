@@ -16,15 +16,12 @@
 <!-- </div> -->
 
 	<!-- Image -->
-	<img id="myImg" src="/img/nico.png" alt="Like" class='gallery_img'>
-	<img id="myImg" src="/img/nico.png" alt="Like" class='gallery_img'>
-	<img id="myImg" src="/img/nico.png" alt="Like" class='gallery_img'>
 
 	<!-- The Modal -->
-	<div id="myModal" class="modal">
+	<div class="modal">
+		<img class="modal-content">
+		<div class="caption"></div>
 		<span class="close">×</span>
-		<img class="modal-content" id="img01">
-		<div id="caption"></div>
 	</div>
 </div>
 
