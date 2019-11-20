@@ -2,7 +2,7 @@ function load_image_zoom() {
 	var imgList = document.getElementsByClassName("gallery_img");
 	var modal = document.getElementsByClassName("modal")[0];
 	var modalImg = document.getElementsByClassName("modal-content")[0];
-	var captionText = document.getElementsByClassName("caption")[0];
+	var captionText = document.getElementsByClassName("caption");
 
 	for (let i = 0, length = imgList.length; i < length; ++i)
 	{

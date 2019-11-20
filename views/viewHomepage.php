@@ -2,14 +2,12 @@
 <div class="gallery">
 	<?php
 		foreach ($pictures as $picture)
-		{
-			echo "<img src='/img/" . $picture->name() . "' class='gallery_img'>";
-			$i++;
-		}
+			echo "<img src='/img/" . $picture->name() . "' class='gallery_img'>"; $i++;
 	?>
-	<div class="modal">
+	<!-- hide or show image in full screen -->
+	<div class="modal"> 
 		<img class="modal-content">
-		<div class="caption"></div>
+		<div class="caption" alt="like">lala</div>
 		<span class="close">×</span>
 	</div>
 </div>
