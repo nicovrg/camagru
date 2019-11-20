@@ -5,15 +5,28 @@
 	flex-wrap: wrap;
 	justify-content: center;
 	align-items: center;
-	height: 60%;
 	padding: 10em, 10em;
 }
 
 /* .gallery  */
-.gallery_img
+.gallery_element
 {
+	width: 20%;
+	height: auto;
 	margin-top: 5em;
 	margin-bottom: 5em;	
 	margin-left: 5em;	
 	margin-right: 5em;
+}
+
+.gallery_element_img
+{
+	width: 40% !important;
+	height: auto;
+}
+
+
+.gallery_element p
+{
+	color: #00FF00;
 }

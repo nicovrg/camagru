@@ -22,26 +22,26 @@ class Picture
 	}
 
 	//SETTERS
-	public function setId($id)
+	public function setPicture_Id($id)
 	{
 		$id = (int)$id;
 		if ($id > 0)
 			$this->_id = $id;
 	}
 	
-	public function setName($name)
+	public function setPicture_name($picture_name)
 	{
-		if (is_string($name))
-			$this->_name = $name;
+		if (is_string($picture_name))
+			$this->_name = $picture_name;
 	}
 
-	public function setUploadTime($upload_time)
+	public function setUpload_time($upload_time)
 	{
 		if (is_string($upload_time))
 			$this->_upload_time = $upload_time;
 	}
 
-	public function setOwnerId($owner_id)
+	public function setOwner_account_id($owner_id)
 	{
 		if (is_string($owner_id))
 			$this->_owner_id = $owner_id;
@@ -55,7 +55,7 @@ class Picture
 	
 	public function name()
 	{
-		return $this->_picture_name;
+		return $this->_name;
 	}
 
 	public function uploadTime()
@@ -69,4 +69,3 @@ class Picture
 	}
 }
 
-?>

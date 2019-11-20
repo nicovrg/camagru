@@ -20,5 +20,4 @@ class ControllerHomepage
 		$this->_view->generate(array('pictures' => $pictures));
 	}
 }
-
 ?>
