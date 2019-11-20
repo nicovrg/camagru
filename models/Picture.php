@@ -1,8 +1,10 @@
 <?php
 class Picture
 {
-	private $_picture_id;
-	private $_picture_name;
+	private $_id;
+	private $_name;
+	private $_upload_time;
+	private $_owner_id;
 
 	public function __construct(array $data)
 	{
@@ -20,29 +22,50 @@ class Picture
 	}
 
 	//SETTERS
-	public function setPicture_id($picture_id)
+	public function setId($id)
 	{
-		$picture_id = (int)$picture_id;
-		
-		if ($picture_id > 0)
-			$this->_picture_id = $picture_id;
+		$id = (int)$id;
+		if ($id > 0)
+			$this->_id = $id;
 	}
 	
-	public function setPicture_name($picture_name)
+	public function setName($name)
 	{
-		if (is_string($picture_name))
-			$this->_picture_name = $picture_name;
+		if (is_string($name))
+			$this->_name = $name;
+	}
+
+	public function setUploadTime($upload_time)
+	{
+		if (is_string($upload_time))
+			$this->_upload_time = $upload_time;
+	}
+
+	public function setOwnerId($owner_id)
+	{
+		if (is_string($owner_id))
+			$this->_owner_id = $owner_id;
 	}
 
 	//GETTERS	
-	public function picture_id()
+	public function id()
 	{
-		return $this->_picture_id;
+		return $this->_id;
 	}
 	
 	public function name()
 	{
 		return $this->_picture_name;
+	}
+
+	public function uploadTime()
+	{
+		return $this->_upload_time;
+	}
+
+	public function OwnerId()
+	{
+		return $this->_owner_id;
 	}
 }
 

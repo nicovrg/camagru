@@ -58,7 +58,8 @@ CREATE TABLE `likes` (
 CREATE TABLE `pictures` (
   `picture_id` int(10) UNSIGNED NOT NULL,
   `picture_name` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `upload_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
+  `upload_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `owner_account_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --

@@ -2,7 +2,7 @@
 class ControllerHomepage
 {
 	private $_view;
-	private $_pictures;
+	private $_picturesManager;
 
 	public function __construct($url)
 	{
@@ -14,8 +14,8 @@ class ControllerHomepage
 
 	private function homepage()
 	{
-		$this->_pictures = new PictureManager;
-		$pictures = $this->_pictures->getAllPictures();
+		$this->_picturesManager = new PictureManager;
+		$pictures = $this->_picturesManager->getAllPictures();
 		$this->_view = new View('Homepage');
 		$this->_view->generate(array('pictures' => $pictures));
 	}

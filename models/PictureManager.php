@@ -2,7 +2,7 @@
 class PictureManager extends Model
 {
 	// This class contain the following methods:
-	// getAllPictures() => return an array of all pictures in db
+	// getAllPictures() => return an array of Picture objects
 
 	// public function uploadPicture()
 	// {
