@@ -25,8 +25,32 @@
 
 .modal-content {
 	margin: auto;
-	display: block;
-	width: 30% !important;
+	display: flex;
+	width: 33% !important;
+}
+
+.modal-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-top: 2em;
+}
+
+.modal-button button {
+	margin-top: 1em;
+	margin-right: 0.5em;
+	margin-bottom: 0.1em;
+	margin-left: 0.5em;
+	border-radius: 3%;
+	width: 10em;
+	height: 2em;
+	background: #00FF00;
+	color: #000000;
+}
+
+.modal-button button:hover {
+	background: #000000;
+	color: #00FF00;
 }
 
 /* Caption of Modal Image */

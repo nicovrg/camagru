@@ -14,7 +14,10 @@
 	<!-- hide or show image in full screen -->
 	<div class="modal"> 
 		<img class="modal-content">
-		<div class="caption" alt="">like</div>
+		<div class="modal-button">
+			<button>Like</button>
+			<button>Comment</button>
+		</div>
 		<span class="close">×</span>
 	</div>
 </div>
