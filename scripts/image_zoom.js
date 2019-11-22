@@ -1,5 +1,5 @@
 function load_image_zoom() {
-	var imgList = document.getElementsByClassName("gallery_element_img");
+	var imgList = document.getElementsByClassName("image_zoom_target");
 	var modal = document.getElementsByClassName("modal")[0];
 	var modalImg = document.getElementsByClassName("modal-content")[0];
 	var captionText = document.getElementsByClassName("caption");

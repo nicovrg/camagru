@@ -3,8 +3,11 @@
 	<?php foreach ($pictures as $picture): ?>
 	<div class='gallery_elements'>
 		<div class='gallery_element'>
-			<img src="/img/<?= $picture->name() ?>" class='gallery_element_img'>
-			<p>Like: Comments: <?= $picture->name() ?> </p>
+			<img src="/img/<?= $picture->name() ?>" class="image_zoom_target">
+			<!-- <div class='middle_container'> -->
+				<!-- <div class='middle_text'><?= $picture->name() ?></div> -->
+			<!-- </div> -->
+			<p>Like: Comments: </p>
 		</div>
 	</div>
 	<?php endforeach; ?>
