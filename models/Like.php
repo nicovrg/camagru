@@ -1,9 +1,9 @@
 <?php
-class Picture
+class Like
 {
-	private $_id;
-	private $_name;
-	private $_upload_time;
+	private $_picture_id;
+	private $_like_id;
+	private $_like_time;
 	private $_owner_account_id;
 
 	public function __construct(array $data)
@@ -22,22 +22,23 @@ class Picture
 	}
 
 	//SETTERS
-	public function setPicture_id($id)
+	public function setLike_id($like_id)
 	{
-		$id = (int)$id;
-		if ($id > 0)
-			$this->_id = $id;
-	}
-	
-	public function setPicture_name($picture_name)
-	{
-		if (is_string($picture_name))
-			$this->_name = $picture_name;
+		$like_id = (int)$like_id;
+		if ($like_id > 0)
+			$this->_like_id = $like_id;
 	}
 
-	public function setUpload_time($upload_time)
+	public function setPicture_id($picture_id)
 	{
-		$this->_upload_time = $upload_time;
+		$picture_id = (int)$picture_id;
+		if ($picture_id > 0)
+			$this->_picture_id = $picture_id;
+	}
+	
+	public function setLike_time($like_time)
+	{
+		$this->_like_time = $like_time;
 	}
 
 	public function setOwner_account_id($owner_account_id)
@@ -48,24 +49,24 @@ class Picture
 	}
 
 	//GETTERS	
-	public function id()
+	public function like_id()
 	{
 		return $this->_id;
 	}
-	
-	public function name()
+
+	public function picture_id()
 	{
-		return $this->_name;
+		return $this->_id;
 	}
 
-	public function uploadTime()
+	public function likeTime()
 	{
 		return $this->_upload_time;
 	}
 
 	public function ownerAccountId()
 	{
-		return $this->_owner_account_id;
+		return $this->_owner_id;
 	}
 }
 

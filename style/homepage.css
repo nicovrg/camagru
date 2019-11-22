@@ -65,8 +65,8 @@
 	margin-bottom: 0.1em;
 	margin-left: 0.5em;
 	border-radius: 20%;
-	background: #00FF00;
 	color: #000000;
+	background: #00FF00;
 }
 
 
@@ -81,6 +81,7 @@
 .middle_container:hover
 {
 	opacity: 1;
+	font-weight: bolder;
 }
 
 .middle_text

@@ -15,8 +15,8 @@
 	<div class="modal"> 
 		<img class="modal-content">
 		<div class="modal-button">
-			<button>Like</button>
-			<button>Comment</button>
+			<button name="like">like</button>
+			<button name="comment">comment</button>
 		</div>
 		<span class="close">×</span>
 	</div>

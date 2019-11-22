@@ -41,16 +41,25 @@
 	margin-right: 0.5em;
 	margin-bottom: 0.1em;
 	margin-left: 0.5em;
-	border-radius: 3%;
+	border: solid;
+	border-radius: 2em;
 	width: 10em;
 	height: 2em;
-	background: #00FF00;
+	font-size: 0.8em;
 	color: #000000;
+	background: #00FF00;
+	font-weight: bolder;
+	transition: all 0.5s ease 0s;
 }
 
 .modal-button button:hover {
-	background: #000000;
+	width: 12em;
+	height: 2.5em;
+	font-size: 0.85em;
+	font-weight: bolder;
 	color: #00FF00;
+	background: #000000;
+	transition: all 0.5s ease 0s;
 }
 
 /* Caption of Modal Image */
@@ -85,6 +94,7 @@
 
 /* The Close Button */
 .close {
+	/* display: none; */
 	position: absolute;
 	top: 15px;
 	right: 35px;

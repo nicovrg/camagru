@@ -43,8 +43,8 @@ CREATE TABLE `comments` (
 --
 
 CREATE TABLE `likes` (
-  `picture_id` int(10) UNSIGNED NOT NULL,
   `like_id` int(10) NOT NULL,
+  `picture_id` int(10) UNSIGNED NOT NULL,
   `like_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `owner_account_id` int(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
