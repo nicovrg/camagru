@@ -69,26 +69,3 @@
 	background: #00FF00;
 }
 
-
-.middle_container
-{
-	opacity: 1;
-	transition: .5s ease;
-	transform: translate(-50%, -50%);
-	-ms-transform: translate(-50%, -50%)
-}
-  
-.middle_container:hover
-{
-	opacity: 1;
-	font-weight: bolder;
-}
-
-.middle_text
-{
-	background-color:rgb(23, 28, 65);
-	color: white;
-	font-size: 16px;
-	padding: 16px 32px;
-}
-

@@ -3,7 +3,7 @@
 		<?= $manager->sessionLogin()->getUsername() ?>
 	</button>
 	<div class="dropdown-content" id="myDropdown">
-		<a href="/delete">Logout</a>
+		<a href="/logout">Logout</a>
 		<a href="/modify">Edit account</a>
 		<a href="/renew">Renew password</a>
 		<a href="/delete">Delete account</a>

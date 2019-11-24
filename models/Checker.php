@@ -1,11 +1,9 @@
 <?php
-
-// This class contain the following functions:
-	// check syntax of user input (username, password, email)
-	// check availability of user info (username, email)
-
-	abstract class Checker extends Model
+abstract class Checker extends Model
 {
+	// This class contain the following functions:
+		// check syntax of user input (username, password, email)
+		// check availability of user info (username, email)
 
 	public function isIdValid(int $id)
 	{

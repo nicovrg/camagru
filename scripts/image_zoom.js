@@ -1,37 +1,37 @@
 function load_image_zoom() {
 	var imgList = document.getElementsByClassName("image_zoom_target");
-	var modal = document.getElementsByClassName("modal")[0];
-	var modalImg = document.getElementsByClassName("modal-content")[0];
+	var zoom = document.getElementsByClassName("zoom")[0];
+	var zoomImg = document.getElementsByClassName("zoom_image")[0];
 	var captionText = document.getElementsByClassName("caption");
 
 	for (let i = 0, length = imgList.length; i < length; ++i)
 	{
 		let img = imgList[i];
 		img.onclick = function() {
-			modal.style.display = "block";
-			modalImg.src = this.src;
+			zoom.style.display = "block";
+			zoomImg.src = this.src;
 			captionText.innerHTML = this.alt;
 		}
 
 		// img.onkeyup = function keyPress (e) {
 		// 	if(e.key === "Escape") 
-		// 		modal.style.display = "none";
+		// 		zoom.style.display = "none";
 		// }
 	}
 	
 	var span = document.getElementsByClassName("close")[0];
 
 	span.onclick = function() {
-		modal.style.display = "none";
+		zoom.style.display = "none";
 	}
 	
 	
 	// console.log("imgList = ");
 	// console.log(imgList);
-	// console.log("modal = ");
-	// console.log(modal);
-	// console.log("modalImg = ");
-	// console.log(modalImg);
+	// console.log("zoom = ");
+	// console.log(zoom);
+	// console.log("zoomImg = ");
+	// console.log(zoomImg);
 	// console.log("captionText = ");
 	// console.log(captionText);
 	// console.log("span = ");
