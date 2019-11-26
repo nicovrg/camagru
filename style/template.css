@@ -160,7 +160,12 @@ body
 {
 	position: relative;
 	width: 100vw;
-	height: 100vh;
+	height: 100%;
+}
+
+.canvas_container canvas
+{
+	height: 100%;
 }
 
 .canvas_container .layout
@@ -175,17 +180,6 @@ body
 	flex-wrap: wrap;
 	justify-content: space-evenly;
 }
-
-.canvas_container .layout img
-{
-	align-items: center;
-	justify-content: center;
-	height: 10%;
-	width: 10%;
-	height: auto;
-	/* margin: 2em 2em; */
-}
-
 /* .test
 {
 	height: 30%;

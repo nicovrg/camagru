@@ -11,10 +11,14 @@
 	<div class="zoom"> 
 		<img class="zoom_image">
 		<p><?= $picture->name() ?></p>
-			<div class="zoom_button">
-				<button id="like" name="like" value="" type="submit">like</button>
-				<button id="comment" name="comment" type="submit">comment</button>
-			</div>
+			<!-- <div class="zoom_button"> -->
+			<form action="/homepage" method="post">
+				<input type="hidden" value="<?= $picture->id() ?>" name="picture_id">
+				<button id="like" name="like" type="submit">like</button>
+			</form>
+				<!-- <button id="like" name="like" type="submit"><a href="/home">like</a></button> -->
+				<!-- <button id="comment" name="comment" type="submit">comment</button> -->
+			<!-- </div> -->
 			<!-- <div class='middle_container'> -->
 				<!-- <div class='middle_text'><?= $picture->name() ?></div> -->
 			<!-- </div> -->

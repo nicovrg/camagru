@@ -24,9 +24,10 @@
 /* Modal Content (image) */
 
 .zoom_image {
-	margin: auto;
 	display: flex;
-	width: 33% !important;
+	margin: auto;
+	height: auto;
+	width: 33%;
 }
 
 .zoom_button {
@@ -34,6 +35,30 @@
 	align-items: center;
 	justify-content: center;
 	margin-top: 2em;
+}
+
+#like:hover a {
+	color: #00FF00;
+}
+
+#comment:hover a {
+	color: #00FF00;
+}
+
+.zoom_button a
+{
+	color: #000000;
+	text-decoration: none;
+	font-weight: bold;
+	transition: all .3s;	
+}
+
+.zoom_button a:hover
+{
+	color: #00FF00;
+	font-weight: 600;
+	transform: scale(1.1);
+	transition: all .3s;
 }
 
 .zoom p {

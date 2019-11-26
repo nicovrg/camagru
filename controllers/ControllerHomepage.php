@@ -2,6 +2,8 @@
 class ControllerHomepage
 {
 	private $_view;
+	private $_likeManager;
+	private $_connexionManager;
 	private $_picturesManager;
 
 	public function __construct($url)
@@ -14,6 +16,10 @@ class ControllerHomepage
 
 	private function homepage()
 	{
+		$this->_likeManager = new LikeManager;
+		$this->_connexionManager = new ConnexionManager;
+		if (isset($_POST["picture_id"]) && isset($_POST["like"]) && $user = $this->_connexionManager->sessionLogin())
+			$this->_likeManager->like($_POST["picture_id"], $user->getAccount_id());
 		$this->_picturesManager = new PictureManager;
 		$pictures = $this->_picturesManager->getAllPictures();
 		$this->_view = new View('Homepage');

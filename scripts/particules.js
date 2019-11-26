@@ -47,8 +47,8 @@ function load_particules() {
 	  var scene = new Scene(),
 		particles = [],
 		len = 200,
-		height = document.body.offsetHeight,
-		width = document.body.offsetWidth;
+		height = document.getElementById('canvas').offsetHeight,
+		width = document.getElementById('canvas').offsetWidth;
 	  
 	  function Particle() {
 		this.x = 0;
@@ -96,7 +96,7 @@ function load_particules() {
 	  scene.setup(document.getElementById('canvas'), falling_particles, width, height, !0);
 	  scene.animate();
 	  window.onresize = function () {
-		height = scene.height = scene.canvas.height = document.body.offsetHeight;
-		width = scene.width = scene.canvas.width = document.body.offsetWidth;
+		height = scene.height = scene.canvas.height = document.getElementById('canvas').offsetHeight;
+		width = scene.width = scene.canvas.width = document.getElementById('canvas').offsetWidth;
 	  };
 }

@@ -1,5 +1,15 @@
-faire la todo 
-faire les nouvelles tables
-faire un controller home
-lire la doc firefox webcam
-https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Taking_still_photos
+Stuff to do:
+
+- add like
+- remove like
+- add comment
+- remove comment
+- edit comment
+- deal with remove account / picture ?
+
+Questions:
+
+How to make a div scrollable?
+
+Links to do the gallery part?
+    https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Taking_still_photos
