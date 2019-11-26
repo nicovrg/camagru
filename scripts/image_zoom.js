@@ -1,31 +1,13 @@
-function load_image_zoom() {
-	var imgList = document.getElementsByClassName("image_zoom_target");
-	var zoom = document.getElementsByClassName("zoom")[0];
-	var zoomImg = document.getElementsByClassName("zoom_image")[0];
-	var captionText = document.getElementsByClassName("caption");
-
-	for (let i = 0, length = imgList.length; i < length; ++i)
-	{
-		let img = imgList[i];
-		img.onclick = function() {
-			zoom.style.display = "block";
-			zoomImg.src = this.src;
-			captionText.innerHTML = this.alt;
-		}
-
-		// img.onkeyup = function keyPress (e) {
-		// 	if(e.key === "Escape") 
-		// 		zoom.style.display = "none";
-		// }
-	}
+function closeImg(pictureId) {
+	var zoom = document.getElementById(`zoom${pictureId}`);
+	zoom.style.display = "none";
+}
 	
-	var span = document.getElementsByClassName("close")[0];
-
-	span.onclick = function() {
-		zoom.style.display = "none";
-	}
-	
-	
+function openImg(pictureId) {
+	var zoom = document.getElementById(`zoom${pictureId}`);
+	zoom.style.display = "block";
+	var zoomImg = document.getElementById(`zoom_image${pictureId}`);
+}	
 	// console.log("imgList = ");
 	// console.log(imgList);
 	// console.log("zoom = ");
@@ -36,4 +18,3 @@ function load_image_zoom() {
 	// console.log(captionText);
 	// console.log("span = ");
 	// console.log(span);
-}
