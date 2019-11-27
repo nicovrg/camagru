@@ -18,12 +18,13 @@ class ControllerHomepage
 	{
 		$this->_likeManager = new LikeManager;
 		$this->_connexionManager = new ConnexionManager;
-		if (isset($_POST["like"]) && isset($_POST["picture_id"]) && $user = $this->_connexionManager->sessionLogin())
+		$user = $this->_connexionManager->sessionLogin();
+		if (isset($_POST["like"]) && isset($_POST["picture_id"]) && $user)
 			$this->_likeManager->likeBtn($_POST["picture_id"], $user->getAccount_id());
 		$this->_picturesManager = new PictureManager;
 		$pictures = $this->_picturesManager->getAllPictures();
 		$this->_view = new View('Homepage');
-		$this->_view->generate(array('pictures' => $pictures));
+		$this->_view->generate(array('pictures' => $pictures, 'user' => $user));
 	}
 }
 ?>

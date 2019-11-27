@@ -29,6 +29,12 @@
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
+	transition: .3s ease-in-out;
+}
+
+.gallery_element:hover {
+	transform: scale(1.1);
+	transition: .3s ease-in-out;
 }
 
 .gallery_element img
@@ -39,21 +45,9 @@
 	height: auto;
 }
 
-.gallery_element img:hover
-{
-	width: 76%;
-	height: auto;
-}
-
 .gallery_element p 
 {
 	font-size: x-small;
-	color: #00FF00;
-}
-
-.gallery_element p:hover
-{
-	font-size: medium;
 	color: #00FF00;
 }
 

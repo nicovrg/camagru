@@ -5,7 +5,7 @@ function closeImg(pictureId) {
 	
 function openImg(pictureId) {
 	var zoom = document.getElementById(`zoom${pictureId}`);
-	zoom.style.display = "block";
+	zoom.style.display = "flex";
 	var zoomImg = document.getElementById(`zoom_image${pictureId}`);
 }	
 	// console.log("imgList = ");
