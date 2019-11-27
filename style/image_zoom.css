@@ -6,59 +6,25 @@
 
 .myImg:hover {opacity: 0.7;}
 
-/* The Modal (background) */
 .zoom {
-	display: none; /* Hidden by default */
-	position: fixed; /* Stay in place */
-	z-index: 1; /* Sit on top */
-	padding-top: 10%; /* Location of the box */
+	display: none; 
+	position: fixed; 
+	z-index: 1; 
+	padding-top: 10%; 
 	left: 0;
 	top: 0;
-	width: 100%; /* Full width */
-	height: 100%; /* Full height */
-	overflow: auto; /* Enable scroll if needed */
-	background-color: rgb(0,0,0); /* Fallback color */
-	background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+	width: 100%; 
+	height: 100%; 
+	overflow: auto; 
+	background-color: rgb(0,0,0); 
+	background-color: rgba(0,0,0,0.9); 
 }
-
-/* Modal Content (image) */
 
 .zoom_image {
 	display: flex;
 	margin: auto;
 	height: auto;
 	width: 33%;
-}
-
-.zoom_button {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	margin-top: 2em;
-}
-
-#like:hover a {
-	color: #00FF00;
-}
-
-#comment:hover a {
-	color: #00FF00;
-}
-
-.zoom_button a
-{
-	color: #000000;
-	text-decoration: none;
-	font-weight: bold;
-	transition: all .3s;	
-}
-
-.zoom_button a:hover
-{
-	color: #00FF00;
-	font-weight: 600;
-	transform: scale(1.1);
-	transition: all .3s;
 }
 
 .zoom p {
@@ -73,7 +39,13 @@
 	color: #0000FF;
 }
 
-.zoom_button button {
+.zoom form {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.zoom button {
 	margin-top: 1em;
 	margin-right: 0.5em;
 	margin-bottom: 0.1em;
@@ -89,7 +61,7 @@
 	transition: all 0.5s ease 0s;
 }
 
-.zoom_button button:hover {
+.zoom button:hover {
 	width: 12em;
 	height: 2.5em;
 	font-size: 0.85em;
@@ -184,22 +156,3 @@
 	font-size: small;
 	padding: 2em 4em;
 }
-
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/
-/**/

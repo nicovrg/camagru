@@ -2,21 +2,20 @@
 <div class="gallery">
 	<?php $i = 0; ?>
 	<?php foreach ($pictures as $picture): ?>
-		<?php $i++ ?>
 	<div class='gallery_elements'>
 		<div class='gallery_element'>
 			<img onclick="openImg(<?= $picture->id() ?>)" src="/img/<?= $picture->name() ?>" class="image_zoom_target">
 			<p>Like: Comments: <?= $picture->name() ?></p>
 		</div>
 		<div class="zoom" id="zoom<?= $picture->id() ?>"> 
-			<img class="zoom_image" src="/img/<?= $picture->name() ?>" id="zoom_image<?= $picture->id() ?>">
-			<p> <?= $picture->name() ?> <?= $i ?></p>
-			<script>console.log("<?= $picture->name() ?>")</script>
-			<?php $manager = new ConnexionManager; ?>
-			<?php if ($manager->sessionLogin()): ?>
-				<form action="/homepage" method="post">
+			<img id="zoom_image<?= $picture->id() ?>" class="zoom_image" src="/img/<?= $picture->name() ?>">
+			<p> <?= $picture->name() ?></p>
+			<?php $like_manager = new LikeManager; ?>
+			<?php $connexion_manager = new ConnexionManager; ?>
+			<?php if ($connexion_manager->sessionLogin()): ?>
+			<form action="/homepage" method="post">
 				<input type="hidden" value="<?= $picture->id() ?>" name="picture_id">
-				<button id="like" name="like" type="submit">like</button>
+				<button id="like" name="like" type="submit"><?= $like_manager->isLiked($picture->id(), $picture->ownerAccountId()) ? 'like' : 'dislike' ?></button>
 			</form>
 			<?php endif; ?>
 			<span onclick="closeImg(<?= $picture->id() ?>)" class="close">×</span>
@@ -28,27 +27,6 @@
 	</div>
 	<?php endforeach; ?>
 </div>
-
-
-<!--  -->
-<!--  -->
-<!--  -->
-<!--  -->
-<!--  -->
-<!--  -->
-<!--  -->
-<!--  -->
-<!--  -->
-<!--  -->
-<!--  -->
-<!--  -->
-<!--  -->
-<!--  -->
-<!--  -->
-<!--  -->
-<!--  -->
-<!--  -->
-<!--  -->
 
 
 
