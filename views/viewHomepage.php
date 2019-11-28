@@ -1,6 +1,5 @@
 <?php $this->_t = "Home" ?>
 <div class="gallery">
-	<?php $i = 0; ?>
 	<?php foreach ($pictures as $picture): ?>
 	<div class='gallery_elements'>
 		<div class='gallery_element'>
@@ -14,7 +13,6 @@
 				</div>
 				<img id="zoom_image<?= $picture->id() ?>" class="zoom_image" src="/img/<?= $picture->name() ?>">
 			</div>
-			<p> <?= $picture->name() ?></p>
 			<?php $like_manager = new LikeManager; ?>
 			<?php $connexion_manager = new ConnexionManager; ?>
 			<?php if ($connexion_manager->sessionLogin()): ?>
