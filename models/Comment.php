@@ -1,9 +1,10 @@
 <?php
-class Like
+class Comment
 {
 	private $_picture_id;
-	private $_like_id;
-	private $_like_time;
+	private $_comment_id;
+	private $_comment_content;
+	private $_comment_time;
 	private $_owner_account_id;
 
 	public function __construct(array $data)
@@ -22,11 +23,11 @@ class Like
 	}
 
 	//SETTERS
-	public function setLike_id($like_id)
+	public function setComment_id($comment_id)
 	{
-		$like_id = (int)$like_id;
-		if ($like_id > 0)
-			$this->_like_id = $like_id;
+		$comment_id = (int)$comment_id;
+		if ($comment_id > 0)
+			$this->_comment_id = $comment_id;
 	}
 
 	public function setPicture_id($picture_id)
@@ -36,9 +37,15 @@ class Like
 			$this->_picture_id = $picture_id;
 	}
 	
-	public function setLike_time($like_time)
+	public function setComment_content($comment_content)
 	{
-		$this->_like_time = $like_time;
+		if (is_string($comment_content))
+			$this->_comment_content = $comment_content;
+	}
+
+	public function setComment_time($comment_time)
+	{
+		$this->_comment_time = $comment_time;
 	}
 
 	public function setOwner_account_id($owner_account_id)
@@ -48,10 +55,10 @@ class Like
 			$this->_owner_account_id = $owner_account_id;
 	}
 
-	//GETTERS	
-	public function like_id()
+	//GETTERS
+	public function comment_id()
 	{
-		return $this->_like_id;
+		return $this->_comment_id;
 	}
 
 	public function picture_id()
@@ -59,9 +66,14 @@ class Like
 		return $this->_picture_id;
 	}
 
-	public function likeTime()
+	public function comment_content()
 	{
-		return $this->_like_time;
+		return $this->_comment_content;
+	}
+
+	public function commentTime()
+	{
+		return $this->_comment_time;
 	}
 
 	public function ownerAccountId()

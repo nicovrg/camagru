@@ -1,4 +1,6 @@
 <?php $this->_t = "Home" ?>
+<?php $like_manager = new LikeManager; ?>
+<?php $connexion_manager = new ConnexionManager; ?>
 <div class="gallery">
 	<?php foreach ($pictures as $picture): ?>
 	<div class='gallery_elements'>
@@ -13,13 +15,22 @@
 				</div>
 				<img id="zoom_image<?= $picture->id() ?>" class="zoom_image" src="/img/<?= $picture->name() ?>">
 			</div>
-			<?php $like_manager = new LikeManager; ?>
-			<?php $connexion_manager = new ConnexionManager; ?>
 			<?php if ($connexion_manager->sessionLogin()): ?>
-			<form action="/homepage" method="post">
-				<input type="hidden" value="<?= $picture->id() ?>" name="picture_id">
-				<button id="like" name="like" type="submit"><?= $like_manager->isLiked($picture->id(), $user->getAccount_id()) ? 'like' : 'dislike' ?></button>
-			</form>
+				<div class="form_container">
+					<form action="/homepage" method="post">
+						<input type="hidden" value="<?= $picture->id() ?>" name="picture_id">
+						<button id="like" name="like" type="submit"><?= $like_manager->isLiked($picture->id(), $user->getAccount_id()) ? 'like' : 'dislike' ?></button>
+					</form>
+					<form action="/homepage" method="post">
+						<input type="hidden" value="<?= $picture->id() ?>" name="picture_id">
+						<button id="comment" name="comment" type="submit">comment</button>
+					</form>
+				</div>
+				<form class="comment_content" action="">
+					<input type="hidden" value="<?= $picture->id() ?>" name="picture_id">
+					<textarea type="text" placeholder="comment ..." name="comment_content"></textarea>
+					<input type="submit">
+				</form>
 			<?php endif; ?>
 			<span onclick="closeImg(<?= $picture->id() ?>)" class="close">×</span>
 		</div>
