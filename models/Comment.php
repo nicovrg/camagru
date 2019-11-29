@@ -80,5 +80,6 @@ class Comment
 	{
 		return $this->_owner_account_id;
 	}
+
 }
 

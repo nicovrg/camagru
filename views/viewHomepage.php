@@ -20,18 +20,8 @@
 			<div class="comments_container">
 				<?php foreach ($comments as $comment): ?>
 				<div class="comment_container">
-				<?php 
+				<?php
 					$data = $comment_manager->getCommentsPicId($picture->id());
-					// var_dump($data);
-					foreach ($data as $value)
-					{
-						// foreach ($value as $key => $val)
-						// {
-							// if ($val === "comment_content")
-								echo $value;
-						// }
-					}
-					// echo "<p>" . $comment->commentContent() . "</p>";
 					echo "<p>" . $comment->commentTime() . "</p>";
 				?>
 				</div>
