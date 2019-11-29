@@ -56,17 +56,17 @@ class Comment
 	}
 
 	//GETTERS
-	public function comment_id()
+	public function commentId()
 	{
 		return $this->_comment_id;
 	}
 
-	public function picture_id()
+	public function pictureId()
 	{
 		return $this->_picture_id;
 	}
 
-	public function comment_content()
+	public function commentContent()
 	{
 		return $this->_comment_content;
 	}

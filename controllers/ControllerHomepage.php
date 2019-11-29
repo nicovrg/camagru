@@ -3,6 +3,7 @@ class ControllerHomepage
 {
 	private $_view;
 	private $_likeManager;
+	private $_commentManager;
 	private $_connexionManager;
 	private $_picturesManager;
 
@@ -19,15 +20,16 @@ class ControllerHomepage
 		$this->_likeManager = new LikeManager;
 		$this->_commentManager = new CommentManager;
 		$this->_connexionManager = new ConnexionManager;
+		$this->_picturesManager = new PictureManager;
 		$user = $this->_connexionManager->sessionLogin();
+		$pictures = $this->_picturesManager->getAllPictures();
+		$comments = $this->_commentManager->getAllComments();
 		if ($user && isset($_POST["like"]) && isset($_POST["picture_id"]))
 			$this->_likeManager->likeBtn($_POST["picture_id"], $user->getAccount_id());
 		if ($user && isset($_POST["comment"]) && isset($_POST["picture_id"]))
 			$this->_commentManager->commentBtn($_POST["picture_id"], $user->getAccount_id());
-		$this->_picturesManager = new PictureManager;
-		$pictures = $this->_picturesManager->getAllPictures();
 		$this->_view = new View('Homepage');
-		$this->_view->generate(array('pictures' => $pictures, 'user' => $user));
+		$this->_view->generate(array('pictures' => $pictures, 'user' => $user, 'comments' => $comments));
 	}
 }
 ?>

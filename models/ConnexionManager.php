@@ -79,11 +79,9 @@ class ConnexionManager extends Checker
 			}
 			$data = $req->fetch(PDO::FETCH_ASSOC);
 			if (is_array($data))
-			{
+				return new User($data);
 				// foreach($data as $key => $val) 
 				// 	echo ("<script type='text/javascript'>console.log('" . $key . "=" . $val . "')</script>");
-				return new User($data);
-			}
 		}
 		return null;
 	}

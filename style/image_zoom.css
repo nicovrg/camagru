@@ -65,6 +65,42 @@
 	font-weight: bolder;
 }
 
+.zoom .comments_container {
+	margin-top: 5em;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 50em;
+	height: 12.5em;
+	overflow: scroll;
+	overflow-x: hidden;
+	color: #00FF00;
+	background: #15202B;
+	border: solid;
+	border-radius: 2em;
+	border-color: rgb(21, 28, 43);
+}
+
+.zoom .comments_container::-webkit-scrollbar {
+	color: none;
+}
+
+.zoom .comment_container {
+	width: 50em;
+	height: 12.5em;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+}
+
+.zoom .comment_container p:last-child  {
+	opacity: 0.5;
+	margin-left: 12em;
+	font-size: x-small;
+}
+
+
 .zoom .form_container {
 	display: flex;
 	justify-content: center;
@@ -72,8 +108,25 @@
 	flex-direction: row;
 }
 
+.zoom #like {
+	transition: all 0.5s ease 0s;
+}
+
+.zoom #comment {
+	transition: all 0.5s ease 0s;
+}
+.zoom #like:hover {
+	margin-right: 3em;
+	transition: all 0.5s ease 0s;
+}
+
+.zoom #comment:hover {
+	margin-left: 3em;
+	transition: all 0.5s ease 0s;
+}
+
 .zoom button {
-	margin-top: 5em;
+	margin-top: 0.1em;
 	margin-right: 0.5em;
 	margin-bottom: 0.1em;
 	margin-left: 0.5em;
@@ -86,11 +139,12 @@
 	background: #00FF00;
 	font-weight: bolder;
 	transition: all 0.5s ease 0s;
+	transition: .3s ease-in-out;
 }
 
 .zoom button:hover {
-	width: 12em;
-	height: 2.5em;
+	transform: scale(1.2);
+	transition: .3s ease-in-out;
 	font-size: 0.85em;
 	font-weight: bolder;
 	color: #00FF00;
@@ -103,10 +157,14 @@
 }
 
 .zoom form textarea {
-	width: 50em;
+	width: 72em;
 	height: 6em;
 	border: solid;
+	color: #00FF00;
+	background: #15202B;
+	border: solid;
 	border-radius: 2em;
+	border-color: rgb(21, 28, 43);
 }
 
 
