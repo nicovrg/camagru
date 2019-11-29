@@ -21,12 +21,19 @@
 				<?php foreach ($comments as $comment): ?>
 				<div class="comment_container">
 				<?php 
-					$comment_manager->getCommentsPicId($picture->id());
-					
-				
+					$data = $comment_manager->getCommentsPicId($picture->id());
+					// var_dump($data);
+					foreach ($data as $value)
+					{
+						// foreach ($value as $key => $val)
+						// {
+							// if ($val === "comment_content")
+								echo $value;
+						// }
+					}
+					// echo "<p>" . $comment->commentContent() . "</p>";
+					echo "<p>" . $comment->commentTime() . "</p>";
 				?>
-					<p><?= $comment->commentContent() ?></p>
-					<p><?= $comment->commentTime() ?></p>
 				</div>
 				<?php endforeach; ?>
 			</div>

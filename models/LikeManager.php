@@ -46,7 +46,7 @@ class LikeManager extends Checker
 		{
 			throw new Exception('Database query error');
 		}
-		echo ("<script type='text/javascript'>console.log('PICTURE HAS JUST BEEN LIKED')</script>");
+		// echo ("<script type='text/javascript'>console.log('PICTURE HAS JUST BEEN LIKED')</script>");
 		return true;
 	}
 
@@ -63,7 +63,7 @@ class LikeManager extends Checker
 		{
 			throw new Exception('Database query error');
 		}
-		echo ("<script type='text/javascript'>console.log('PICTURE HAS JUST BEEN DISLIKED')</script>");
+		// echo ("<script type='text/javascript'>console.log('PICTURE HAS JUST BEEN DISLIKED')</script>");
 		return true;
 	}
 }
