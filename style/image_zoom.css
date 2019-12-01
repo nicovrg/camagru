@@ -90,6 +90,8 @@
 .zoom .comment_container {
 	width: 50em;
 	height: 12.5em;
+	margin-left: 25em;
+	margin-right: 25em;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -97,7 +99,6 @@
 
 .zoom .comment_container p:last-child  {
 	opacity: 0.5;
-	margin-left: 12em;
 	font-size: x-small;
 }
 
@@ -160,7 +161,6 @@
 .zoom form textarea {
 	width: 72em;
 	height: 6em;
-	border: solid;
 	color: #00FF00;
 	background: #15202B;
 	border: solid;

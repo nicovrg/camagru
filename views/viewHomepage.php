@@ -21,11 +21,11 @@
 				<?php foreach ($comments as $comment): ?>
 				<div class="comment_container">
 				<?php if ($comment->isFromPicture($picture->id()) == true): ?>
-					<p> <?= $comment->commentContent() ?> </p>
-					<p> <?= $comment->commentTime() ?> </p>
 					<?php foreach ($users as $tmp): ?>
-						<?=	$comment->ownerAccountId() == $tmp->getAccount_id() ? $tmp->getUsername() : "" ?>
+						<?=	$comment->ownerAccountId() == $tmp->getAccount_id() ? "<p>" . $tmp->getUsername() . "</p>" : "" ?>
 					<?php endforeach; ?>
+					<p> <?= $comment->commentContent() ?> </p>
+					<p> <?= split('-', split(' ', $comment->commentTime())[0])[2] ?> <?= split('-', split(' ', $comment->commentTime())[0])[1] ?> <?= split('-', split(' ', $comment->commentTime())[0])[0] ?> </p>
 					<?php endif; ?>
 				</div>
 				<?php endforeach; ?>
