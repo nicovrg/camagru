@@ -20,10 +20,13 @@
 			<div class="comments_container">
 				<?php foreach ($comments as $comment): ?>
 				<div class="comment_container">
-				<?php
-					$data = $comment_manager->getCommentsPicId($picture->id());
-					echo "<p>" . $comment->commentTime() . "</p>";
-				?>
+				<?php if ($comment->isFromPicture($picture->id()) == true): ?>
+					<p> <?= $comment->commentContent() ?> </p>
+					<p> <?= $comment->commentTime() ?> </p>
+					<?php foreach ($users as $tmp): ?>
+						<?=	$comment->ownerAccountId() == $tmp->getAccount_id() ? $tmp->getUsername() : "" ?>
+					<?php endforeach; ?>
+					<?php endif; ?>
 				</div>
 				<?php endforeach; ?>
 			</div>

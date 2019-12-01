@@ -81,5 +81,12 @@ class Comment
 		return $this->_owner_account_id;
 	}
 
+	public function isFromPicture($picture_id)
+	{
+		if ($picture_id == $this->_picture_id)
+			return true;
+		return false;
+	}
+
 }
 

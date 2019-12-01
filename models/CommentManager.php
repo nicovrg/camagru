@@ -24,7 +24,7 @@ class CommentManager extends Checker
 		return $comments;
 	}
 
-	// public function commentBtn($picture_id, $owner_account_id)
+	// public function commentBtn($picture_id, $comment_content, $owner_account_id)
 	// {
 	// 	$values = array(':picture_id' => $picture_id, ':owner_account_id' => $owner_account_id);
 		// $query = 'INSERT INTO `comments` (`picture_id`, `owner_account_id`) VALUES (:picture_id, :owner_account_id)';
