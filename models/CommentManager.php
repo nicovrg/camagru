@@ -19,7 +19,7 @@ class CommentManager extends Checker
 		{
 			throw new Exception('Database query error');
 		}
-		echo ("<script type='text/javascript'>console.log('commentBtn ended')</script>");
+		// echo ("<script type='text/javascript'>console.log('commentBtn ended')</script>");
 	}
 
 	// public function getCommentsPicId($picture_id)

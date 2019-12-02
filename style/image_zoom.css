@@ -22,7 +22,7 @@
 }
 
 .zoom_container:hover {
-	transform: rotate(1800deg);
+	/* transform: rotate(1800deg); */
 	transition: all 2s;
 	animation: bounce 1.4s ease-in-out infinite;
 }

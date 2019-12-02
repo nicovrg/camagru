@@ -30,10 +30,10 @@
 				</div>
 				<?php endforeach; ?>
 			</div>
-			<form class="comment_form" action="">
+			<form action="/homepage" method="post">
 				<input type="hidden" value="<?= $picture->id() ?>" name="picture_id">
-				<textarea type="text" placeholder=" comment ..." name="comment_content"></textarea>
-				<!-- <input type="submit"> -->
+				<textarea id="taBind" type="text" placeholder=" comment ..." name="comment_content"></textarea>
+				<button id="bindButtons" type="submit"></button>
 			</form>
 			<div class="form_container">
 				<form action="/homepage" method="post">
@@ -42,8 +42,16 @@
 				</form>
 				<form action="/homepage" method="post">
 					<input type="hidden" value="<?= $picture->id() ?>" name="picture_id">
-					<button id="comment" name="comment" type="submit">comment</button>
-				</form>
+					<!-- <button id="comment" value="....." name="comment_content" type="submit">comment</button> -->
+					<button id="comment" onclick="document.getElementById('bindButtons').click()">comment</button>
+					<!-- <script>console.log(document.getElementById('taBind').name)</script> -->
+					<!-- <script>document.getElementById('taBind').setAttribute('name', 'workingGGGG')</script> -->
+					<!-- <script> -->
+					<!-- $('#comment').click(function(){ -->
+					    <!-- $("#bindButtons").click(); -->
+					<!-- }) -->
+					<!-- </script> -->
+					</form>
 			</div>
 			<?php endif; ?>
 			<span onclick="closeImg(<?= $picture->id() ?>)" class="close">×</span>
@@ -53,5 +61,7 @@
 </div>
 
 
-
 <!-- <script type="text/javascript">document.getElementById(canvas).style.height = 205%;</script> -->
+
+<!-- <script>console.log(document.getElementById('taBind').value)</script> -->
+<!-- <script>cdocument.getElementById('taBind').name</script> -->
