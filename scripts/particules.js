@@ -4,7 +4,7 @@ function load_particules() {
 		  window.setTimeout(callback, 1000 / 60);
 		};
 	  })();
-	  
+
 	  function Scene() {
 		this.animation = undefined;
 		this.canvas = undefined;
@@ -95,8 +95,12 @@ function load_particules() {
 	  }
 	  scene.setup(document.getElementById('canvas'), falling_particles, width, height, !0);
 	  scene.animate();
-	  window.onresize = function () {
-		height = scene.height = scene.canvas.height = document.getElementById('canvas').offsetHeight;
-		width = scene.width = scene.canvas.width = document.getElementById('canvas').offsetWidth;
-	  };
+
+	  window.addEventListener('resize', (e) => {
+		scene.height = scene.canvas.height = document.getElementById('canvas').offsetHeight;
+		scene.width = scene.canvas.width = document.getElementById('canvas').offsetWidth;
+		scene.setup(document.getElementById('canvas'), falling_particles, width, height, !0);
+	  	scene.animate();
+	  });
+
 }

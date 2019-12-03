@@ -14,7 +14,6 @@
 		<link rel="stylesheet" type="text/css" href="/style/login.css">
 		<link rel="stylesheet" type="text/css" href="/style/nyan.css">
 		<script type="text/javascript" src="/scripts/account.js"></script>
-		<script type="text/javascript" src="/scripts/camera.js"></script>
 		<script type="text/javascript" src="/scripts/image_zoom.js"></script>
 		<script type="text/javascript" src="/scripts/particules.js"></script>
 		<script type="text/javascript" src="/scripts/app.js"></script>

@@ -1,12 +1,15 @@
 <!-- Camera -->
-<div id="camera">
-	<canvas id="camera--sensor">
-	<video id="camera--view" autoplay playsinline>
-	
-	</video>
-	</canvas>
-</div>
 
+
+    <!-- Camera -->
+    <div id="camera">        <!-- Camera sensor -->
+        <canvas id="camera--sensor"></canvas>        <!-- Camera view -->
+        <video id="camera--view" autoplay playsinline></video>        <!-- Camera output -->
+        <!-- <img src="//:0" alt="" id="camera--output"> -->       <!-- Camera trigger -->
+        <button id="camera--trigger">Take a picture</button>    
+		<script src="/scripts/camera.js"></script>
+	</div>    
+		
 
 
 

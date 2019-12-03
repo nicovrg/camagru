@@ -163,7 +163,7 @@ body
 	height: 100%;
 }
 
-.canvas_container canvas
+.canvas_container #canvas
 {
 	height: 100%;
 }
