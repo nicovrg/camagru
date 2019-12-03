@@ -11,7 +11,7 @@
 		</div>
 		<div class="zoom" id="zoom<?= $picture->id() ?>">
 			<div class="zoom_container">
-				<div class='middle_container'>
+				<div onclick="reduceImg(<?= $picture->id() ?>)" class='middle_container'>
 					<p class='middle_text'><?= $picture->name() ?></p>
 				</div>
 				<img id="zoom_image<?= $picture->id() ?>" class="zoom_image" src="/img/<?= $picture->name() ?>">
@@ -43,7 +43,7 @@
 				<form action="/homepage" method="post">
 					<input type="hidden" value="<?= $picture->id() ?>" name="picture_id">
 					<!-- <button id="comment" value="....." name="comment_content" type="submit">comment</button> -->
-					<button id="comment" onclick="document.getElementById('bindButtons').click()">comment</button>
+					<button id="comment" onclick=c"document.getElementById('bindButtons').click()">comment</button>
 					<!-- <script>console.log(document.getElementById('taBind').name)</script> -->
 					<!-- <script>document.getElementById('taBind').setAttribute('name', 'workingGGGG')</script> -->
 					<!-- <script> -->

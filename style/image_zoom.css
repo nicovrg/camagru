@@ -16,6 +16,9 @@
 
 .zoom .zoom_container {
 	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	transition: all 2s;
 	width: 600px;
 	height: 600px;
