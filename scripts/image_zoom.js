@@ -11,6 +11,7 @@ function openImg(pictureId) {
 function reduceImg(pictureId) {
 	var zoomImg = document.getElementById(`zoom_image${pictureId}`);
 	var zoomComment = document.getElementsByClassName("comments_container");
+	// var zoomMiddleText = document.getElementsByClassName("comments_container");
 	if (zoomImg.style.width == "80%")
 	{
 		zoomImg.style.width = "60%";
@@ -27,6 +28,12 @@ function reduceImg(pictureId) {
 		zoomImg.style.width = "80%"
 		zoomComment.style.height = "12.5em";
 	}
+}
+
+function submitComment(id, e)
+{
+	const form = document.getElementById(`comment-form${id}`);
+	form.submit();
 }
 
 	// console.log("imgList = ");

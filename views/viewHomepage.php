@@ -30,28 +30,16 @@
 				</div>
 				<?php endforeach; ?>
 			</div>
-			<form action="/homepage" method="post">
+			<form action="/homepage" method="post" id="comment-form<?= $picture->id() ?>">
 				<input type="hidden" value="<?= $picture->id() ?>" name="picture_id">
 				<textarea id="taBind" type="text" placeholder=" comment ..." name="comment_content"></textarea>
-				<button id="bindButtons" type="submit"></button>
 			</form>
 			<div class="form_container">
 				<form action="/homepage" method="post">
 					<input type="hidden" value="<?= $picture->id() ?>" name="picture_id">
 					<button id="like" name="like" type="submit"><?= $like_manager->isLiked($picture->id(), $user->getAccount_id()) ? 'like' : 'dislike' ?></button>
 				</form>
-				<form action="/homepage" method="post">
-					<input type="hidden" value="<?= $picture->id() ?>" name="picture_id">
-					<!-- <button id="comment" value="....." name="comment_content" type="submit">comment</button> -->
-					<button id="comment" onclick=c"document.getElementById('bindButtons').click()">comment</button>
-					<!-- <script>console.log(document.getElementById('taBind').name)</script> -->
-					<!-- <script>document.getElementById('taBind').setAttribute('name', 'workingGGGG')</script> -->
-					<!-- <script> -->
-					<!-- $('#comment').click(function(){ -->
-					    <!-- $("#bindButtons").click(); -->
-					<!-- }) -->
-					<!-- </script> -->
-					</form>
+				<button id="comment" onclick="submitComment(<?= $picture->id() ?>)">comment</button>
 			</div>
 			<?php endif; ?>
 			<span onclick="closeImg(<?= $picture->id() ?>)" class="close">×</span>
