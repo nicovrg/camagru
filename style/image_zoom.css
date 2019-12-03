@@ -76,7 +76,7 @@
 	flex-direction: column;
 	align-items: center;
 	width: 50em;
-	height: 40em;
+	/* height: 40em; */
 	overflow: scroll;
 	overflow-x: hidden;
 	color: #00FF00;

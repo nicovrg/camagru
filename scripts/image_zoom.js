@@ -15,25 +15,28 @@ function reduceImg(pictureId) {
 	if (zoomImg.style.width == "80%")
 	{
 		zoomImg.style.width = "60%";
-		zoomComment.style.height = "25em";
-		zoomMiddleText.style.margin = "20em";
+		// zoomMiddleText.style.margin = "20em";
 	}
 	else if (zoomImg.style.width == "60%")
 	{
 		zoomImg.style.width = "40%"
-		zoomComment.style.height = "50em";
 	}	
 	else
 	{
 		zoomImg.style.width = "80%"
-		zoomComment.style.height = "12.5em";
 	}
 }
 
-function submitComment(id, e)
+function submitComment(pictureId)
 {
-	const form = document.getElementById(`comment-form${id}`);
+	const form = document.getElementById(`comment-form${pictureId}`);
 	form.submit();
+}
+
+function submitLike(pictureId)
+{
+	const like = document.getElementById(`like-form${pictureId}`);
+	like.submit();
 }
 
 	// console.log("imgList = ");

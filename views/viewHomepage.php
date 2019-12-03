@@ -32,13 +32,14 @@
 			</div>
 			<form action="/homepage" method="post" id="comment-form<?= $picture->id() ?>">
 				<input type="hidden" value="<?= $picture->id() ?>" name="picture_id">
-				<textarea id="taBind" type="text" placeholder=" comment ..." name="comment_content"></textarea>
+				<textarea type="text" placeholder=" comment ..." name="comment_content"></textarea>
 			</form>
 			<div class="form_container">
-				<form action="/homepage" method="post">
+				<form action="/homepage" method="post" id="like-form<?= $picture->id() ?>">
 					<input type="hidden" value="<?= $picture->id() ?>" name="picture_id">
-					<button id="like" name="like" type="submit"><?= $like_manager->isLiked($picture->id(), $user->getAccount_id()) ? 'like' : 'dislike' ?></button>
+					<input type="hidden" value="like" name="like">
 				</form>
+				<button onclick="submitLike(<?= $picture->id() ?>)"><?= $like_manager->isLiked($picture->id(), $user->getAccount_id()) ? 'dislike' : 'like' ?></button>
 				<button id="comment" onclick="submitComment(<?= $picture->id() ?>)">comment</button>
 			</div>
 			<?php endif; ?>
