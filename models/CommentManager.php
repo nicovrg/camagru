@@ -40,22 +40,5 @@ class CommentManager extends Checker
 	// 	return $comments;
 	// }
 
-
-	
-
-	// public function comment($picture_id, $owner_account_id)
-	// {
-	// 	$values = array(':picture_id' => $picture_id, ':owner_account_id' => $owner_account_id);
-	// 	try
-	// 	{
-	// 		$req = $this->getDb()->prepare($query);
-	// 		$req->execute($values);
-	// 	}
-	// 	catch (PDOException $e)
-	// 	{
-	// 		throw new Exception('Database query error');
-	// 	}
-	// 	return true;
-	// }
 }
 ?>

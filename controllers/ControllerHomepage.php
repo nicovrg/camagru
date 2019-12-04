@@ -25,12 +25,7 @@ class ControllerHomepage extends Model
 		if ($user && isset($_POST["like"]) && isset($_POST["picture_id"]))
 			$this->_likeManager->likeBtn($_POST["picture_id"], $user->getAccount_id());
 		if ($user && isset($_POST["picture_id"]) && isset($_POST["comment_content"]))
-		{
-			
-			// echo ("<script type='text/javascript'>console.log('commentBtn started" . $_POST["comment_content"] . "')</script>");
 			$this->_commentManager->commentBtn($_POST["picture_id"], $_POST["comment_content"], $user->getAccount_id());
-
-		}
 		$users = $this->getAll("users", "User");
 		$pictures = $this->_picturesManager->getAllPictures();
 		$comments = $this->_commentManager->getAllComments();

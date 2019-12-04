@@ -1,14 +1,11 @@
-<!-- Camera -->
-
-
-    <!-- Camera -->
-    <div id="camera">        <!-- Camera sensor -->
-        <canvas id="camera--sensor"></canvas>        <!-- Camera view -->
-        <video id="camera--view" autoplay playsinline></video>        <!-- Camera output -->
-        <!-- <img src="//:0" alt="" id="camera--output"> -->       <!-- Camera trigger -->
-        <button id="camera--trigger">Take a picture</button>    
-		<script src="/scripts/camera.js"></script>
-	</div>    
+<?php $this->_t = "Camera" ?>
+<div id="camera">		
+	<canvas id="camera--sensor"></canvas>		
+	<video id="camera--view" autoplay playsinline></video>		
+	<img id="camera--output" src="//:0" alt="">	   
+	<button id="camera--trigger">Take a picture</button>	
+	<script src="/scripts/camera.js"></script>
+</div>	
 		
 
 
@@ -24,5 +21,6 @@
 		<img id="photo" alt="The screen capture will appear in this box.">
 	</div> -->
 
-
-<!-- https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Taking_still_photos -->
+<!-- change chrome webcam settings chrome://flags/#unsafely-treat-insecure-origin-as-secure -->
+<!-- new tuto https://blog.prototypr.io/make-a-camera-web-app-tutorial-part-1-ec284af8dddf -->
+<!-- old tuto https://developer.mozilla.org/en-US/docs/Web/API/WebRTC_API/Taking_still_photos -->

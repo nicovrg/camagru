@@ -45,7 +45,10 @@ class Comment
 
 	public function setComment_time($comment_time)
 	{
-		$this->_comment_time = $comment_time;
+		$fullDate = split (' ', $comment_time);
+		$tmp = split('-', $fullDate[0]);
+		$result = $tmp[2] . " " . $tmp[1] . " " . $tmp[0];
+		$this->_comment_time = $result;
 	}
 
 	public function setOwner_account_id($owner_account_id)

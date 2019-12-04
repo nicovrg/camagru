@@ -6,7 +6,9 @@
         - nouveau commentaire sur photo
 
         webcam:
-        
+        - add filters
+        - save image
+
 
 
     ## Optionnal
@@ -19,5 +21,7 @@
 
 ## Today:
     move split split split to model
+
+		<p> <?= split('-', split(' ', $comment->commentTime())[0])[2] ?> <?= split('-', split(' ', $comment->commentTime())[0])[1] ?> <?= split('-', split(' ', $comment->commentTime())[0])[0] ?> </p>
 
 

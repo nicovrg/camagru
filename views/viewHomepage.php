@@ -25,7 +25,7 @@
 						<?=	$comment->ownerAccountId() == $tmp->getAccount_id() ? "<p>" . $tmp->getUsername() . "</p>" : "" ?>
 					<?php endforeach; ?>
 					<p> <?= $comment->commentContent() ?> </p>
-					<p> <?= split('-', split(' ', $comment->commentTime())[0])[2] ?> <?= split('-', split(' ', $comment->commentTime())[0])[1] ?> <?= split('-', split(' ', $comment->commentTime())[0])[0] ?> </p>
+					<p> <?= $comment->commentTime() ?> </p>
 					<?php endif; ?>
 				</div>
 				<?php endforeach; ?>
