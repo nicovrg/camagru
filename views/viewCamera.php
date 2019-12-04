@@ -3,7 +3,7 @@
 	<canvas id="camera--sensor"></canvas>		
 	<video id="camera--view" autoplay playsinline></video>		
 	<img id="camera--output" src="//:0" alt="">	   
-	<button id="camera--trigger">Take a picture</button>	
+	<button id="camera--trigger">Shoot!</button>	
 	<script src="/scripts/camera.js"></script>
 </div>	
 		
