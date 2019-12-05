@@ -1,3 +1,13 @@
+## Today:
+    - finish openclassrooms js
+    - check every unknown js property from the tutorial camera app
+    - start styling camera div
+    - check how to store the picture in the server
+
+    - btc article
+    - asseth ag
+    - max
+
 # Stuff to do:
     ## Compulsory:
         mail:
@@ -6,8 +16,8 @@
         - nouveau commentaire sur photo
 
         webcam:
-        - add filters
         - save image
+        - add filters
 
 
 
@@ -17,11 +27,3 @@
         - deal with remove account / picture ?
 
 # Questions:
-
-
-## Today:
-    move split split split to model
-
-		<p> <?= split('-', split(' ', $comment->commentTime())[0])[2] ?> <?= split('-', split(' ', $comment->commentTime())[0])[1] ?> <?= split('-', split(' ', $comment->commentTime())[0])[0] ?> </p>
-
-

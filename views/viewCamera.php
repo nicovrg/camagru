@@ -1,7 +1,7 @@
 <?php $this->_t = "Camera" ?>
 <div id="camera">		
-	<canvas id="camera--sensor"></canvas>		
 	<video id="camera--view" autoplay playsinline></video>		
+	<canvas id="camera--sensor"></canvas>		
 	<img id="camera--output" src="//:0" alt="">	   
 	<button id="camera--trigger">Shoot!</button>	
 	<script src="/scripts/camera.js"></script>
