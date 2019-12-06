@@ -1,12 +1,13 @@
 ## Today:
-    - finish openclassrooms js
+    DONE - finish openclassrooms js
+    
     - check every unknown js property from the tutorial camera app
-    - start styling camera div
     - check how to store the picture in the server
+    - start styling camera div
 
     - btc article
-    - asseth ag
-    - max
+    - noel
+
 
 # Stuff to do:
     ## Compulsory:
@@ -27,3 +28,7 @@
         - deal with remove account / picture ?
 
 # Questions:
+    - pourquoi en js on peut pas faire string[2] = 'X' ? c'est bizarre de pas supporter ça
+    - constructor de classe obligatoire?
+    - destructor existe?
+    - c'est quoi le délire des prototypes des objets (Child.create(parent))

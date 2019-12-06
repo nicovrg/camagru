@@ -2,8 +2,8 @@
 var constraints = { video: { facingMode: "user" }, audio: false };
 // Define constants
 const cameraView = document.querySelector("#camera--view");
-const cameraOutput = document.querySelector("#camera--output");
 const cameraSensor = document.querySelector("#camera--sensor");
+const cameraOutput = document.querySelector("#camera--output");
 const cameraTrigger = document.querySelector("#camera--trigger");
 // Access the device camera and stream to cameraView
 function cameraStart() {
@@ -32,74 +32,23 @@ window.onload = () => {
     load_particules();
 }
 
-// function load_camera() {
-// 	var width = 320;		// We will scale the photo width to this
-// 	var height = 0;		 // This will be computed based on the input stream
-	
-// 	var streaming = false;
-	
-// 	var video = null;
-// 	var canvas = null;
-// 	var photo = null;
-// 	var startbutton = null;
-	
-// 	function startup() {
-// 		video = document.getElementById('video');
-// 		canvas = document.getElementById('canvas');
-// 		photo = document.getElementById('photo');
-// 		startbutton = document.getElementById('startbutton');
-// 	}
 
-// 	navigator.mediaDevices.getUserMedia({ video: true, audio: false })
-		
-// 	.then(function(stream) {
-// 		video.srcObject = stream;
-// 		video.play();
-// 	})
+/*
+Navigator interface: 
+	represents the state and the identity of the user agent.
+	allow scripts to query it and to register themselves to carry on some activities
 
-// 	.catch(function(err) {
-// 		console.log("An error occurred: " + err);
-// 	});
+MediaDevices:
+	provides access to connected media input devices like cameras and microphones
 
-// 	video.addEventListener('canplay', function(ev) {
-// 		if (!streaming) {
-// 			height = video.videoHeight / (video.videoWidth/width);
-// 			video.setAttribute('width', width);
-// 			video.setAttribute('height', height);
-// 			canvas.setAttribute('width', width);
-// 			canvas.setAttribute('height', height);
-// 			streaming = true;
-// 		}
-// 	}, false);
+GetUserMedia:
+	request user permission to open a mediastream
 
-// 	startbutton.addEventListener('click', function(ev) {
-// 		takepicture();
-// 		ev.preventDefault();
-// 	},false);
+Then:
+	then() method returns a promise which takes up to two arguments: 
+		- callback functions for the success
+		- failure cases of the promise
 
-// 	clearphoto();
 
-// 	function clearphoto() {
-// 		var context = canvas.getContext('2d');
-// 		context.fillStyle = "#AAA";
-// 		context.fillRect(0, 0, canvas.width, canvas.height);
-
-// 		var data = canvas.toDataURL('image/png');
-// 		photo.setAttribute('src', data);
-// 	}
-
-// 	function takepicture() {
-// 		var context = canvas.getContext('2d');
-// 		if (width && height) {
-// 			canvas.width = width;
-// 			canvas.height = height;
-// 			context.drawImage(video, 0, 0, width, height);
-
-// 			var data = canvas.toDataURL('image/png');
-// 			photo.setAttribute('src', data);
-// 		}
-// 		else {
-// 		clearphoto();
-// 		}
-// 	}
-// }
+	tuto link: https://blog.prototypr.io/make-a-camera-web-app-tutorial-part-1-ec284af8dddf
+*/
