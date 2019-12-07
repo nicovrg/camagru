@@ -4,6 +4,12 @@
     <!-- - check every unknown js property from the tutorial camera app -->
     <!-- - start styling camera div -->
     - check how to store the picture in the server
+        - base64 takes more place
+        - blob?
+        - js filesystem => https://developer.mozilla.org/en-US/docs/Web/API/Window/requestFileSystem
+        - js filesystem => https://www.jotform.com/blog/html5-filesystem-api-create-files-store-locally-using-javascript-webkit/
+
+
 
     - btc article
     - noel

@@ -5,16 +5,10 @@
 	flex-direction: column;
 }
 
+/* cameraBlock */
 #viewCamera #cameraBlock
 {
 	display: flex;
-}
-
-#viewCamera #cameraBlock #camera--sensor
-{
-	border: solid;
-	border-radius: 2em;
-	border-color: blue;
 }
 
 #viewCamera #cameraBlock #camera--view
@@ -24,13 +18,23 @@
 	border-color: green;
 }
 
+#viewCamera #cameraBlock #camera--sensor
+{
+	margin-left: 2em;
+	border: solid;
+	border-radius: 2em;
+	border-color: blue;
+}
+
 #viewCamera #cameraBlock #camera--output
 {
+	margin-left: 2em;
 	border: solid;
 	border-radius: 2em;
 	border-color: red;
 }
 
+/* buttonBlock */
 #viewCamera #buttonBlock
 {
 	display: flex;
@@ -39,15 +43,15 @@
 
 #viewCamera #buttonBlock button:last-child 
 {
-	margin-left: 2em;
+	margin-left: 4em;
 }
 
 #viewCamera #buttonBlock #camera--trigger, #camera--saver
 {
-	/* margin-top: 0.1em;
+	margin-top: 3em;
 	margin-right: 0.5em;
 	margin-bottom: 0.1em;
-	margin-left: 0.5em; */
+	margin-left: 0.5em;
 	border: solid;
 	border-radius: 2em;
 	width: 10em;

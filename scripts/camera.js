@@ -25,8 +25,11 @@ function cameraStart() {
 cameraTrigger.onclick = () => {
     cameraSensor.width = cameraView.videoWidth;
     cameraSensor.height = cameraView.videoHeight;
+    cameraOutput.width = cameraView.videoWidth;
+    cameraOutput.height = cameraView.videoHeight;
     cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
     console.log(cameraSensor.toDataURL("image/png"));
+    cameraOutput.src = cameraSensor.toDataURL("image/png");
 };
 // Start the video stream when the window loads
 window.addEventListener("load", cameraStart, false);
@@ -38,6 +41,7 @@ window.onload = () => {
 
 
 /*
+
 navigator:
 	represents the state and the identity of the user agent.
 	allow scripts to query it and to register themselves to carry on some activities
@@ -60,6 +64,6 @@ drawImage:
     draw inside a canvas
     syntax => ...drawImage(image, dx, dy);
 
-
 	tuto link: https://blog.prototypr.io/make-a-camera-web-app-tutorial-part-1-ec284af8dddf
+
 */
