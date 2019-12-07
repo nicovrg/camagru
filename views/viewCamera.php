@@ -1,25 +1,17 @@
 <?php $this->_t = "Camera" ?>
-<div id="camera">		
-	<video id="camera--view" autoplay playsinline muted></video>		
-	<canvas id="camera--sensor"></canvas>		
-	<img id="camera--output" src="//:0" alt="">	   
-	<button id="camera--trigger">Shoot!</button>	
-	<script src="/scripts/camera.js"></script>
+<div id="viewCamera">
+	<div id="cameraBlock">
+		<video id="camera--view" autoplay playsinline muted></video>		
+		<canvas id="camera--sensor"></canvas>		
+		<img id="camera--output" src="//:0" alt="">	   
+	</div>
+	<div id="buttonBlock">
+		<button id="camera--trigger">Shoot!</button>	
+		<button id="camera--saver">Save!</button>	
+	</div>
 </div>	
-		
+<script src="/scripts/camera.js"></script>
 
-
-
-
-<!-- <div class="camera">
-		<video id="video">Video stream not available.</video>
-		<button id="startbutton">Take photo</button>
-</div>
-
-<canvas id="canvas"></canvas>
-	<div class="output">
-		<img id="photo" alt="The screen capture will appear in this box.">
-	</div> -->
 
 <!-- change chrome webcam settings chrome://flags/#unsafely-treat-insecure-origin-as-secure -->
 <!-- new tuto https://blog.prototypr.io/make-a-camera-web-app-tutorial-part-1-ec284af8dddf -->

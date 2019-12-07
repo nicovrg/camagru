@@ -1,9 +1,9 @@
 ## Today:
     DONE - finish openclassrooms js
     
-    - check every unknown js property from the tutorial camera app
+    <!-- - check every unknown js property from the tutorial camera app -->
+    <!-- - start styling camera div -->
     - check how to store the picture in the server
-    - start styling camera div
 
     - btc article
     - noel
@@ -32,3 +32,6 @@
     - constructor de classe obligatoire?
     - destructor existe?
     - c'est quoi le délire des prototypes des objets (Child.create(parent))
+    - wtf:
+        // track = stream.getTracks();
+        // track = stream.getTracks()[0];

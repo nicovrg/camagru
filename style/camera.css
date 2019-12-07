@@ -1,25 +1,48 @@
-#camera--sensor
+#viewCamera
+{
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+}
+
+#viewCamera #cameraBlock
+{
+	display: flex;
+}
+
+#viewCamera #cameraBlock #camera--sensor
 {
 	border: solid;
 	border-radius: 2em;
 	border-color: blue;
 }
 
-#camera--view
+#viewCamera #cameraBlock #camera--view
 {
 	border: solid;
 	border-radius: 2em;
 	border-color: green;
 }
 
-#camera--output
+#viewCamera #cameraBlock #camera--output
 {
 	border: solid;
 	border-radius: 2em;
 	border-color: red;
 }
 
-#camera--trigger
+#viewCamera #buttonBlock
+{
+	display: flex;
+	justify-content: center;
+}
+
+#viewCamera #buttonBlock button:last-child 
+{
+	margin-left: 2em;
+}
+
+#viewCamera #buttonBlock #camera--trigger, #camera--saver
 {
 	/* margin-top: 0.1em;
 	margin-right: 0.5em;
@@ -37,7 +60,7 @@
 	transition: .3s ease-in-out;
 }
 
-#camera--trigger:hover
+#viewCamera #buttonBlock #camera--trigger:hover, #camera--saver:hover
 {
 	transform: scale(1.2);
 	transition: .3s ease-in-out;
