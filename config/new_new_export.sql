@@ -82,7 +82,7 @@ CREATE TABLE `pictures` (
   `picture_id` int(10) UNSIGNED NOT NULL,
   `picture_owner_id` int(10) UNSIGNED NOT NULL,
   `picture_name` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `picture_data` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `picture_data` varchar(25500) CHARACTER SET utf8 NOT NULL,
   `upload_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
