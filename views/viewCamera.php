@@ -1,5 +1,9 @@
 <?php $this->_t = "Camera" ?>
 <div id="viewCamera">
+	<form action="/camera" method="post" id="formImage">
+		<input type="hidden" id="inputImage" name="imageData">
+		<input type="hidden" id="inputImage" name="imageName">
+	</form>
 	<div id="cameraBlock">
 		<video id="camera--view" autoplay playsinline muted></video>		
 		<canvas id="camera--sensor"></canvas>		
@@ -9,7 +13,7 @@
 		<button id="camera--trigger">Shoot!</button>	
 		<button id="camera--saver">Save!</button>	
 	</div>
-</div>	
+</div>
 <script src="/scripts/camera.js"></script>
 
 

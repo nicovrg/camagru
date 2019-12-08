@@ -1,11 +1,10 @@
-// Set constraints for the video stream
 var constraints = { video: { facingMode: "user" }, audio: false };
-// Define constants
 const cameraView = document.querySelector("#camera--view");
 const cameraSensor = document.querySelector("#camera--sensor");
 const cameraOutput = document.querySelector("#camera--output");
 const cameraTrigger = document.querySelector("#camera--trigger");
-// Access the device camera and stream to cameraView
+const cameraSaver = document.querySelector("#camera--saver");
+
 function cameraStart() {
     navigator.mediaDevices
         .getUserMedia(constraints)
@@ -14,31 +13,36 @@ function cameraStart() {
         cameraView.srcObject = stream;
     })
     .catch(function(error) {
-        console.error("Oops. Something is broken.", error);
+        console.error("fail to access webcam stream", error);
     });
-    // .then(function() {
-    //     cameraSensor.width = cameraView.videoWidth;
-    //     cameraSensor.height = cameraView.videoHeight;
-    // });
 }
-// Take a picture when cameraTrigger is tapped
+
+function uploadImg(image)
+{
+	const inputImage = document.getElementById("inputImage");
+	const formImage = document.getElementById("formImage");
+    inputImage.value = image;
+    formImage.submit();
+}
+
 cameraTrigger.onclick = () => {
     cameraSensor.width = cameraView.videoWidth;
     cameraSensor.height = cameraView.videoHeight;
     cameraOutput.width = cameraView.videoWidth;
     cameraOutput.height = cameraView.videoHeight;
     cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
-    console.log(cameraSensor.toDataURL("image/png"));
     cameraOutput.src = cameraSensor.toDataURL("image/png");
 };
-// Start the video stream when the window loads
-window.addEventListener("load", cameraStart, false);
+
+cameraSaver.onclick = () => {
+    uploadImg(cameraSensor.toDataURL("image/png"));
+};
+
 
 window.onload = () => {
     cameraStart();
     load_particules();
 }
-
 
 /*
 
@@ -67,3 +71,11 @@ drawImage:
 	tuto link: https://blog.prototypr.io/make-a-camera-web-app-tutorial-part-1-ec284af8dddf
 
 */
+
+
+    // cameraSensor.width = cameraView.videoWidth;
+    // cameraSensor.height = cameraView.videoHeight;
+    // .then(function() {
+    //     cameraSensor.width = cameraView.videoWidth;
+    //     cameraSensor.height = cameraView.videoHeight;
+    // });

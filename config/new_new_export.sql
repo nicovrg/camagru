@@ -7,6 +7,7 @@
 -- Version du serveur :  5.7.28
 -- Version de PHP :  7.2.23
 
+DROP TABLE sessions, users, pictures, likes, comments;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
@@ -79,7 +80,9 @@ INSERT INTO `likes` (`picture_id`, `like_id`, `like_time`, `owner_account_id`) V
 
 CREATE TABLE `pictures` (
   `picture_id` int(10) UNSIGNED NOT NULL,
+  `picture_owner_id` int(10) UNSIGNED NOT NULL,
   `picture_name` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `picture_data` varchar(255) CHARACTER SET utf8 NOT NULL,
   `upload_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -87,15 +90,15 @@ CREATE TABLE `pictures` (
 -- Déchargement des données de la table `pictures`
 --
 
-INSERT INTO `pictures` (`picture_id`, `picture_name`, `upload_time`) VALUES
-(1, 'allan.png', '2019-11-17 18:50:24'),
-(2, '1.png', '2019-11-17 18:51:43'),
-(3, '2.png', '2019-11-17 18:51:43'),
-(4, '3.png', '2019-11-17 18:51:43'),
-(5, '4.png', '2019-11-17 18:51:43'),
-(6, '5.png', '2019-11-17 18:51:43'),
-(7, 'nico.png', '2019-11-27 14:51:38'),
-(8, '6.png', '2019-11-27 14:51:38');
+INSERT INTO `pictures` (`picture_id`, `picture_owner_id`, `picture_name`, `picture_data`, `upload_time`) VALUES
+(1, 1, 'allan.png', '', '2019-11-17 18:50:24'),
+(2, 2, '1.png', '', '2019-11-17 18:51:43'),
+(3, 3, '2.png', '', '2019-11-17 18:51:43'),
+(4, 3, '3.png', '', '2019-11-17 18:51:43'),
+(5, 3, '4.png', '', '2019-11-17 18:51:43'),
+(6, 3, '5.png', '', '2019-11-17 18:51:43'),
+(7, 2, 'nico.png', '', '2019-11-27 14:51:38'),
+(8, 2, '6.png', '', '2019-11-27 14:51:38');
 
 -- --------------------------------------------------------
 

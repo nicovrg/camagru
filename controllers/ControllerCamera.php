@@ -2,7 +2,8 @@
 class ControllerCamera
 {
 	private $_view;
-	// private $_pictures;
+	private $_picturesManager;
+	private $_connexionManager;
 
 	public function __construct($url)
 	{
@@ -14,11 +15,13 @@ class ControllerCamera
 
 	private function camera()
 	{
-		// $this->_pictures = new PictureManager;
-		// $pictures = $this->_pictures->getAllPictures();
+		$this->_picturesManager = new PictureManager;
+		$this->_connexionManager = new ConnexionManager;
+		$user = $this->_connexionManager->sessionLogin();
+		if ($user && isset($_POST["imageData"]) && isset($_POST["imageName"]))
+			$this->_picturesManager->uploadPicture($_POST["imageName"], $_POST["imageData"], $user->getAccount_id());
 		$this->_view = new View('Camera');
 		$this->_view->generate(array());
 	}
 }
-
 ?>

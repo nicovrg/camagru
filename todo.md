@@ -5,11 +5,14 @@
     <!-- - start styling camera div -->
     - check how to store the picture in the server
         - base64 takes more place
-        - blob?
         - js filesystem => https://developer.mozilla.org/en-US/docs/Web/API/Window/requestFileSystem
         - js filesystem => https://www.jotform.com/blog/html5-filesystem-api-create-files-store-locally-using-javascript-webkit/
 
 
+
+    - form hidden and hidden input
+    - js modify value input
+    - js post form
 
     - btc article
     - noel
