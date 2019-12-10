@@ -10,8 +10,8 @@
 		<img id="camera--output" src="//:0" alt="">	   
 	</div>
 	<div id="buttonBlock">
-		<button id="camera--trigger">Shoot!</button>	
-		<button id="camera--saver">Save!</button>	
+		<button id="camera--trigger">Shoot !</button>	
+		<button id="camera--saver">Save !</button>	
 	</div>
 </div>
 <script src="/scripts/camera.js"></script>
