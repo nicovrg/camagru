@@ -18,6 +18,7 @@
         - put a canvas on top of the other one
         - check mix canvas in js
         - add filters
+        - upload images
 
         pagination:
         - count nb of picture in db

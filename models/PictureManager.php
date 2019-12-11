@@ -25,6 +25,46 @@ class PictureManager extends Model
 		}
 	}
 
+	// public function getPagePictures()
+	// {
+	// 	// $values = array(':picture_id' => $picture_id, ':comment_content' => $comment_content, ':owner_account_id' => $owner_account_id);
+	// 	$query = "SELECT COUNT(*) FROM `pictures`";
+	// 	try
+	// 	{
+	// 		$req = $this->getDb()->prepare($query);
+	// 		// $req->execute($values);
+	// 		$req->execute();
+	// 	}
+	// 	catch (PDOException $e)
+	// 	{
+	// 		throw new Exception('Database query error');
+	// 	}
+	// 	$data = $req->fetch(PDO::FETCH_ASSOC);
+	// 	foreach ($data as $d)
+	// 		echo ("<script type='text/javascript'>console.log('" . $d . "')</script>");
+	// 	return $this->getAll('pictures', Picture);
+	// }
+	
+	public function getNbPicturesDb()
+	{
+		$query = "SELECT COUNT(*) FROM `pictures`";
+		try
+		{
+			$req = $this->getDb()->prepare($query);
+			$req->execute();
+		}
+		catch (PDOException $e)
+		{
+			throw new Exception('Database query error');
+		}
+		$data = $req->fetch(PDO::FETCH_ASSOC);
+		foreach ($data as $d)
+			echo ("<script type='text/javascript'>console.log('" . $d . "')</script>");
+		// return $data[0];
+		return $this->getAll('pictures', Picture);
+
+	}
+
 	public function getAllPictures()
 	{
 		return $this->getAll('pictures', Picture);

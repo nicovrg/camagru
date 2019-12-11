@@ -39,6 +39,5 @@ class CommentManager extends Checker
 	// 	  $comments[] = new Comment($data);
 	// 	return $comments;
 	// }
-
 }
 ?>

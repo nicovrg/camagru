@@ -4,7 +4,7 @@
 <?php $connexion_manager = new ConnexionManager; ?>
 <div class="gallery">
 	<?php foreach ($pictures as $picture): ?>
-	<!-- if (picture_id > ($_GET["nbpage"] * 9) && picture_id < ($_GET["nbpage"] * 9): -->
+	<!-- if (picture_id > ($_GET["page"] * 9) && picture_id < ($_GET["page"] * 9): -->
 	<div class='gallery_elements'>
 		<div class='gallery_element'>
 			<img onclick="openImg(<?= $picture->id() ?>)" src="<?= $picture->path() ?>" class="image_zoom_target">
