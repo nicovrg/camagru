@@ -6,42 +6,46 @@ const cameraTrigger = document.querySelector("#camera--trigger");
 const cameraSaver = document.querySelector("#camera--saver");
 
 function cameraStart() {
-    navigator.mediaDevices
-        .getUserMedia(constraints)
-        .then(function(stream) {
-        track = stream.getTracks();
-        cameraView.srcObject = stream;
-    })
-    .catch(function(error) {
-        console.error("fail to access webcam stream", error);
-    });
+	navigator.mediaDevices
+		.getUserMedia(constraints)
+		.then(function(stream) {
+		track = stream.getTracks();
+		cameraView.srcObject = stream;
+	})
+	.catch(function(error) {
+		console.error("fail to access webcam stream", error);
+	});
 }
 
 function uploadImg(image)
 {
-	const inputImage = document.getElementById("inputImage");
+	const imageData = document.getElementById("imageData");
 	const formImage = document.getElementById("formImage");
-    inputImage.value = image;
-    formImage.submit();
+	imageData.value = image;
+	formImage.submit();
 }
 
 cameraTrigger.onclick = () => {
-    cameraSensor.width = cameraView.videoWidth;
-    cameraSensor.height = cameraView.videoHeight;
-    cameraOutput.width = cameraView.videoWidth;
-    cameraOutput.height = cameraView.videoHeight;
-    cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
-    cameraOutput.src = cameraSensor.toDataURL("image/png");
+	cameraSensor.width = cameraView.videoWidth;
+	cameraSensor.height = cameraView.videoHeight;
+	cameraOutput.width = cameraView.videoWidth;
+	cameraOutput.height = cameraView.videoHeight;
+	cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
+	cameraOutput.src = cameraSensor.toDataURL("image/png");
 };
 
 cameraSaver.onclick = () => {
-    uploadImg(cameraSensor.toDataURL("image/png"));
+	var name = prompt("Enter picture name:");
+	var imageName = document.getElementById("imageName");
+	if (name != null)
+		imageName.value = name;
+	uploadImg(cameraSensor.toDataURL("image/png"));
 };
 
 
 window.onload = () => {
-    cameraStart();
-    load_particules();
+	cameraStart();
+	load_particules();
 }
 
 /*
@@ -62,20 +66,12 @@ then:
 		- failure cases of the promise
 
 getContext:
-    return a context ("drawing on canvas"), or null if context id is not supported
+	return a context ("drawing on canvas"), or null if context id is not supported
 
 drawImage:
-    draw inside a canvas
-    syntax => ...drawImage(image, dx, dy);
+	draw inside a canvas
+	syntax => ...drawImage(image, dx, dy);
 
 	tuto link: https://blog.prototypr.io/make-a-camera-web-app-tutorial-part-1-ec284af8dddf
 
 */
-
-
-    // cameraSensor.width = cameraView.videoWidth;
-    // cameraSensor.height = cameraView.videoHeight;
-    // .then(function() {
-    //     cameraSensor.width = cameraView.videoWidth;
-    //     cameraSensor.height = cameraView.videoHeight;
-    // });

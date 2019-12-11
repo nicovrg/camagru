@@ -13,7 +13,6 @@ SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
@@ -81,8 +80,7 @@ INSERT INTO `likes` (`picture_id`, `like_id`, `like_time`, `owner_account_id`) V
 CREATE TABLE `pictures` (
   `picture_id` int(10) UNSIGNED NOT NULL,
   `picture_owner_id` int(10) UNSIGNED NOT NULL,
-  `picture_name` varchar(255) CHARACTER SET utf8 NOT NULL,
-  `picture_data` varchar(25500) CHARACTER SET utf8 NOT NULL,
+  `picture_path` varchar(255) CHARACTER SET utf8 NOT NULL,
   `upload_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -90,15 +88,16 @@ CREATE TABLE `pictures` (
 -- Déchargement des données de la table `pictures`
 --
 
-INSERT INTO `pictures` (`picture_id`, `picture_owner_id`, `picture_name`, `picture_data`, `upload_time`) VALUES
-(1, 1, 'allan.png', '', '2019-11-17 18:50:24'),
-(2, 2, '1.png', '', '2019-11-17 18:51:43'),
-(3, 3, '2.png', '', '2019-11-17 18:51:43'),
-(4, 3, '3.png', '', '2019-11-17 18:51:43'),
-(5, 3, '4.png', '', '2019-11-17 18:51:43'),
-(6, 3, '5.png', '', '2019-11-17 18:51:43'),
-(7, 2, 'nico.png', '', '2019-11-27 14:51:38'),
-(8, 2, '6.png', '', '2019-11-27 14:51:38');
+INSERT INTO `pictures` (`picture_id`, `picture_owner_id`, `picture_path`, `upload_time`) VALUES
+(1, 1, 'img/btc.png', '2019-11-17 18:50:24'),
+(2, 2, 'img/eth.png', '2019-11-17 18:51:43'),
+(3, 3, 'img/link.png', '2019-11-17 18:51:43'),
+(4, 3, 'img/grin.png', '2019-11-17 18:51:43'),
+(5, 3, 'img/rlc.png', '2019-11-17 18:51:43'),
+(6, 3, 'img/steem.png', '2019-11-17 18:51:43'),
+(7, 2, 'img/nico.png', '2019-11-27 14:51:38'),
+(8, 2, 'img/satoshi.png', '2019-11-27 14:51:38'),
+(9, 2, 'img/atom.png', '2019-11-27 14:51:38');
 
 -- --------------------------------------------------------
 

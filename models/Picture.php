@@ -2,7 +2,7 @@
 class Picture
 {
 	private $_id;
-	private $_name;
+	private $_path;
 	private $_upload_time;
 	private $_owner_account_id;
 
@@ -29,10 +29,10 @@ class Picture
 			$this->_id = $id;
 	}
 	
-	public function setPicture_name($picture_name)
+	public function setPicture_path($picture_path)
 	{
-		if (is_string($picture_name))
-			$this->_name = $picture_name;
+		if (is_string($picture_path))
+			$this->_path = $picture_path;
 	}
 
 	public function setUpload_time($upload_time)
@@ -53,9 +53,9 @@ class Picture
 		return $this->_id;
 	}
 	
-	public function name()
+	public function path()
 	{
-		return $this->_name;
+		return $this->_path;
 	}
 
 	public function uploadTime()

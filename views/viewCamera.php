@@ -1,8 +1,8 @@
 <?php $this->_t = "Camera" ?>
 <div id="viewCamera">
 	<form action="/camera" method="post" id="formImage">
-		<input type="hidden" id="inputImage" name="imageData">
-		<input type="hidden" id="inputImage" name="imageName">
+		<input type="hidden" id="imageData" name="imageData">
+		<input type="hidden" id="imageName" name="imageName">
 	</form>
 	<div id="cameraBlock">
 		<video id="camera--view" autoplay playsinline muted></video>		

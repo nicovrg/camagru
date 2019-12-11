@@ -6,15 +6,15 @@
 	<?php foreach ($pictures as $picture): ?>
 	<div class='gallery_elements'>
 		<div class='gallery_element'>
-			<img onclick="openImg(<?= $picture->id() ?>)" src="/img/<?= $picture->name() ?>" class="image_zoom_target">
-			<p>Like: Comments: <?= $picture->name() ?></p>
+			<img onclick="openImg(<?= $picture->id() ?>)" src="<?= $picture->path() ?>" class="image_zoom_target">
+			<p>Like: Comments: <?= explode("/", $picture->path())[1] ?></p>
 		</div>
 		<div class="zoom" id="zoom<?= $picture->id() ?>">
 			<div class="zoom_container">
 				<div onclick="reduceImg(<?= $picture->id() ?>)" class='middle_container'>
-					<p class='middle_text'><?= $picture->name() ?></p>
+					<p class='middle_text'><?= $picture->path() ?></p>
 				</div>
-				<img id="zoom_image<?= $picture->id() ?>" class="zoom_image" src="/img/<?= $picture->name() ?>">
+				<img id="zoom_image<?= $picture->id() ?>" class="zoom_image" src="<?= $picture->path() ?>">
 			</div>
 			<?php if ($connexion_manager->sessionLogin()): ?>
 			<div class="comments_container">
