@@ -1,18 +1,7 @@
 ## Today:
-    DONE - finish openclassrooms js
     
-    <!-- - check every unknown js property from the tutorial camera app -->
-    <!-- - start styling camera div -->
-    - check how to store the picture in the server
-        - base64 takes more place
-        - js filesystem => https://developer.mozilla.org/en-US/docs/Web/API/Window/requestFileSystem
-        - js filesystem => https://www.jotform.com/blog/html5-filesystem-api-create-files-store-locally-using-javascript-webkit/
 
 
-
-    - form hidden and hidden input
-    - js modify value input
-    - js post form
 
     - btc article
     - noel
@@ -26,9 +15,17 @@
         - nouveau commentaire sur photo
 
         webcam:
-        - save image
+        - put a canvas on top of the other one
+        - check mix canvas in js
         - add filters
 
+        pagination:
+        - count nb of picture in db
+        - count nb of page to display
+        - modify foreach to know depending on page what to display
+
+        security:
+        - check router and htmlspecialchar
 
 
     ## Optionnal
