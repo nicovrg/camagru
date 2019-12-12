@@ -27,7 +27,7 @@
 
         security:
         - check router and htmlspecialchar
-
+        - add req->closecursor
 
     ## Optionnal
         - remove comment

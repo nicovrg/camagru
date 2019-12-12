@@ -2,7 +2,10 @@
 class PictureManager extends Model
 {
 	// This class contain the following methods:
+	// uploadPicture() => add an image to server storage and add path to db
 	// getAllPictures() => return an array of Picture objects
+	// getPagePictures() => return an array of Picture objects for the selected page
+	// getNbPicturesDb() => return the number of picture in data base
 
 	public function uploadPicture($picture_name, $picture_data, $picture_owner_id)
 	{
@@ -25,26 +28,6 @@ class PictureManager extends Model
 		}
 	}
 
-	// public function getPagePictures()
-	// {
-	// 	// $values = array(':picture_id' => $picture_id, ':comment_content' => $comment_content, ':owner_account_id' => $owner_account_id);
-	// 	$query = "SELECT COUNT(*) FROM `pictures`";
-	// 	try
-	// 	{
-	// 		$req = $this->getDb()->prepare($query);
-	// 		// $req->execute($values);
-	// 		$req->execute();
-	// 	}
-	// 	catch (PDOException $e)
-	// 	{
-	// 		throw new Exception('Database query error');
-	// 	}
-	// 	$data = $req->fetch(PDO::FETCH_ASSOC);
-	// 	foreach ($data as $d)
-	// 		echo ("<script type='text/javascript'>console.log('" . $d . "')</script>");
-	// 	return $this->getAll('pictures', Picture);
-	// }
-	
 	public function getNbPicturesDb()
 	{
 		$query = "SELECT COUNT(*) FROM `pictures`";
@@ -58,11 +41,35 @@ class PictureManager extends Model
 			throw new Exception('Database query error');
 		}
 		$data = $req->fetch(PDO::FETCH_ASSOC);
-		foreach ($data as $d)
-			echo ("<script type='text/javascript'>console.log('" . $d . "')</script>");
-		// return $data[0];
-		return $this->getAll('pictures', Picture);
+		$nblines = 0;
+		foreach ($data as $res)
+			$nblines = $res;
+		return $nblines;
+	}
 
+	public function getPagePictures($nbPage)
+	{
+		$nbPictures = $this->getNbPicturesDb();
+		$minPage = ($nbPage * 9);
+		$maxPage = ($nbPage * 9 + 9);
+		echo ("<script type='text/javascript'>console.log('nbPage = " . $nbPage . "\\nminPage = " . $minPage . "\\nmaxPage = " . $maxPage . "\\nnbPictures = " . $nbPictures . "')</script>");
+		$query = "SELECT * FROM `pictures` limit $minPage, $maxPage";
+		try
+		{
+			$req = $this->getDb()->prepare($query);
+			$req->execute();
+		}
+		catch (PDOException $e)
+		{
+			throw new Exception('Database query error');
+		}
+		while ($data = $req->fetch(PDO::FETCH_ASSOC))
+		{
+			echo ("<script type='text/javascript'>console.log('test')</script>");
+			$array[] = new Picture($data);
+		}
+		return $array;
+		$req->closeCursor();
 	}
 
 	public function getAllPictures()

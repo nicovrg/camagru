@@ -30,7 +30,7 @@ class ControllerHomepage extends Model
 			$this->_commentManager->commentBtn($_POST["picture_id"], $_POST["comment_content"], $user->getAccount_id());
 		$users = $this->getAll("users", "User");
 		// $pictures = $this->_picturesManager->getAllPictures();
-		$pictures = $this->_picturesManager->getNbPicturesDb();
+		$pictures = $this->_picturesManager->getPagePictures($_GET["page"]);
 		$comments = $this->_commentManager->getAllComments();
 		$this->_view = new View('Homepage');
 		$this->_view->generate(array('user' => $user, 'users' => $users, 'pictures' => $pictures, 'comments' => $comments));
