@@ -53,10 +53,13 @@ class PictureManager extends Model
 	{
 		$i = 0;
 		$nbPictures = $this->getNbPicturesDb();
-		$minPage = $nbPage * 9;
-		$maxPage = $nbPage * 9 + 9;
-		echo ("<script type='text/javascript'>console.log('nbPage = " . $nbPage . "\\nminPage = " . $minPage . "\\nmaxPage = " . $maxPage . "\\nnbPictures = " . $nbPictures . "')</script>");
-		$query = "SELECT * FROM `pictures` limit $minPage, $maxPage";
+		$limit = 9;
+		$offset = $nbPage * 9;
+		// 0: 0 9
+		// 1: 9 18
+		echo ("<script type='text/javascript'>console.log('nbPage = " . $nbPage . "\\nminPage = " . $offset . "\\nlimit = " . $limit . "\\nnbPictures = " . $nbPictures . "')</script>");
+		//
+		$query = "SELECT * FROM `pictures` limit $offset, $limit";
 		try
 		{
 			$req = $this->getDb()->prepare($query);
@@ -72,7 +75,7 @@ class PictureManager extends Model
 			$i++;
 		}
 		$req->closeCursor();
-		echo ("<script type='text/javascript'>console.log('nbPicPerPage = " . $i . "')</script>");
+		echo ("<script type='text/javascript'>console.log('nbPicInPage = " . $i . "')</script>");
 		return $array;
 		$req->closeCursor();
 	}
