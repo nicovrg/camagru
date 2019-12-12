@@ -1,6 +1,4 @@
 ## Today:
-    
-
 
 
     - btc article
@@ -19,6 +17,7 @@
         - check mix canvas in js
         - add filters
         - upload images
+        - remove images
 
         pagination:
         - count nb of picture in db

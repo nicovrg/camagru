@@ -28,6 +28,7 @@ class DeleteManager extends Checker
 			{
 				throw new Exception('Database query error');
 			}
+			$req->closeCursor();
 		}
 	}
 }

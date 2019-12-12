@@ -4,7 +4,6 @@
 <?php $connexion_manager = new ConnexionManager; ?>
 <div class="gallery">
 	<?php foreach ($pictures as $picture): ?>
-	<!-- if (picture_id > ($_GET["page"] * 9) && picture_id < ($_GET["page"] * 9): -->
 	<div class='gallery_elements'>
 		<div class='gallery_element'>
 			<img onclick="openImg(<?= $picture->id() ?>)" src="<?= $picture->path() ?>" class="image_zoom_target">
@@ -47,13 +46,20 @@
 			<span onclick="closeImg(<?= $picture->id() ?>)" class="close">×</span>
 		</div>
 	</div>
-	<!-- endif -->
 	<?php endforeach; ?>
-	<p>page: </p>
+	<div id="pageBtn">
+		<form action="/" method="get" id="page-form-1">
+			<input type="hidden" value="" name="page" id="input_form_1">
+		</form>
+		<form action="/" method="get" id="page-form-2">
+			<input type="hidden" value="" name="page" id="input_form_2">
+		</form>
+		<button id="previous" onclick="submitFormOne(<?= $_GET['page'] ?>)">previous</button>
+		<button id="next" onclick="submitFormTwo(<?= $_GET['page'] ?>)">next</button>
+	</div>
 </div>
 
-
+<!-- http://192.168.99.100/?page=1 -->
 <!-- <script type="text/javascript">document.getElementById(canvas).style.height = 205%;</script> -->
-
 <!-- <script>console.log(document.getElementById('taBind').value)</script> -->
 <!-- <script>cdocument.getElementById('taBind').name</script> -->

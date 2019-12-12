@@ -28,6 +28,7 @@ class ConnexionManager extends Checker
 			throw new Exception('Database query error');
 		}
 		$data = $req->fetch(PDO::FETCH_ASSOC);
+		$req->closeCursor();
 		if (is_array($data))
 		{
 			$user = new User($data);
@@ -55,6 +56,7 @@ class ConnexionManager extends Checker
 			{
 				throw new Exception('Database query error');
 			}
+			$req->closeCursor();
 			return true;
 		}
 		return false;
@@ -78,6 +80,7 @@ class ConnexionManager extends Checker
 				throw new Exception('Database query error');
 			}
 			$data = $req->fetch(PDO::FETCH_ASSOC);
+			$req->closeCursor();
 			if (is_array($data))
 				return new User($data);
 				// foreach($data as $key => $val) 
@@ -101,6 +104,7 @@ class ConnexionManager extends Checker
 			{
 				throw new Exception('Database query error');
 			}
+			$req->closeCursor();
 		}
 		return true;
 	}

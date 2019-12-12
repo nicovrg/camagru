@@ -23,13 +23,9 @@ class LikeManager extends Checker
 			throw new Exception('Database query error');
 		}
 		$data = $req->fetch(PDO::FETCH_ASSOC);
+		$req->closeCursor();
 		if (is_array($data))
 			return true;
-		// {
-			// echo ("<script type='text/javascript'>console.log('INSIDE IS ARRAY')</script>");
-			// foreach($data as $key => $val)
-				// echo ("<script type='text/javascript'>console.log('" . $key . "=" . $val . "')</script>");
-		// }
 		return false;
 	}
 
@@ -46,7 +42,7 @@ class LikeManager extends Checker
 		{
 			throw new Exception('Database query error');
 		}
-		// echo ("<script type='text/javascript'>console.log('PICTURE HAS JUST BEEN LIKED')</script>");
+		$req->closeCursor();
 		return true;
 	}
 
@@ -63,7 +59,7 @@ class LikeManager extends Checker
 		{
 			throw new Exception('Database query error');
 		}
-		// echo ("<script type='text/javascript'>console.log('PICTURE HAS JUST BEEN DISLIKED')</script>");
+		$req->closeCursor();
 		return true;
 	}
 }

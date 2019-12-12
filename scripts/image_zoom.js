@@ -30,3 +30,25 @@ function submitLike(pictureId)
 	const like = document.getElementById(`like-form${pictureId}`);
 	like.submit();
 }
+
+function submitFormOne(page)
+{
+	console.log(page);
+	page = page - 1;
+	console.log(page);
+	const pageForm = document.getElementById(`page-form-1`);
+	const input = document.getElementById(`input_form_1`);
+	input.value = page;
+	pageForm.submit();
+}
+
+function submitFormTwo(page)
+{
+	console.log(page);
+	page = page + 1;
+	console.log(page);
+	const pageForm = document.getElementById(`page-form-2`);
+	const input = document.getElementById(`input_form_2`);
+	input.value = page;
+	pageForm.submit();
+}

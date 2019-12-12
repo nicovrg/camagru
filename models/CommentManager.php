@@ -19,6 +19,7 @@ class CommentManager extends Checker
 		{
 			throw new Exception('Database query error');
 		}
+		$req->closeCursor();
 		// echo ("<script type='text/javascript'>console.log('commentBtn ended')</script>");
 	}
 
@@ -37,6 +38,7 @@ class CommentManager extends Checker
 	// 	}
 	// 	while ($data = $req->fetch(PDO::FETCH_ASSOC))
 	// 	  $comments[] = new Comment($data);
+	// $req->closeCursor();
 	// 	return $comments;
 	// }
 }

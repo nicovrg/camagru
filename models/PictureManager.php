@@ -26,6 +26,7 @@ class PictureManager extends Model
 		{
 			throw new Exception('Database query error');
 		}
+		$req->closeCursor();
 	}
 
 	public function getNbPicturesDb()
@@ -41,6 +42,7 @@ class PictureManager extends Model
 			throw new Exception('Database query error');
 		}
 		$data = $req->fetch(PDO::FETCH_ASSOC);
+		$req->closeCursor();
 		$nblines = 0;
 		foreach ($data as $res)
 			$nblines = $res;
@@ -49,6 +51,7 @@ class PictureManager extends Model
 
 	public function getPagePictures($nbPage)
 	{
+		$i = 0;
 		$nbPictures = $this->getNbPicturesDb();
 		$minPage = $nbPage * 9;
 		$maxPage = $nbPage * 9 + 9;
@@ -65,9 +68,11 @@ class PictureManager extends Model
 		}
 		while ($data = $req->fetch(PDO::FETCH_ASSOC))
 		{
-			echo ("<script type='text/javascript'>console.log('test')</script>");
 			$array[] = new Picture($data);
+			$i++;
 		}
+		$req->closeCursor();
+		echo ("<script type='text/javascript'>console.log('nbPicPerPage = " . $i . "')</script>");
 		return $array;
 		$req->closeCursor();
 	}
