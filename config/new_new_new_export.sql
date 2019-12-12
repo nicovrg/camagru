@@ -3,15 +3,15 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : db
--- Généré le :  jeu. 05 déc. 2019 à 15:56
+-- Généré le :  jeu. 12 déc. 2019 à 19:18
 -- Version du serveur :  5.7.28
 -- Version de PHP :  7.2.23
 
-DROP TABLE sessions, users, pictures, likes, comments;
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
+
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -126,6 +126,8 @@ CREATE TABLE `sessions` (
 -- Déchargement des données de la table `sessions`
 --
 
+INSERT INTO `sessions` (`session_id`, `account_id`, `login_time`) VALUES
+('ff46daf3039aa349ee461d4d63c8d79f', 11, '2019-12-12 19:17:56');
 
 -- --------------------------------------------------------
 
@@ -144,6 +146,9 @@ CREATE TABLE `users` (
 --
 -- Déchargement des données de la table `users`
 --
+
+INSERT INTO `users` (`account_id`, `email`, `username`, `password`, `reg_time`) VALUES
+(11, 'test@test.com', 'test', '49cbc143897d40a775f04737d1caa81a83bb26eadd313e5679b75033db016ce3', '2019-12-12 19:17:51');
 
 --
 -- Index pour les tables déchargées
@@ -199,13 +204,13 @@ ALTER TABLE `likes`
 -- AUTO_INCREMENT pour la table `pictures`
 --
 ALTER TABLE `pictures`
-  MODIFY `picture_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+  MODIFY `picture_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `account_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `account_id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

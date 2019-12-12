@@ -23,7 +23,7 @@ class ControllerHomepage extends Model
 		$this->_picturesManager = new PictureManager;
 		$user = $this->_connexionManager->sessionLogin();
 		if (!isset($_GET["page"]))
-			$_GET["page"] = 1;
+			$_GET["page"] = 0;
 		if ($user && isset($_POST["like"]) && isset($_POST["picture_id"]))
 			$this->_likeManager->likeBtn($_POST["picture_id"], $user->getAccount_id());
 		if ($user && isset($_POST["picture_id"]) && isset($_POST["comment_content"]))

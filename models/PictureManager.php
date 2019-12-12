@@ -50,8 +50,8 @@ class PictureManager extends Model
 	public function getPagePictures($nbPage)
 	{
 		$nbPictures = $this->getNbPicturesDb();
-		$minPage = ($nbPage * 9);
-		$maxPage = ($nbPage * 9 + 9);
+		$minPage = $nbPage * 9;
+		$maxPage = $nbPage * 9 + 9;
 		echo ("<script type='text/javascript'>console.log('nbPage = " . $nbPage . "\\nminPage = " . $minPage . "\\nmaxPage = " . $maxPage . "\\nnbPictures = " . $nbPictures . "')</script>");
 		$query = "SELECT * FROM `pictures` limit $minPage, $maxPage";
 		try
