@@ -8,36 +8,34 @@
 # Stuff to do:
     ## Compulsory:
         mail:
-        - new account validation
-        - modif mdp
-        - nouveau commentaire sur photo
+            - new account validation
+            - modif mdp
+            - nouveau commentaire sur photo
 
         webcam:
-        - put a canvas on top of the other one
-        - check mix canvas in js
-        - add filters
-        - upload images
-        - remove images
+            - put a canvas on top of the other one
+            - check mix canvas in js
+            - add filters
+            - upload images
+            - remove images
 
         pagination:
-        - count nb of picture in db
-        - count nb of page to display
-        - modify foreach to know depending on page what to display
+        -style that shit 
 
         security:
-        - check router and htmlspecialchar
-        - add req->closecursor
+            - check router and htmlspecialchar
+            - add req->closecursor
 
     ## Optionnal
-        - remove comment
-        - edit comment
-        - deal with remove account / picture ?
+            - remove comment
+            - edit comment
+            - deal with remove account / picture ?
 
 # Questions:
-    - pourquoi en js on peut pas faire string[2] = 'X' ? c'est bizarre de pas supporter ça
-    - constructor de classe obligatoire?
-    - destructor existe?
-    - c'est quoi le délire des prototypes des objets (Child.create(parent))
-    - wtf:
+        - pourquoi en js on peut pas faire string[2] = 'X' ? c'est bizarre de pas supporter ça
+        - constructor de classe obligatoire?
+        - destructor existe?
+        - c'est quoi le délire des prototypes des objets (Child.create(parent))
+        - wtf:
         // track = stream.getTracks();
         // track = stream.getTracks()[0];

@@ -25,8 +25,7 @@ class ControllerHomepage extends Model
 		$user = $this->_connexionManager->sessionLogin();
 		if (!isset($_GET["page"]) || $_GET["page"] < 0 || $_GET["page"] > $nbPageMax)
 			$_GET["page"] = 0;
-		else
-			$_GET["page"] = round($_GET["page"]);
+		$_GET["page"] = round($_GET["page"]);
 		if ($user && isset($_POST["like"]) && isset($_POST["picture_id"]))
 			$this->_likeManager->likeBtn($_POST["picture_id"], $user->getAccount_id());
 		if ($user && isset($_POST["picture_id"]) && isset($_POST["comment_content"]))
