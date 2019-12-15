@@ -41,6 +41,14 @@
 				</form>
 				<button onclick="submitLike(<?= $picture->id() ?>)"><?= $like_manager->isLiked($picture->id(), $user->getAccount_id()) ? 'dislike' : 'like' ?></button>
 				<button id="comment" onclick="submitComment(<?= $picture->id() ?>)">comment</button>
+				<?php if ($picture->ownerAccountId() == $user->getAccount_id()): ?>
+					<button id="comment" onclick="submitComment(<?= $picture->id() ?>)">delete</button>
+				<?php endif; ?>
+
+
+
+
+
 			</div>
 			<?php endif; ?>
 			<span onclick="closeImg(<?= $picture->id() ?>)" class="close">×</span>

@@ -51,14 +51,9 @@ class PictureManager extends Model
 
 	public function getPagePictures($nbPage)
 	{
-		$i = 0;
 		$nbPictures = $this->getNbPicturesDb();
 		$limit = 9;
 		$offset = $nbPage * 9;
-		// 0: 0 9
-		// 1: 9 18
-		echo ("<script type='text/javascript'>console.log('nbPage = " . $nbPage . "\\nminPage = " . $offset . "\\nlimit = " . $limit . "\\nnbPictures = " . $nbPictures . "')</script>");
-		//
 		$query = "SELECT * FROM `pictures` limit $offset, $limit";
 		try
 		{
@@ -75,7 +70,6 @@ class PictureManager extends Model
 			$i++;
 		}
 		$req->closeCursor();
-		echo ("<script type='text/javascript'>console.log('nbPicInPage = " . $i . "')</script>");
 		return $array;
 		$req->closeCursor();
 	}

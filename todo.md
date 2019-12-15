@@ -19,12 +19,12 @@
             - upload images
             - remove images
 
-        pagination:
-            -style that shit 
-
+        basic:
+            - upload image
+            - remove image
+            
         security:
             - check router and htmlspecialchar
-            - add req->closecursor
 
     ## Optionnal
             - remove comment

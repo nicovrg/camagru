@@ -4,7 +4,7 @@ class Picture
 	private $_id;
 	private $_path;
 	private $_upload_time;
-	private $_owner_account_id;
+	private $_picture_owner_id;
 
 	public function __construct(array $data)
 	{
@@ -40,11 +40,12 @@ class Picture
 		$this->_upload_time = $upload_time;
 	}
 
-	public function setOwner_account_id($owner_account_id)
+	public function setPicture_owner_id($picture_owner_id)
 	{
-		$owner_account_id = (int)$owner_account_id;
-		if ($owner_account_id > 0)
-			$this->_owner_account_id = $owner_account_id;
+		$picture_owner_id = (int)$picture_owner_id;
+		echo ("<script type='text/javascript'>console.log('here " . $this->picture_owner_id . "')</script>");
+		if ($picture_owner_id > 0)
+			$this->_picture_owner_id = $picture_owner_id;
 	}
 
 	//GETTERS	
@@ -65,7 +66,8 @@ class Picture
 
 	public function ownerAccountId()
 	{
-		return $this->_owner_account_id;
+		echo ("<script type='text/javascript'>console.log('here " . $this->_picture_owner_id . "')</script>");
+		return $this->_picture_owner_id;
 	}
 }
 

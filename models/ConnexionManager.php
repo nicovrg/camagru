@@ -68,8 +68,8 @@ class ConnexionManager extends Checker
 		{
 			$values = array(':sid' => session_id());
 			$query = "SELECT * FROM `users`, `sessions` WHERE (`session_id` = :sid)";
-			$query = $query." AND (`login_time` >= (NOW() - INTERVAL 7 DAY))";
-			$query = $query." AND (users.account_id = sessions.account_id)";
+			$query = $query. " AND (`login_time` >= (NOW() - INTERVAL 7 DAY))";
+			$query = $query. " AND (users.account_id = sessions.account_id)";
 			try
 			{
 				$req = $this->getDb()->prepare($query);
