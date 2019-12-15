@@ -26,13 +26,13 @@ function uploadImg(image)
 }
 
 cameraTrigger.onclick = () => {
+	cameraSensor.style.display = "block";
 	cameraSensor.width = cameraView.videoWidth;
 	cameraSensor.height = cameraView.videoHeight;
 	cameraOutput.width = cameraView.videoWidth;
 	cameraOutput.height = cameraView.videoHeight;
 	cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
 	cameraOutput.src = cameraSensor.toDataURL("image/png");
-	// cameraOutput.display = block;
 };
 
 cameraSaver.onclick = () => {

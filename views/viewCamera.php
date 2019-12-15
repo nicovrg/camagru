@@ -5,7 +5,7 @@
 		<input type="hidden" id="imageName" name="imageName">
 	</form>
 	<div id="cameraBlock">
-		<video id="camera--view" autoplay playsinline muted></video>		
+		<video id="camera--view" autoplay playsinline muted></video>
 		<canvas id="camera--sensor"></canvas>		
 		<img id="camera--output" src="//:0" alt="">	   
 	</div>
