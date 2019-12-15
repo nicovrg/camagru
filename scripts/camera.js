@@ -1,7 +1,6 @@
 var constraints = { video: { facingMode: "user" }, audio: false };
 const cameraView = document.querySelector("#camera--view");
 const cameraSensor = document.querySelector("#camera--sensor");
-const cameraOutput = document.querySelector("#camera--output");
 const cameraTrigger = document.querySelector("#camera--trigger");
 const cameraSaver = document.querySelector("#camera--saver");
 
@@ -24,15 +23,11 @@ function uploadImg(image)
 	imageData.value = image;
 	formImage.submit();
 }
-
 cameraTrigger.onclick = () => {
 	cameraSensor.style.display = "block";
 	cameraSensor.width = cameraView.videoWidth;
 	cameraSensor.height = cameraView.videoHeight;
-	cameraOutput.width = cameraView.videoWidth;
-	cameraOutput.height = cameraView.videoHeight;
 	cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
-	cameraOutput.src = cameraSensor.toDataURL("image/png");
 };
 
 cameraSaver.onclick = () => {
@@ -75,4 +70,5 @@ drawImage:
 
 	tuto link: https://blog.prototypr.io/make-a-camera-web-app-tutorial-part-1-ec284af8dddf
 
+	http://192.168.99.100/?page=2
 */

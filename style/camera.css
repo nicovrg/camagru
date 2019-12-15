@@ -27,15 +27,6 @@
 	border-color: blue;
 }
 
-#viewCamera #cameraBlock #camera--output
-{
-	display: none;
-	margin-left: 2em;
-	border: solid;
-	border-radius: 2em;
-	border-color: red;
-}
-
 /* buttonBlock */
 #viewCamera #buttonBlock
 {

@@ -7,7 +7,7 @@
 	<div class='gallery_elements'>
 		<div class='gallery_element'>
 			<img onclick="openImg(<?= $picture->id() ?>)" src="<?= $picture->path() ?>" class="image_zoom_target">
-			<p>Like: Comments: <?= explode("/", $picture->path())[1] ?></p>
+			<p>Like: Comments: <?= explode(".", explode("/", $picture->path())[1])[0] ?></p>
 		</div>
 		<div class="zoom" id="zoom<?= $picture->id() ?>">
 			<div class="zoom_container">
