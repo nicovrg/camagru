@@ -15,19 +15,20 @@
 {
 	border: solid;
 	border-radius: 2em;
-	border-color: green;
+	/* border-color: green; */
 }
 
-#viewCamera #cameraBlock #camera--sensor
+/* #viewCamera #cameraBlock #camera--sensor
 {
 	margin-left: 2em;
 	border: solid;
 	border-radius: 2em;
 	border-color: blue;
-}
+} */
 
 #viewCamera #cameraBlock #camera--output
 {
+	display: none;
 	margin-left: 2em;
 	border: solid;
 	border-radius: 2em;

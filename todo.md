@@ -20,7 +20,7 @@
             - remove images
 
         pagination:
-        -style that shit 
+            -style that shit 
 
         security:
             - check router and htmlspecialchar

@@ -32,6 +32,7 @@ cameraTrigger.onclick = () => {
 	cameraOutput.height = cameraView.videoHeight;
 	cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
 	cameraOutput.src = cameraSensor.toDataURL("image/png");
+	// cameraOutput.display = block;
 };
 
 cameraSaver.onclick = () => {
