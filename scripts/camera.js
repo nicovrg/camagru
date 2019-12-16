@@ -3,6 +3,7 @@ const cameraView = document.querySelector("#camera--view");
 const cameraSensor = document.querySelector("#camera--sensor");
 const cameraTrigger = document.querySelector("#camera--trigger");
 const cameraSaver = document.querySelector("#camera--saver");
+const uploadFile = document.querySelector("#upload--file");
 
 function cameraStart() {
 	navigator.mediaDevices
@@ -18,11 +19,12 @@ function cameraStart() {
 
 function uploadImg(image)
 {
-	const imageData = document.getElementById("imageData");
-	const formImage = document.getElementById("formImage");
-	imageData.value = image;
-	formImage.submit();
+	const imageDataWebcam = document.getElementById("imageDataWebcam");
+	const formImageWebcam = document.getElementById("formImageWebcam");
+	imageDataWebcam.value = image;
+	formImageWebcam.submit();
 }
+
 cameraTrigger.onclick = () => {
 	cameraSensor.style.display = "block";
 	cameraSensor.width = cameraView.videoWidth;
@@ -32,11 +34,15 @@ cameraTrigger.onclick = () => {
 
 cameraSaver.onclick = () => {
 	var name = prompt("Enter picture name:");
-	var imageName = document.getElementById("imageName");
+	var imageNameWebcam = document.getElementById("imageNameWebcam");
 	if (name != null)
-		imageName.value = name;
+		imageNameWebcam.value = name;
 	uploadImg(cameraSensor.toDataURL("image/png"));
 };
+
+uploadFile.onclick = () => {
+	
+}
 
 
 window.onload = () => {

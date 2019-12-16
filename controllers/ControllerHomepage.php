@@ -22,7 +22,6 @@ class ControllerHomepage extends Model
 		$this->_connexionManager = new ConnexionManager;
 		$this->_picturesManager = new PictureManager;
 		$nbPageMax = $this->_picturesManager->getNbPicturesDb() / 9;
-		echo ("<script type='text/javascript'>console.log('nbPageMax = " . $nbPageMax . "')</script>");
 		$user = $this->_connexionManager->sessionLogin();
 		if (!isset($_GET["page"]) || $_GET["page"] < 0 || $_GET["page"] >= $nbPageMax)
 			$_GET["page"] = 0;

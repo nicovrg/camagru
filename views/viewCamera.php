@@ -1,14 +1,19 @@
 <?php $this->_t = "Camera" ?>
 <div id="viewCamera">
-	<form action="/camera" method="post" id="formImage">
-		<input type="hidden" id="imageData" name="imageData">
-		<input type="hidden" id="imageName" name="imageName">
+	<form action="/camera" method="post" id="formImageWebcam">
+		<input type="hidden" id="imageDataWebcam" name="imageDataWebcam">
+		<input type="hidden" id="imageNameWebcam" name="imageNameWebcam">
+	</form>
+	<form action="/camera" method="post" id="formImageFile">
+		<input type="image" id="imageDataFile" name="imageDataFile">
+		<input type="hidden" id="imageNameFile" name="imageNameFile">
 	</form>
 	<div id="cameraBlock">
 		<video id="camera--view" autoplay playsinline muted></video>
 		<canvas id="camera--sensor"></canvas>		
 	</div>
 	<div id="buttonBlock">
+		<button id="upload--file">Upload !</button>	
 		<button id="camera--trigger">Shoot !</button>	
 		<button id="camera--saver">Save !</button>	
 	</div>

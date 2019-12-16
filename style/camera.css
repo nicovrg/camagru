@@ -15,7 +15,7 @@
 {
 	border: solid;
 	border-radius: 2em;
-	/* border-color: green; */
+	border-color: rgb(25, 39, 53);
 }
 
 #viewCamera #cameraBlock #camera--sensor
@@ -34,15 +34,10 @@
 	justify-content: center;
 }
 
-#viewCamera #buttonBlock button:last-child 
-{
-	margin-left: 4em;
-}
-
-#viewCamera #buttonBlock #camera--trigger, #camera--saver
+#viewCamera #buttonBlock #camera--trigger, #camera--saver, #upload--file
 {
 	margin-top: 3em;
-	margin-right: 0.5em;
+	margin-right: 1em;
 	margin-bottom: 0.1em;
 	margin-left: 0.5em;
 	border: solid;
@@ -57,7 +52,7 @@
 	transition: .3s ease-in-out;
 }
 
-#viewCamera #buttonBlock #camera--trigger:hover, #camera--saver:hover
+#viewCamera #buttonBlock #camera--trigger:hover, #camera--saver:hover , #upload--file:hover
 {
 	transform: scale(1.2);
 	transition: .3s ease-in-out;

@@ -21,7 +21,7 @@
 
         basic:
             - upload image
-            - remove image -> check broken pagination
+            - php opposite of file put content
 
         security:
             - check router and htmlspecialchar
