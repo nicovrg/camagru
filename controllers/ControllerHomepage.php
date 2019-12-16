@@ -22,14 +22,17 @@ class ControllerHomepage extends Model
 		$this->_connexionManager = new ConnexionManager;
 		$this->_picturesManager = new PictureManager;
 		$nbPageMax = $this->_picturesManager->getNbPicturesDb() / 9;
+		echo ("<script type='text/javascript'>console.log('nbPageMax = " . $nbPageMax . "')</script>");
 		$user = $this->_connexionManager->sessionLogin();
-		if (!isset($_GET["page"]) || $_GET["page"] < 0 || $_GET["page"] > $nbPageMax)
+		if (!isset($_GET["page"]) || $_GET["page"] < 0 || $_GET["page"] >= $nbPageMax)
 			$_GET["page"] = 0;
 		$_GET["page"] = round($_GET["page"]);
 		if ($user && isset($_POST["like"]) && isset($_POST["picture_id"]))
 			$this->_likeManager->likeBtn($_POST["picture_id"], $user->getAccount_id());
 		if ($user && isset($_POST["picture_id"]) && isset($_POST["comment_content"]))
 			$this->_commentManager->commentBtn($_POST["picture_id"], $_POST["comment_content"], $user->getAccount_id());
+		if ($user && isset($_POST["delete"]) && isset($_POST["picture_id"]))
+			$this->_picturesManager->deletePicture($_POST["picture_id"]);
 		$users = $this->getAll("users", "User");
 		$pictures = $this->_picturesManager->getPagePictures($_GET["page"]);
 		$comments = $this->_commentManager->getAllComments();

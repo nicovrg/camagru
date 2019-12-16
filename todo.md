@@ -21,8 +21,8 @@
 
         basic:
             - upload image
-            - remove image
-            
+            - remove image -> check broken pagination
+
         security:
             - check router and htmlspecialchar
 

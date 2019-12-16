@@ -3,6 +3,7 @@
 <?php $comment_manager = new CommentManager; ?>
 <?php $connexion_manager = new ConnexionManager; ?>
 <div class="gallery">
+	<?php echo ("<script type='text/javascript'>console.log('$pictures')</script>");?>
 	<?php foreach ($pictures as $picture): ?>
 	<div class='gallery_elements'>
 		<div class='gallery_element'>
@@ -39,16 +40,15 @@
 					<input type="hidden" value="<?= $picture->id() ?>" name="picture_id">
 					<input type="hidden" value="like" name="like">
 				</form>
+				<form action="/homepage" method="post" id="delete-form<?= $picture->id() ?>">
+					<input type="hidden" value="<?= $picture->id() ?>" name="picture_id">
+					<input type="hidden" value="delete" name="delete">
+				</form>
 				<button onclick="submitLike(<?= $picture->id() ?>)"><?= $like_manager->isLiked($picture->id(), $user->getAccount_id()) ? 'dislike' : 'like' ?></button>
 				<button id="comment" onclick="submitComment(<?= $picture->id() ?>)">comment</button>
 				<?php if ($picture->ownerAccountId() == $user->getAccount_id()): ?>
-					<button id="comment" onclick="submitComment(<?= $picture->id() ?>)">delete</button>
+					<button id="comment" onclick="submitDelete(<?= $picture->id() ?>)">delete</button>
 				<?php endif; ?>
-
-
-
-
-
 			</div>
 			<?php endif; ?>
 			<span onclick="closeImg(<?= $picture->id() ?>)" class="close">×</span>

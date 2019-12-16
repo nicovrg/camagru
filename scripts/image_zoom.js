@@ -19,23 +19,27 @@ function reduceImg(pictureId) {
 		zoomImg.style.width = "80%"
 }
 
+function submitLike(pictureId)
+{
+	const form = document.getElementById(`like-form${pictureId}`);
+	form.submit();
+}
+
 function submitComment(pictureId)
 {
 	const form = document.getElementById(`comment-form${pictureId}`);
 	form.submit();
 }
 
-function submitLike(pictureId)
+function submitDelete(pictureId)
 {
-	const like = document.getElementById(`like-form${pictureId}`);
-	like.submit();
+	const form = document.getElementById(`delete-form${pictureId}`);
+	form.submit();
 }
 
 function submitFormOne(page)
 {
-	console.log(page);
 	page = page - 1;
-	console.log(page);
 	const pageForm = document.getElementById(`page-form-1`);
 	const input = document.getElementById(`input_form_1`);
 	input.value = page;
@@ -44,9 +48,7 @@ function submitFormOne(page)
 
 function submitFormTwo(page)
 {
-	console.log(page);
 	page = page + 1;
-	console.log(page);
 	const pageForm = document.getElementById(`page-form-2`);
 	const input = document.getElementById(`input_form_2`);
 	input.value = page;

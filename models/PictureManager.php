@@ -6,6 +6,7 @@ class PictureManager extends Model
 	// getAllPictures() => return an array of Picture objects
 	// getPagePictures() => return an array of Picture objects for the selected page
 	// getNbPicturesDb() => return the number of picture in data base
+	// deletePicture() => delete the picture from data base
 
 	public function uploadPicture($picture_name, $picture_data, $picture_owner_id)
 	{
@@ -71,7 +72,24 @@ class PictureManager extends Model
 		}
 		$req->closeCursor();
 		return $array;
+	}
+
+	public function deletePicture($picture_id)
+	{
+		// echo ("<script type='text/javascript'>console.log('picture_id = " . $picture_id . "')</script>");
+		$values = array(':picture_id' => $picture_id);
+		$query = "DELETE FROM `pictures` WHERE (`picture_id` = :picture_id)";
+		try
+		{
+			$req = $this->getDb()->prepare($query);
+			$req->execute($values);
+		}
+		catch (PDOException $e)
+		{
+			throw new Exception('Query error');
+		}
 		$req->closeCursor();
+		return true;
 	}
 
 	public function getAllPictures()

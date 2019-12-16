@@ -43,7 +43,6 @@ class Picture
 	public function setPicture_owner_id($picture_owner_id)
 	{
 		$picture_owner_id = (int)$picture_owner_id;
-		echo ("<script type='text/javascript'>console.log('here " . $this->picture_owner_id . "')</script>");
 		if ($picture_owner_id > 0)
 			$this->_picture_owner_id = $picture_owner_id;
 	}
@@ -66,7 +65,6 @@ class Picture
 
 	public function ownerAccountId()
 	{
-		echo ("<script type='text/javascript'>console.log('here " . $this->_picture_owner_id . "')</script>");
 		return $this->_picture_owner_id;
 	}
 }
