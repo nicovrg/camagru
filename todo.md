@@ -17,7 +17,6 @@
             - check mix canvas in js
             - add filters
             - upload images
-            - remove images
 
         basic:
             - upload image

@@ -6,7 +6,7 @@ class PictureManager extends Model
 	// getAllPictures() => return an array of Picture objects
 	// getPagePictures() => return an array of Picture objects for the selected page
 	// getNbPicturesDb() => return the number of picture in data base
-	// deletePicture() => delete the picture from data base
+	// deletePicture() => delete the picture from data base and from server
 
 	public function uploadPicture($picture_name, $picture_data, $picture_owner_id)
 	{
@@ -76,7 +76,19 @@ class PictureManager extends Model
 
 	public function deletePicture($picture_id)
 	{
-		// echo ("<script type='text/javascript'>console.log('picture_id = " . $picture_id . "')</script>");
+		$values = array(':picture_id' => $picture_id);
+		$query = "SELECT * FROM `pictures` WHERE (`picture_id` = :picture_id)";
+		try
+		{
+			$req = $this->getDb()->prepare($query);
+			$req->execute($values);
+		}
+		catch (PDOException $e)
+		{
+			throw new Exception('Query error');
+		}
+		$res = $req->fetch(PDO::FETCH_ASSOC);
+		$req->closeCursor();
 		$values = array(':picture_id' => $picture_id);
 		$query = "DELETE FROM `pictures` WHERE (`picture_id` = :picture_id)";
 		try
@@ -89,6 +101,8 @@ class PictureManager extends Model
 			throw new Exception('Query error');
 		}
 		$req->closeCursor();
+		if (file_exists($res['picture_path']))
+			unlink($res['picture_path']);
 		return true;
 	}
 
