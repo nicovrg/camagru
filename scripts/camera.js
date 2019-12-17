@@ -3,7 +3,13 @@ const cameraView = document.querySelector("#camera--view");
 const cameraSensor = document.querySelector("#camera--sensor");
 const cameraTrigger = document.querySelector("#camera--trigger");
 const cameraSaver = document.querySelector("#camera--saver");
-const uploadFile = document.querySelector("#upload--file");
+
+function uploadFile ()
+{
+	console.log("send image form in js");
+	var formImageFile = document.getElementById("formImageFile");
+	formImageFile.submit();
+}
 
 function cameraStart() {
 	navigator.mediaDevices
@@ -39,11 +45,6 @@ cameraSaver.onclick = () => {
 		imageNameWebcam.value = name;
 	uploadImg(cameraSensor.toDataURL("image/png"));
 };
-
-uploadFile.onclick = () => {
-	
-}
-
 
 window.onload = () => {
 	cameraStart();

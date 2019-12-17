@@ -4,16 +4,16 @@
 		<input type="hidden" id="imageDataWebcam" name="imageDataWebcam">
 		<input type="hidden" id="imageNameWebcam" name="imageNameWebcam">
 	</form>
-	<form action="/camera" method="post" id="formImageFile">
-		<input type="image" id="imageDataFile" name="imageDataFile">
-		<input type="hidden" id="imageNameFile" name="imageNameFile">
+	<form action="/camera" method="post" id="formImageFile" enctype="multipart/form-data">
+		<input type="file" id="imageDataFile" name="imageDataFile" style="display: block;">
+		<!-- <input type="hidden" id="imageNameFile" name="imageNameFile"> -->
 	</form>
 	<div id="cameraBlock">
 		<video id="camera--view" autoplay playsinline muted></video>
 		<canvas id="camera--sensor"></canvas>		
 	</div>
 	<div id="buttonBlock">
-		<button id="upload--file">Upload !</button>	
+		<button id="upload--file" onclick="uploadFile()">Upload !</button>	
 		<button id="camera--trigger">Shoot !</button>	
 		<button id="camera--saver">Save !</button>	
 	</div>

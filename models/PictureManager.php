@@ -2,11 +2,23 @@
 class PictureManager extends Model
 {
 	// This class contain the following methods:
-	// uploadPicture() => add an image to server storage and add path to db
+	// uploadPicture() => add an image from user file to server storage and add path to db
+	// uploadPicture() => add an image from webcam to server storage and add path to db
 	// getAllPictures() => return an array of Picture objects
 	// getPagePictures() => return an array of Picture objects for the selected page
 	// getNbPicturesDb() => return the number of picture in data base
 	// deletePicture() => delete the picture from data base and from server
+
+	public function uploadFile($picture_name, $picture_data, $picture_owner_id)
+	{
+		echo ("<script type='text/javascript'>console.log('in model')</script>");
+		echo ("<script type='text/javascript'>console.log('picture_name = $picture_name')</script>");
+		echo ("<script type='text/javascript'>console.log('picture_data = $picture_data')</script>");
+		while (file_exists("img/" . $picture_name . ".png"))
+			$picture_name = $picture_name . "_";
+		$path = "img/" . $picture_name . ".png";
+
+	}
 
 	public function uploadPicture($picture_name, $picture_data, $picture_owner_id)
 	{

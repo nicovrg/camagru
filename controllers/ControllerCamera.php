@@ -18,6 +18,13 @@ class ControllerCamera
 		$this->_picturesManager = new PictureManager;
 		$this->_connexionManager = new ConnexionManager;
 		$user = $this->_connexionManager->sessionLogin();
+		if ($user && isset($_POST["imageDataFile"]) && isset($_POST["imageNameFile"]))
+		{
+			$test = $_POST["imageDataFile"];
+			echo ("<script type='text/javascript'>console.log('in controller')</script>");
+			echo ("<script type='text/javascript'>console.log('imageDataFile = |$test|')</script>");
+			$this->_picturesManager->uploadFile($_POST["imageNameFile"], $_POST["imageDataFile"], $user->getAccount_id());
+		}
 		if ($user && isset($_POST["imageDataWebcam"]) && isset($_POST["imageNameWebcam"]))
 			$this->_picturesManager->uploadPicture($_POST["imageNameWebcam"], $_POST["imageDataWebcam"], $user->getAccount_id());
 		$this->_view = new View('Camera');
