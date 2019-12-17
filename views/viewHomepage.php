@@ -2,7 +2,7 @@
 <?php $like_manager = new LikeManager; ?>
 <?php $comment_manager = new CommentManager; ?>
 <?php $connexion_manager = new ConnexionManager; ?>
-<div> <!-- remove ? -->
+<div class="first_container">
 	<div class="gallery">
 		<?php foreach ($pictures as $picture): ?>
 		<div class='gallery_elements'>
@@ -56,7 +56,7 @@
 		</div>
 		<?php endforeach; ?>
 	</div>
-	<div> <!-- remove ? -->
+	<div>
 		<div id="pageBtn">
 			<form action="/" method="get" id="page-form-1">
 				<input type="hidden" value="" name="page" id="input_form_1">
@@ -67,8 +67,8 @@
 			<button id="previous" onclick="submitFormOne(<?= $_GET['page'] ?>)">previous</button>
 			<button id="next" onclick="submitFormTwo(<?= $_GET['page'] ?>)">next</button>
 		</div>
-	</div> <!-- remove ? -->
-</div> <!-- remove ? -->
+	</div>
+</div>
 
 <!-- http://192.168.99.100/?page=1 -->
 <!-- <script type="text/javascript">document.getElementById(canvas).style.height = 205%;</script> -->

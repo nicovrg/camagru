@@ -1,15 +1,9 @@
-var constraints = { video: { facingMode: "user" }, audio: false };
+var constraints = { video: { width: 640, height: 360 }, audio: false };
 const cameraView = document.querySelector("#camera--view");
 const cameraSensor = document.querySelector("#camera--sensor");
 const cameraTrigger = document.querySelector("#camera--trigger");
 const cameraSaver = document.querySelector("#camera--saver");
-
-function uploadFile ()
-{
-	console.log("send image form in js");
-	var formImageFile = document.getElementById("formImageFile");
-	formImageFile.submit();
-}
+const uploadFile = document.querySelector("#upload--file");
 
 function cameraStart() {
 	navigator.mediaDevices
@@ -46,8 +40,33 @@ cameraSaver.onclick = () => {
 	uploadImg(cameraSensor.toDataURL("image/png"));
 };
 
+uploadFile.onclick = () => {
+	console.log("send image form in js");
+	var imageDataFile = document.getElementById("imageDataFile");
+	var formImageFile = document.getElementById("formImageFile");
+	imageDataFile.click();
+	// cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
+	// formImageFile.submit();
+}
+
+function draw() {
+	cameraSensor.width = cameraView.videoWidth;
+	cameraSensor.height= cameraView.videoWidth;
+	var ctx = cameraSensor.getContext('2d');
+	ctx.drawImage(this, 0, 0);
+}
+
+// function uploadFile() {
+	
+// }
+
 window.onload = () => {
 	cameraStart();
+	document.getElementById("imageDataFile").onchange = function(e) {
+		var img = new Image();
+		img.onload = draw;
+		img.src = URL.createObjectURL(this.files[0]);
+	};
 	load_particules();
 }
 

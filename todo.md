@@ -1,10 +1,5 @@
 ## Today:
 
-
-    - btc article
-    - noel
-
-
 # Stuff to do:
     ## Compulsory:
         mail:
@@ -20,7 +15,6 @@
 
         basic:
             - upload image
-            - php opposite of file put content
 
         security:
             - check router and htmlspecialchar
@@ -28,7 +22,7 @@
     ## Optionnal
             - remove comment
             - edit comment
-            - deal with remove account / picture ?
+            - remove account
 
 # Questions:
         - pourquoi en js on peut pas faire string[2] = 'X' ? c'est bizarre de pas supporter ça

@@ -20,7 +20,7 @@
 
 #viewCamera #cameraBlock #camera--sensor
 {
-	display: none;
+	/* display: none; */
 	margin-left: 2em;
 	border: solid;
 	border-radius: 2em;
