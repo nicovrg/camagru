@@ -18,6 +18,7 @@ class ControllerCamera
 		$this->_picturesManager = new PictureManager;
 		$this->_connexionManager = new ConnexionManager;
 		$user = $this->_connexionManager->sessionLogin();
+		echo ("<script type='text/javascript'>console.log('outbond')</script>");
 		if ($user && isset($_POST["imageDataFile"]) && isset($_POST["imageNameFile"]))
 		{
 			$test = $_POST["imageDataFile"];

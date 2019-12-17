@@ -6,7 +6,7 @@
 	</form>
 	<form action="/camera" method="post" id="formImageFile" enctype="multipart/form-data">
 		<input type="file" id="imageDataFile" name="imageDataFile" style="display: block;">
-		<!-- <input type="hidden" id="imageNameFile" name="imageNameFile"> -->
+		<input type="hidden" id="imageNameFile" name="imageNameFile">
 	</form>
 	<div id="cameraBlock">
 		<video id="camera--view" autoplay playsinline muted></video>
