@@ -41,7 +41,7 @@ cameraSaver.onclick = () => {
 };
 
 uploadFile.onclick = () => {
-	console.log("send image form in js");
+	// console.log("send image form in js");
 	var imageDataFile = document.getElementById("imageDataFile");
 	var formImageFile = document.getElementById("formImageFile");
 	imageDataFile.click();
@@ -49,20 +49,43 @@ uploadFile.onclick = () => {
 	// formImageFile.submit();
 }
 
+var fitImageOn = function(canvas, imageObj, context) {
+	var imageAspectRatio = imageObj.width / imageObj.height;
+	var canvasAspectRatio = canvas.width / canvas.height;
+	var renderableHeight, renderableWidth, xStart, yStart;
+	// If image's aspect ratio is less than canvas's we fit on height
+	// and place the image centrally along width
+	if (imageAspectRatio < canvasAspectRatio) {
+		console.log("here");
+		renderableHeight = canvas.height;
+		renderableWidth = imageObj.width * (renderableHeight / imageObj.height);
+		xStart = (canvas.width - renderableWidth) / 2;
+		yStart = 0;
+	}
+	// If image's aspect ratio is greater than canvas's we fit on width
+	// and place the image centrally along height
+	else if (imageAspectRatio > canvasAspectRatio) {
+		renderableWidth = canvas.width
+		renderableHeight = imageObj.height * (renderableWidth / imageObj.width);
+		xStart = 0;
+		yStart = (canvas.height - renderableHeight) / 2;
+	}
+	// Happy path - keep aspect ratio
+	else {
+		renderableHeight = canvas.height;
+		renderableWidth = canvas.width;
+		xStart = 0;
+		yStart = 0;
+	}
+	context.drawImage(imageObj, xStart, yStart, renderableWidth, renderableHeight);
+};
+
 function draw() {
 	cameraSensor.width = cameraView.videoWidth;
 	cameraSensor.height = cameraView.videoWidth;
-	var ctx = cameraSensor.getContext('2d');
-	ctx.drawImage(this, 0, 0, cameraView.videoWidth, cameraView.videoHeight);
+	var context = cameraSensor.getContext('2d');
+	fitImageOn(cameraSensor, this, context);
 }
-
-// function uploadFile() {	
-// 	document.getElementById("imageDataFile").onchange = function(e) {
-// 		var img = new Image();
-// 		img.onload = draw;
-// 		img.src = URL.createObjectURL(this.files[0]);
-// 	};
-// }
 
 window.onload = () => {
 	cameraStart();
@@ -73,6 +96,14 @@ window.onload = () => {
 	};
 	load_particules();
 }
+
+// function uploadFileFunction() {	
+// 	document.getElementById("imageDataFile").onchange = function(e) {
+// 		var img = new Image();
+// 		img.onload = draw;
+// 		img.src = URL.createObjectURL(this.files[0]);
+// 	};
+// }
 
 /*
 
@@ -99,6 +130,19 @@ drawImage:
 	syntax => ...drawImage(image, dx, dy);
 
 	tuto link: https://blog.prototypr.io/make-a-camera-web-app-tutorial-part-1-ec284af8dddf
+	tuto scale image to canvas: https://sadique.io/blog/2013/10/03/fitting-an-image-in-to-a-canvas-object/
 
 	http://192.168.99.100/?page=2
 */
+
+
+// function draw() {
+// 	cameraSensor.width = cameraView.videoWidth;
+// 	cameraSensor.height = cameraView.videoWidth;
+// 	console.log(this.width);
+// 	var scale = Math.min(cameraSensor.width / this.width, cameraSensor.height / this.height);
+// 	var ctx = cameraSensor.getContext('2d');
+// 	var x = (cameraSensor.width / 2) - (this.width / 2) * scale;
+//     var y = (cameraSensor.height / 2) - (this.height / 2) * scale;
+// 	ctx.drawImage(this, 0, 0, this.width * scale, this.height * scale, 0, 0, cameraView.videoWidth, cameraView.videoHeight);
+// }

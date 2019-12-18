@@ -20,13 +20,13 @@ class ControllerCamera
 		$user = $this->_connexionManager->sessionLogin();
 		$data = $_POST["imageDataFile"];
 		$name = $_POST["imageNameFile"];
-		echo ("<script type='text/javascript'>console.log('outbond')</script>");
-		echo ("<script type='text/javascript'>console.log('data = $data')</script>");
-		echo ("<script type='text/javascript'>console.log('name = $name')</script>");
+		// echo ("<script type='text/javascript'>console.log('outbond')</script>");
+		// echo ("<script type='text/javascript'>console.log('data = $data')</script>");
+		// echo ("<script type='text/javascript'>console.log('name = $name')</script>");
 		if ($user && isset($_POST["imageDataFile"]) && isset($_POST["imageNameFile"]))
 		{
-			echo ("<script type='text/javascript'>console.log('in controller')</script>");
-			echo ("<script type='text/javascript'>console.log('imageDataFile = |$test|')</script>");
+			// echo ("<script type='text/javascript'>console.log('in controller')</script>");
+			// echo ("<script type='text/javascript'>console.log('imageDataFile = |$test|')</script>");
 			$this->_picturesManager->uploadFile($_POST["imageNameFile"], $_POST["imageDataFile"], $user->getAccount_id());
 		}
 		if ($user && isset($_POST["imageDataWebcam"]) && isset($_POST["imageNameWebcam"]))

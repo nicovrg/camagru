@@ -3,18 +3,16 @@
 # Stuff to do:
     ## Compulsory:
         mail:
-            - new account validation
             - modif mdp
+            - token system
+            - new account validation
             - nouveau commentaire sur photo
 
         webcam:
             - put a canvas on top of the other one
-            - check mix canvas in js
-            - add filters
+            - check mix canvas in php
             - upload images
-
-        basic:
-            - upload image
+            - add filters
 
         security:
             - check router and htmlspecialchar
