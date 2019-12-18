@@ -51,13 +51,17 @@ uploadFile.onclick = () => {
 
 function draw() {
 	cameraSensor.width = cameraView.videoWidth;
-	cameraSensor.height= cameraView.videoWidth;
+	cameraSensor.height = cameraView.videoWidth;
 	var ctx = cameraSensor.getContext('2d');
-	ctx.drawImage(this, 0, 0);
+	ctx.drawImage(this, 0, 0, cameraView.videoWidth, cameraView.videoHeight);
 }
 
-// function uploadFile() {
-	
+// function uploadFile() {	
+// 	document.getElementById("imageDataFile").onchange = function(e) {
+// 		var img = new Image();
+// 		img.onload = draw;
+// 		img.src = URL.createObjectURL(this.files[0]);
+// 	};
 // }
 
 window.onload = () => {
