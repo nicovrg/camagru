@@ -17,13 +17,14 @@ function cameraStart() {
 	});
 }
 
-function uploadImg(image, filter)
+function uploadImg(image)
 {
+	// param , filter
 	const imageDataWebcam = document.getElementById("imageDataWebcam");
-	const filterDataWebcam = document.getElementById("filterDataWebcam");
+	// const filterDataWebcam = document.getElementById("filterDataWebcam");
 	const formImageWebcam = document.getElementById("formImageWebcam");
 	imageDataWebcam.value = image;
-	filterDataWebcam.value = filter;
+	// filterDataWebcam.value = filter;
 	formImageWebcam.submit();
 }
 
