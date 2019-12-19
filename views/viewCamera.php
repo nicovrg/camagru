@@ -11,10 +11,10 @@
 		<canvas id="camera--sensor"></canvas>		
 	</div>
 	<div id="filter">
-		<img src="/filter/fox.png" onclick="selectFilter()">
-		<img src="/filter/tiger.png" onclick="selectFilter()">
-		<img src="/filter/tigre.png" onclick="selectFilter()">
-		<img src="/filter/koala.png" onclick="selectFilter()">
+		<img src="/filter/fox.png" onclick="selectFilter('fox')" id="fox">
+		<img src="/filter/tiger.png" onclick="selectFilter('tiger')" id="tiger">
+		<img src="/filter/tigre.png" onclick="selectFilter('tigre')" id="tigre">
+		<img src="/filter/koala.png" onclick="selectFilter('koala')" id="koala">
 		<!-- <img src="/filter/bitcoin.png" onclick=""> -->
 		<!-- <img src="/filter/ethereum.png" onclick=""> -->
 		<!-- <img src="/filter/safe.png" onclick=""> -->

@@ -45,7 +45,7 @@ cameraSaver.onclick = () => {
 
 uploadFile.onclick = () => {
 	var imageDataFile = document.getElementById("imageDataFile");
-	var formImageFile = document.getElementById("formImageFile");
+	// var formImageFile = document.getElementById("formImageFile");
 	imageDataFile.click();
 }
 
@@ -82,9 +82,14 @@ function draw() {
 	scaleImgCanvas(cameraSensor, this, context);
 }
 
-// function selectFilter() {
-// 	var filter = document.getElementById("filterDataWebcam");
-// }
+function selectFilter(filterName) {
+	var filter = document.getElementById(`${filterName}`);
+	var filterInput = document.getElementById("filterDataWebcam");
+	filter.style.border = "solid";
+	filter.style.borderColor = "green";
+	filterInput.value = filter.value;
+	console.log(filterInput.value);
+}
 
 window.onload = () => {
 	cameraStart();

@@ -32,8 +32,10 @@ class PictureManager extends Model
 		return $dest_image;
 	}
 
-	public function uploadPicture($picture_name, $picture_data, $picture_owner_id)
+	public function uploadPicture($picture_name, $picture_data, $filter_data, $picture_owner_id)
 	{
+		echo ("<script type='text/javascript'>console.log('picture_data = $picture_data')</script>");
+		echo ("<script type='text/javascript'>console.log('filter_data = $filter_data')</script>");
 		$picture_name = htmlspecialchars($picture_name);
 		while (file_exists("img/" . $picture_name . ".png"))
 			$picture_name = $picture_name . "_";
