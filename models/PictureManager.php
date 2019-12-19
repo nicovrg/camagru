@@ -2,25 +2,39 @@
 class PictureManager extends Model
 {
 	// This class contain the following methods:
-	// uploadPicture() => add an image from user file to server storage and add path to db
+	// uploadFile() => add an image from user file to server storage and add path to db
 	// uploadPicture() => add an image from webcam to server storage and add path to db
 	// getAllPictures() => return an array of Picture objects
 	// getPagePictures() => return an array of Picture objects for the selected page
 	// getNbPicturesDb() => return the number of picture in data base
 	// deletePicture() => delete the picture from data base and from server
 
-	public function uploadFile($picture_name, $picture_data, $picture_owner_id)
+	public function combinePicture($picture_data, $filter_data)
 	{
-		echo ("<script type='text/javascript'>console.log('in model')</script>");
-		echo ("<script type='text/javascript'>console.log('picture_name = $picture_name')</script>");
-		echo ("<script type='text/javascript'>console.log('picture_data = $picture_data')</script>");
-		while (file_exists("img/" . $picture_name . ".png"))
-			$picture_name = $picture_name . "_";
-		$path = "img/" . $picture_name . ".png";
+		$width = 200;
+		$height = 200;
+		$dest_image = imagecreatetruecolor($width, $height);
+		//make sure the transparency information is saved
+		imagesavealpha($dest_image, true);
+		//create a fully transparent background (127 means fully transparent)
+		$trans_background = imagecolorallocatealpha($dest_image, 0, 0, 0, 127);
+		//fill the image with a transparent background
+		imagefill($dest_image, 0, 0, $trans_background);
+		//take create image resources out of the 3 pngs we want to merge into destination image
+		$picture_data = imagecreatefrompng('1.png');
+		$filter_data = imagecreatefrompng('2.png');
+		//copy each png file on top of the destination (result) png
+		imagecopy($dest_image, $picture_data, 0, 0, 0, 0, $width, $height);
+		imagecopy($dest_image, $filter_data, 0, 0, 0, 0, $width, $height);
+		//send the appropriate headers and output the image in the browser
+		header('Content-Type: image/png');
+		imagepng($dest_image);
+		return $dest_image;
 	}
 
 	public function uploadPicture($picture_name, $picture_data, $picture_owner_id)
 	{
+		$picture_name = htmlspecialchars($picture_name);
 		while (file_exists("img/" . $picture_name . ".png"))
 			$picture_name = $picture_name . "_";
 		$path = "img/" . $picture_name . ".png";

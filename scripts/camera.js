@@ -17,11 +17,13 @@ function cameraStart() {
 	});
 }
 
-function uploadImg(image)
+function uploadImg(image, filter)
 {
 	const imageDataWebcam = document.getElementById("imageDataWebcam");
+	const filterDataWebcam = document.getElementById("filterDataWebcam");
 	const formImageWebcam = document.getElementById("formImageWebcam");
 	imageDataWebcam.value = image;
+	filterDataWebcam.value = filter;
 	formImageWebcam.submit();
 }
 
@@ -44,17 +46,14 @@ uploadFile.onclick = () => {
 	var imageDataFile = document.getElementById("imageDataFile");
 	var formImageFile = document.getElementById("formImageFile");
 	imageDataFile.click();
-	// cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
-	// formImageFile.submit();
 }
 
-var fitImageOn = function(canvas, imageObj, context) {
+var scaleImgCanvas = function(canvas, imageObj, context) {
 
 	var imageAspectRatio = imageObj.width / imageObj.height;
 	var canvasAspectRatio = canvas.width / canvas.height;
 	var renderableHeight, renderableWidth, xStart, yStart;
 	if (imageAspectRatio < canvasAspectRatio) {
-		console.log("here");
 		renderableHeight = canvas.height;
 		renderableWidth = imageObj.width * (renderableHeight / imageObj.height);
 		xStart = (canvas.width - renderableWidth) / 2;
@@ -79,8 +78,12 @@ function draw() {
 	cameraSensor.width = cameraView.videoWidth;
 	cameraSensor.height = cameraView.videoWidth;
 	var context = cameraSensor.getContext('2d');
-	fitImageOn(cameraSensor, this, context);
+	scaleImgCanvas(cameraSensor, this, context);
 }
+
+// function selectFilter() {
+// 	var filter = document.getElementById("filterDataWebcam");
+// }
 
 window.onload = () => {
 	cameraStart();

@@ -62,12 +62,13 @@
 	background: #000000;
 	transition: all 0.5s ease 0s;
 }
-#viewCamera #buttonBlock #camera--saver {
+
+/* #viewCamera #buttonBlock #camera--saver {
 	display: none;
 }
 #viewCamera #buttonBlock #camera--saver:hover {
 	display: none;
-}
+} */
 
 #viewCamera #filter {
 	display: flex;
@@ -81,4 +82,16 @@
 	margin-left: 0.5em;
 	width: 8em;
 	height: 8em;
+}
+
+#sidebar {
+	display: flex;
+	flex-direction: column;
+	margin-top: 5em;
+	margin-bottom: 5em;
+}
+
+#sidebar img {
+	width: 5em;
+	height: auto;
 }
