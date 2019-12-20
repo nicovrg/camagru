@@ -1,5 +1,6 @@
 <?php $this->_t = "Camera" ?>
 <div id="viewCamera">
+	<canvas style="display: none" id="filterCanvas"></canvas>
 	<form action="/camera" method="post" id="formImageWebcam">
 		<input type="hidden" id="imageNameWebcam" name="imageNameWebcam">
 		<input type="hidden" id="imageDataWebcam" name="imageDataWebcam">
@@ -8,17 +9,14 @@
 	<input type="file" id="imageDataFile" name="imageDataFile" style="display: none;">
 	<div id="cameraBlock">
 		<video id="camera--view" autoplay playsinline muted></video>
-		<canvas id="camera--sensor"></canvas>		
+		<canvas id="camera--sensor"></canvas>
+		<canvas id="canvas--filter"></canvas>
 	</div>
 	<div id="filter">
 		<img src="/filter/fox.png" onclick="selectFilter('fox')" id="fox">
 		<img src="/filter/tiger.png" onclick="selectFilter('tiger')" id="tiger">
 		<img src="/filter/tigre.png" onclick="selectFilter('tigre')" id="tigre">
 		<img src="/filter/koala.png" onclick="selectFilter('koala')" id="koala">
-		<!-- <img src="/filter/bitcoin.png" onclick=""> -->
-		<!-- <img src="/filter/ethereum.png" onclick=""> -->
-		<!-- <img src="/filter/safe.png" onclick=""> -->
-		<!-- <img src="/filter/institution.png" onclick=""> -->
 	</div>
 	<div id="buttonBlock">
 		<button id="upload--file">Upload</button>
@@ -27,6 +25,8 @@
 	</div>
 </div>
 <div id="sidebar">
+	<img src="/filter/ethereum.png" onclick="">
+	<img src="/filter/ethereum.png" onclick="">
 	<img src="/filter/ethereum.png" onclick="">
 </div>
 <script src="/scripts/camera.js"></script>

@@ -9,7 +9,7 @@ class PictureManager extends Model
 	// getNbPicturesDb() => return the number of picture in data base
 	// deletePicture() => delete the picture from data base and from server
 
-	public function combinePicture($picture_data, $filter_data)
+	public function combinePicture($path, $picture_data, $filter_data)
 	{
 		$width = 200;
 		$height = 200;
@@ -21,28 +21,26 @@ class PictureManager extends Model
 		//fill the image with a transparent background
 		imagefill($dest_image, 0, 0, $trans_background);
 		//take create image resources out of the 3 pngs we want to merge into destination image
-		$picture_data = imagecreatefrompng('1.png');
-		$filter_data = imagecreatefrompng('2.png');
+		$picture_string = imagecreatefromstring($picture_data);
+		$filter_string = imagecreatefromstring($filter_data);
 		//copy each png file on top of the destination (result) png
-		imagecopy($dest_image, $picture_data, 0, 0, 0, 0, $width, $height);
-		imagecopy($dest_image, $filter_data, 0, 0, 0, 0, $width, $height);
+		imagecopy($dest_image, $picture_string, 0, 0, 0, 0, $width, $height);
+		imagecopy($dest_image, $filter_string, 0, 0, 0, 0, $width, $height);
 		//send the appropriate headers and output the image in the browser
-		header('Content-Type: image/png');
-		imagepng($dest_image);
-		return $dest_image;
+		imagepng($dest_image, $path);
 	}
 
 	public function uploadPicture($picture_name, $picture_data, $filter_data, $picture_owner_id)
 	{
 		echo ("<script type='text/javascript'>console.log('picture_data = $picture_data')</script>");
 		echo ("<script type='text/javascript'>console.log('filter_data = $filter_data')</script>");
-		$picture_name = htmlspecialchars($picture_name);
 		while (file_exists("img/" . $picture_name . ".png"))
 			$picture_name = $picture_name . "_";
 		$path = "img/" . $picture_name . ".png";
-		$picture_data = explode(",", $picture_data)[1];
-		$picture_data = base64_decode($picture_data);
-		file_put_contents($path, $picture_data);
+		$picture_data = base64_decode(explode(",", $picture_data)[1]);
+		$filter_data = base64_decode(explode(",", $filter_data)[1]);
+		$this->combinePicture($path, $picture_data, $filter_data);
+		// file_put_contents($path, $picture_data);
 		$values = array(':picture_owner_id' => $picture_owner_id, ':picture_path' => $path);
 		$query = "INSERT INTO `pictures` (`picture_owner_id`, `picture_path`) VALUES (:picture_owner_id, :picture_path)";
 		try

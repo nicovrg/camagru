@@ -16,15 +16,34 @@
 	border: solid;
 	border-radius: 2em;
 	border-color: rgb(25, 39, 53);
+	width: 25em;
+	height: 14em;
 }
 
 #viewCamera #cameraBlock #camera--sensor
 {
 	/* display: none; */
-	margin-left: 2em;
+	position: absolute;
+	margin-left: 27em;
+	width: 25em;
+	height: 14em;
 	border: solid;
 	border-radius: 2em;
 	border-color: blue;
+	z-index: 1;
+}
+
+#viewCamera #cameraBlock #canvas--filter
+{
+	/* display: none; */
+	position: absolute;
+	margin-left: 27em;
+	width: 25em;
+	height: 14em;
+	border: solid;
+	border-radius: 2em;
+	border-color: red;
+	z-index: 2;
 }
 
 /* buttonBlock */
@@ -82,6 +101,7 @@
 	margin-left: 0.5em;
 	width: 8em;
 	height: 8em;
+	border: solid transparent;
 }
 
 #sidebar {
@@ -94,4 +114,6 @@
 #sidebar img {
 	width: 5em;
 	height: auto;
+	margin-top: 1em;
+	margin-bottom: 1em;
 }

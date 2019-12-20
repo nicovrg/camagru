@@ -1,37 +1,46 @@
+var filterSelected = null;
 var constraints = { video: { width: 320, height: 180 }, audio: false };
 const cameraView = document.querySelector("#camera--view");
 const cameraSensor = document.querySelector("#camera--sensor");
 const cameraTrigger = document.querySelector("#camera--trigger");
 const cameraSaver = document.querySelector("#camera--saver");
 const uploadFile = document.querySelector("#upload--file");
+const filterCanvasUp = document.querySelector("#canvas--filter");
+const filterCanvas = document.getElementById("filterCanvas");
+const formImageWebcam = document.getElementById("formImageWebcam");
+const pictureInput = document.getElementById("imageDataWebcam");
+const filterInput = document.getElementById('filterDataWebcam');
 
 function cameraStart() {
 	navigator.mediaDevices
 		.getUserMedia(constraints)
 		.then(function(stream) {
-		track = stream.getTracks();
-		cameraView.srcObject = stream;
-	})
-	.catch(function(error) {
-		console.error("fail to access webcam stream", error);
-	});
+			track = stream.getTracks();
+			cameraView.srcObject = stream;
+		}).catch(function(error) {});
 }
 
 function uploadImg(image)
 {
-	// param , filter
-	const imageDataWebcam = document.getElementById("imageDataWebcam");
-	// const filterDataWebcam = document.getElementById("filterDataWebcam");
-	const formImageWebcam = document.getElementById("formImageWebcam");
-	imageDataWebcam.value = image;
-	// filterDataWebcam.value = filter;
+	filterCanvas.width = cameraSensor.width;
+	filterCanvas.height = cameraSensor.height;
+	let ctx = filterCanvas.getContext('2d');
+	let filter = new Image();
+	filter.src = `/filter/${filterSelected}.png`;
+	ctx.drawImage(filter, 20, 20, 100, 100);
+	filterInput.value = filterCanvas.toDataURL("image/png");
+	pictureInput.value = image;
 	formImageWebcam.submit();
+	// console.log(filterInput.value);
+	// console.log(pictureInput.value);
 }
 
 cameraTrigger.onclick = () => {
 	cameraSensor.style.display = "block";
 	cameraSensor.width = cameraView.videoWidth;
 	cameraSensor.height = cameraView.videoHeight;
+	filterCanvasUp.width = cameraView.videoWidth;
+	filterCanvasUp.height = cameraView.videoHeight;
 	cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
 };
 
@@ -45,15 +54,13 @@ cameraSaver.onclick = () => {
 
 uploadFile.onclick = () => {
 	var imageDataFile = document.getElementById("imageDataFile");
-	// var formImageFile = document.getElementById("formImageFile");
 	imageDataFile.click();
 }
 
 var scaleImgCanvas = function(canvas, imageObj, context) {
-
+	var renderableHeight, renderableWidth, xStart, yStart;
 	var imageAspectRatio = imageObj.width / imageObj.height;
 	var canvasAspectRatio = canvas.width / canvas.height;
-	var renderableHeight, renderableWidth, xStart, yStart;
 	if (imageAspectRatio < canvasAspectRatio) {
 		renderableHeight = canvas.height;
 		renderableWidth = imageObj.width * (renderableHeight / imageObj.height);
@@ -72,12 +79,20 @@ var scaleImgCanvas = function(canvas, imageObj, context) {
 		xStart = 0;
 		yStart = 0;
 	}
+	console.log("draw");
 	context.drawImage(imageObj, xStart, yStart, renderableWidth, renderableHeight);
+	console.log(`imageObj = ${imageObj}`);
+	console.log(`xStart = ${xStart}`);
+	console.log(`yStart = ${yStart}`);
+	console.log(`renderableWidth = ${renderableWidth}`);
+	console.log(`renderableHeight = ${renderableHeight}`);
 };
 
 function draw() {
 	cameraSensor.width = cameraView.videoWidth;
 	cameraSensor.height = cameraView.videoWidth;
+	this.width = cameraSensor.width;
+	this.height = cameraSensor.height;
 	var context = cameraSensor.getContext('2d');
 	scaleImgCanvas(cameraSensor, this, context);
 }
@@ -85,10 +100,22 @@ function draw() {
 function selectFilter(filterName) {
 	var filter = document.getElementById(`${filterName}`);
 	var filterInput = document.getElementById("filterDataWebcam");
-	filter.style.border = "solid";
-	filter.style.borderColor = "green";
-	filterInput.value = filter.value;
-	console.log(filterInput.value);
+	var ctx = filterCanvasUp.getContext('2d');
+	filterSelected = filterName;
+	if (filter.style.borderColor == "lime")
+	{
+		filter.style.borderColor = "transparent";
+		ctx.clearRect(0, 0, filterCanvasUp.width, filterCanvasUp.height);
+	}
+	else
+	{
+		filter.style.borderColor = "lime";
+		let tmpImg = new Image();
+		tmpImg.src = `/filter/${filterSelected}.png`;
+		ctx.drawImage(tmpImg, 20, 20, 100, 100);
+	}
+	filterInput.value = filter.src;
+	// console.log(filterInput.value);
 }
 
 window.onload = () => {

@@ -28,7 +28,6 @@ abstract class Model
 		$req->closeCursor();
 		return $array;
 	}
-
 }
 
 // <!-- model class define connexion to the database methods for it's child classes -->
