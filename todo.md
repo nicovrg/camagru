@@ -11,7 +11,7 @@
 
         webcam:
             - add sidebar
-            - shoot only available when filter add
+            - shoot only available when filter add (foreach element of class filter, if )
 
         security:
             - check router and htmlspecialchar
