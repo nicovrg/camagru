@@ -1,3 +1,5 @@
+var picUpload = false;
+var fileUpload = false;
 var filterSelected = null;
 var constraints = { video: { width: 320, height: 180 }, audio: false };
 const cameraView = document.querySelector("#camera--view");
@@ -40,9 +42,18 @@ cameraTrigger.onclick = () => {
 	filterCanvasUp.width = cameraView.videoWidth;
 	filterCanvasUp.height = cameraView.videoHeight;
 	cameraSensor.getContext("2d").drawImage(cameraView, 0, 0);
+	picUpload = true;
+	console.log(picUpload);
 };
 
 cameraSaver.onclick = () => {
+	console.log(`fileUpload = ${fileUpload}`);
+	console.log(`picUpload = ${picUpload}`);
+	console.log(`filterSelected = ${filterSelected}`);
+	if ((fileUpload == false && picUpload == false) || filterSelected == null) {
+		alert("you need both a picture and a filter to save because of strange guidelines");
+		return ;
+	}
 	var name = prompt("Enter picture name:");
 	var imageNameWebcam = document.getElementById("imageNameWebcam");
 	if (name != null)
@@ -54,6 +65,8 @@ cameraSaver.onclick = () => {
 uploadFile.onclick = () => {
 	var imageDataFile = document.getElementById("imageDataFile");
 	imageDataFile.click();
+	fileUpload = true;
+	console.log(fileUpload);
 }
 
 var scaleImgCanvas = function(canvas, imageObj, context) {
@@ -95,6 +108,7 @@ function selectFilter(filterName) {
 	var filterInput = document.getElementById("filterDataWebcam");
 	var ctx = filterCanvasUp.getContext('2d');
 	filterSelected = filterName;
+	console.log(filterSelected);
 	if (filter.style.borderColor == "lime") {
 		filter.style.borderColor = "transparent";
 		ctx.clearRect(0, 0, filterCanvasUp.width, filterCanvasUp.height);

@@ -19,7 +19,7 @@ class ControllerCamera
 		$this->_connexionManager = new ConnexionManager;
 		$user = $this->_connexionManager->sessionLogin();
 		$owner = $user->getAccount_id();
-		$pictures = $this->_picturesManager->getRecentPictures($owner); //maybe move down, dont forget
+		$pictures = $this->_picturesManager->getRecentPictures($owner);
 		if ($user && isset($_POST["imageDataWebcam"]) && isset($_POST["filterDataWebcam"]) && isset($_POST["imageNameWebcam"]))
 			$this->_picturesManager->uploadPicture(htmlspecialchars($_POST["imageNameWebcam"]), $_POST["imageDataWebcam"], $_POST["filterDataWebcam"], $user->getAccount_id());
 		if ($user && isset($_POST["inputDeletePicture"]))

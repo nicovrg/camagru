@@ -16,10 +16,10 @@
 		<canvas id="canvas--filter"></canvas>
 	</div>
 	<div id="filter">
-		<img src="/filter/fox.png" onclick="selectFilter('fox')" id="fox">
-		<img src="/filter/tiger.png" onclick="selectFilter('tiger')" id="tiger">
-		<img src="/filter/tigre.png" onclick="selectFilter('tigre')" id="tigre">
-		<img src="/filter/koala.png" onclick="selectFilter('koala')" id="koala">
+		<img src="/filter/fox.png" onclick="selectFilter('fox')" id="fox" class="filter">
+		<img src="/filter/tiger.png" onclick="selectFilter('tiger')" id="tiger" class="filter">
+		<img src="/filter/tigre.png" onclick="selectFilter('tigre')" id="tigre" class="filter">
+		<img src="/filter/koala.png" onclick="selectFilter('koala')" id="koala" class="filter">
 	</div>
 	<div id="buttonBlock">
 		<button id="upload--file">Upload</button>
