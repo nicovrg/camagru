@@ -22,6 +22,8 @@ class ControllerCamera
 		$pictures = $this->_picturesManager->getRecentPictures($owner); //maybe move down, dont forget
 		if ($user && isset($_POST["imageDataWebcam"]) && isset($_POST["filterDataWebcam"]) && isset($_POST["imageNameWebcam"]))
 			$this->_picturesManager->uploadPicture(htmlspecialchars($_POST["imageNameWebcam"]), $_POST["imageDataWebcam"], $_POST["filterDataWebcam"], $user->getAccount_id());
+		if ($user && isset($_POST["inputDeletePicture"]))
+			$this->_picturesManager->deletePicture($_POST["inputDeletePicture"]);
 		$this->_view = new View('Camera');
 		$this->_view->generate(array('pictures' => $pictures));
 	}

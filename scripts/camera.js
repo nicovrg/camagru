@@ -48,6 +48,7 @@ cameraSaver.onclick = () => {
 	if (name != null)
 		imageNameWebcam.value = name;
 	uploadImg(cameraSensor.toDataURL("image/png"));
+	// location.reload(true);
 };
 
 uploadFile.onclick = () => {
@@ -94,19 +95,24 @@ function selectFilter(filterName) {
 	var filterInput = document.getElementById("filterDataWebcam");
 	var ctx = filterCanvasUp.getContext('2d');
 	filterSelected = filterName;
-	if (filter.style.borderColor == "lime")
-	{
+	if (filter.style.borderColor == "lime") {
 		filter.style.borderColor = "transparent";
 		ctx.clearRect(0, 0, filterCanvasUp.width, filterCanvasUp.height);
 	}
-	else
-	{
+	else {
 		filter.style.borderColor = "lime";
 		let tmpImg = new Image();
 		tmpImg.src = `/filter/${filterSelected}.png`;
 		ctx.drawImage(tmpImg, 20, 20, 100, 100);
 	}
 	filterInput.value = filter.src;
+}
+
+function deletePicture(pictureId) {
+	const formDeletePicture = document.getElementById("formDeletePicture");
+	const inputDeletePicture = document.getElementById("inputDeletePicture");
+	inputDeletePicture.value = pictureId;
+	formDeletePicture.submit();
 }
 
 window.onload = () => {

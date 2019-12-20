@@ -10,9 +10,6 @@
             - generate a random string => send mail with random => enter random validation
 
         webcam:
-            - check mix canvas in php
-            - upload images
-            - add filters
             - add sidebar
             - shoot only available when filter add
 

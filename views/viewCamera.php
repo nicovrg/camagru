@@ -6,6 +6,9 @@
 		<input type="hidden" id="imageDataWebcam" name="imageDataWebcam">
 		<input type="hidden" id="filterDataWebcam" name="filterDataWebcam">
 	</form>
+	<form action="/camera" method="post" id="formDeletePicture">
+		<input type="hidden" id="inputDeletePicture" name="inputDeletePicture" style="display: none;">
+	</form>
 	<input type="file" id="imageDataFile" name="imageDataFile" style="display: none;">
 	<div id="cameraBlock">
 		<video id="camera--view" autoplay playsinline muted></video>
@@ -25,9 +28,11 @@
 	</div>
 </div>
 <div id="sidebar">
+	<?php if ($pictures): ?>
 	<?php foreach ($pictures as $picture): ?>
-		<img src="<?= $picture->path() ?>">
+		<img src="<?= $picture->path() ?>" onclick="deletePicture(<?= $picture->id() ?>)">
 	<?php endforeach; ?>
+	<?php endif; ?>
 </div>
 <script src="/scripts/camera.js"></script>
 
