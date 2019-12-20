@@ -83,8 +83,6 @@ class ConnexionManager extends Checker
 			$req->closeCursor();
 			if (is_array($data))
 				return new User($data);
-				// foreach($data as $key => $val) 
-				// 	echo ("<script type='text/javascript'>console.log('" . $key . "=" . $val . "')</script>");
 		}
 		return null;
 	}

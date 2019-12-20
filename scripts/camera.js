@@ -31,8 +31,6 @@ function uploadImg(image)
 	filterInput.value = filterCanvas.toDataURL("image/png");
 	pictureInput.value = image;
 	formImageWebcam.submit();
-	// console.log(filterInput.value);
-	// console.log(pictureInput.value);
 }
 
 cameraTrigger.onclick = () => {
@@ -79,13 +77,7 @@ var scaleImgCanvas = function(canvas, imageObj, context) {
 		xStart = 0;
 		yStart = 0;
 	}
-	console.log("draw");
 	context.drawImage(imageObj, xStart, yStart, renderableWidth, renderableHeight);
-	console.log(`imageObj = ${imageObj}`);
-	console.log(`xStart = ${xStart}`);
-	console.log(`yStart = ${yStart}`);
-	console.log(`renderableWidth = ${renderableWidth}`);
-	console.log(`renderableHeight = ${renderableHeight}`);
 };
 
 function draw() {
@@ -115,7 +107,6 @@ function selectFilter(filterName) {
 		ctx.drawImage(tmpImg, 20, 20, 100, 100);
 	}
 	filterInput.value = filter.src;
-	// console.log(filterInput.value);
 }
 
 window.onload = () => {
@@ -128,13 +119,6 @@ window.onload = () => {
 	load_particules();
 }
 
-// function uploadFileFunction() {	
-// 	document.getElementById("imageDataFile").onchange = function(e) {
-// 		var img = new Image();
-// 		img.onload = draw;
-// 		img.src = URL.createObjectURL(this.files[0]);
-// 	};
-// }
 
 /*
 
@@ -168,5 +152,11 @@ fitImageOn:
 tuto link: https://blog.prototypr.io/make-a-camera-web-app-tutorial-part-1-ec284af8dddf
 tuto scale image to canvas: https://sadique.io/blog/2013/10/03/fitting-an-image-in-to-a-canvas-object/
 
-http://192.168.99.100/?page=2
+pratique:
+	http://192.168.99.100/?page=2
+	console.log(`imageObj = ${imageObj}`);
+	console.log(`xStart = ${xStart}`);
+	console.log(`yStart = ${yStart}`);
+	console.log(`renderableWidth = ${renderableWidth}`);
+	console.log(`renderableHeight = ${renderableHeight}`);
 */

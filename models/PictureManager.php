@@ -7,6 +7,7 @@ class PictureManager extends Model
 	// getAllPictures() => return an array of Picture objects
 	// getPagePictures() => return an array of Picture objects for the selected page
 	// getNbPicturesDb() => return the number of picture in data base
+	// getRecentPictures() => return an array of picture taken by the user in the last 20 minutes
 	// deletePicture() => delete the picture from data base and from server
 
 	public function combinePicture($path, $picture_data, $filter_data)
@@ -14,33 +15,24 @@ class PictureManager extends Model
 		$width = 200;
 		$height = 200;
 		$dest_image = imagecreatetruecolor($width, $height);
-		//make sure the transparency information is saved
 		imagesavealpha($dest_image, true);
-		//create a fully transparent background (127 means fully transparent)
 		$trans_background = imagecolorallocatealpha($dest_image, 0, 0, 0, 127);
-		//fill the image with a transparent background
 		imagefill($dest_image, 0, 0, $trans_background);
-		//take create image resources out of the 3 pngs we want to merge into destination image
 		$picture_string = imagecreatefromstring($picture_data);
 		$filter_string = imagecreatefromstring($filter_data);
-		//copy each png file on top of the destination (result) png
 		imagecopy($dest_image, $picture_string, 0, 0, 0, 0, $width, $height);
 		imagecopy($dest_image, $filter_string, 0, 0, 0, 0, $width, $height);
-		//send the appropriate headers and output the image in the browser
 		imagepng($dest_image, $path);
 	}
 
 	public function uploadPicture($picture_name, $picture_data, $filter_data, $picture_owner_id)
 	{
-		echo ("<script type='text/javascript'>console.log('picture_data = $picture_data')</script>");
-		echo ("<script type='text/javascript'>console.log('filter_data = $filter_data')</script>");
 		while (file_exists("img/" . $picture_name . ".png"))
 			$picture_name = $picture_name . "_";
 		$path = "img/" . $picture_name . ".png";
 		$picture_data = base64_decode(explode(",", $picture_data)[1]);
 		$filter_data = base64_decode(explode(",", $filter_data)[1]);
 		$this->combinePicture($path, $picture_data, $filter_data);
-		// file_put_contents($path, $picture_data);
 		$values = array(':picture_owner_id' => $picture_owner_id, ':picture_path' => $path);
 		$query = "INSERT INTO `pictures` (`picture_owner_id`, `picture_path`) VALUES (:picture_owner_id, :picture_path)";
 		try
@@ -91,10 +83,7 @@ class PictureManager extends Model
 			throw new Exception('Database query error');
 		}
 		while ($data = $req->fetch(PDO::FETCH_ASSOC))
-		{
 			$array[] = new Picture($data);
-			$i++;
-		}
 		$req->closeCursor();
 		return $array;
 	}
@@ -131,9 +120,37 @@ class PictureManager extends Model
 		return true;
 	}
 
+	public function getRecentPictures($picture_owner)
+	{
+		$values = array(':picture_owner' => $picture_owner);
+		$query = "SELECT * FROM `pictures` WHERE (`picture_owner_id` = :picture_owner)";
+		try
+		{
+			$req = $this->getDb()->prepare($query);
+			$req->execute($values);
+		}
+		catch (PDOException $e)
+		{
+			throw new Exception('Database query error');
+		}
+		while ($data = $req->fetch(PDO::FETCH_ASSOC))
+			$array[] = new Picture($data);
+		$req->closeCursor();
+		return $array;
+	}
+
 	public function getAllPictures()
 	{
 		return $this->getAll('pictures', Picture);
 	}
 }
+/*
+combinePicture:
+	make sure the transparency information is saved
+	create a fully transparent background (127 means fully transparent)
+	fill the image with a transparent background
+	take create image resources out of the 3 pngs we want to merge into destination image
+	copy each png file on top of the destination (result) png
+	send the appropriate headers and output the image in the browser
+*/
 ?>

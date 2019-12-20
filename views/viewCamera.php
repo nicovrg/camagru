@@ -25,9 +25,9 @@
 	</div>
 </div>
 <div id="sidebar">
-	<img src="/filter/ethereum.png" onclick="">
-	<img src="/filter/ethereum.png" onclick="">
-	<img src="/filter/ethereum.png" onclick="">
+	<?php foreach ($pictures as $picture): ?>
+		<img src="<?= $picture->path() ?>">
+	<?php endforeach; ?>
 </div>
 <script src="/scripts/camera.js"></script>
 
