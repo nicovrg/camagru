@@ -21,7 +21,8 @@ class CommentManager extends Checker
 			throw new Exception('Database query error');
 		}
 		$req->closeCursor();
-		// echo ("<script type='text/javascript'>console.log('commentBtn ended')</script>");
+		mail("nicolasvergne88@gmail.com", "test", "test");
+		echo ("<script type='text/javascript'>console.log('mail supposed to be sent')</script>");
 	}
 
 	// public function getCommentsPicId($picture_id)

@@ -1,4 +1,4 @@
-#viewCamera
+	#viewCamera
 {
 	display: flex;
 	justify-content: center;
@@ -42,7 +42,7 @@
 	height: 14em;
 	border: solid;
 	border-radius: 2em;
-	border-color: red;
+	border-color: rgb(25, 39, 53);
 	z-index: 2;
 }
 
@@ -81,13 +81,6 @@
 	background: #000000;
 	transition: all 0.5s ease 0s;
 }
-
-/* #viewCamera #buttonBlock #camera--saver {
-	display: none;
-}
-#viewCamera #buttonBlock #camera--saver:hover {
-	display: none;
-} */
 
 #viewCamera #filter {
 	display: flex;
