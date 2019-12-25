@@ -12,11 +12,26 @@ class ControllerRegister
 			$this->register();
 	}
 
+	private function sendmail($email, $token)
+	{
+		$to = $email;
+		$subject = "activation code";
+		$message = "activation link:" . $_SERVER['SERVER_NAME'] . "/activation" . "/" . $token;
+		$headers = 'From: guillaume@guillaumerx.fr' . "\r\n" . 'Reply-To: guillaume@guillaumerx.fr' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
+		// echo ("<script type='text/javascript'>console.log('".$_SERVER['SERVER_NAME']."')</script>");
+		return (mail($to, $subject, $message, $headers));
+	}
+
+	//move post from register to activation?
+
 	private function register()
 	{
 		$this->_registerManager = new RegisterManager;
 		if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['password']) && isset($_POST['confirm_password']) && isset($_POST['confirm']))
 		{
+			$email = $_POST['email'];
+			$token = hash('ripemd160', hash('ripemd160', $email));
+			$this->sendmail($email, $token);
 			$this->_registerManager->register($_POST['username'], $_POST['password'], $_POST['confirm_password'], $_POST['email']);
 			header("Refresh: 1; URL='/login'");
 		}

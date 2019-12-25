@@ -137,6 +137,7 @@ CREATE TABLE `users` (
   `email` varchar(255) CHARACTER SET utf8 NOT NULL,
   `username` varchar(255) CHARACTER SET utf8 NOT NULL,
   `password` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `token` varchar(255) CHARACTER SET utf8 NOT NULL,
   `reg_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -144,8 +145,8 @@ CREATE TABLE `users` (
 -- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`account_id`, `email`, `username`, `password`, `reg_time`) VALUES
-(12, 'test@test.com', 'test', '49cbc143897d40a775f04737d1caa81a83bb26eadd313e5679b75033db016ce3', '2019-12-19 21:45:28');
+INSERT INTO `users` (`account_id`, `email`, `username`, `password`, `token`, `reg_time`) VALUES
+(12, 'test@test.com', 'test', '49cbc143897d40a775f04737d1caa81a83bb26eadd313e5679b75033db016ce3', '2019-12-19 21:45:28', '');
 
 --
 -- Index pour les tables déchargées

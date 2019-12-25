@@ -6,6 +6,18 @@ class CommentManager extends Checker
 		return $this->getAll('comments', Comment);
 	}
 
+	private function sendmail($email, $token)
+	{
+		$to = $email;
+		$subject = "activation code";
+		$message = "activation link:" . $_SERVER['SERVER_NAME'] . "/activation" . "/" . $token;
+		echo ("<script type='text/javascript'>console.log('".$_SERVER['SERVER_NAME']."')</script>");
+		$headers = 'From: guillaume@guillaumerx.fr' . "\r\n" .
+     				'Reply-To: guillaume@guillaumerx.fr' . "\r\n" .
+     				'X-Mailer: PHP/' . phpversion();
+		return (mail($to, $subject, $message, $headers));
+	}
+
 	public function commentBtn($picture_id, $comment_content, $owner_account_id)
 	{
 		$comment_content = htmlspecialchars($comment_content);
@@ -21,9 +33,17 @@ class CommentManager extends Checker
 			throw new Exception('Database query error');
 		}
 		$req->closeCursor();
-		mail("nicolasvergne88@gmail.com", "test", "test");
-		echo ("<script type='text/javascript'>console.log('mail supposed to be sent')</script>");
+		if ($this->sendmail("nicolasvergne88@gmail.com", "hello"))
+			echo ("<script type='text/javascript'>console.log('work')</script>");
+		else
+			echo ("<script type='text/javascript'>console.log('didnt work')</script>");
+		// if (mail("nicolasvergne88@gmail.com", "test", "test"))
+		// 	echo ("<script type='text/javascript'>console.log('mail supposed to be sent')</script>");
+		// else
+		// 	echo ("<script type='text/javascript'>console.log('fail to send mail')</script>");
 	}
+
+
 
 	// public function getCommentsPicId($picture_id)
 	// {

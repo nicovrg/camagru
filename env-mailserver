@@ -23,7 +23,7 @@ POSTMASTER_ADDRESS=
 # empty => localhost only
 # host => Add docker host (ipv4 only)
 # network => Add all docker containers (ipv4 only)
-PERMIT_DOCKER=
+PERMIT_DOCKER=network
 
 # empty => modern
 # modern => Enables TLSv1.2 and modern ciphers only. (default)

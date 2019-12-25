@@ -9,6 +9,7 @@ services:
             - ./:/var/www/html
         links:
             - db:db
+            - mail:mail
     db:
         image: mysql:5.7
         ports:
@@ -27,8 +28,8 @@ services:
             - db:db
     mail:
         image: tvial/docker-mailserver:latest
-        hostname: mail
-        domainname: domain.com
+        hostname: guillaumerx.fr
+        domainname: guillaumerx.fr
         container_name: mail
         ports:
             - "25:25"

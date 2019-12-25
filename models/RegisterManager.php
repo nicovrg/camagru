@@ -1,8 +1,8 @@
 <?php
 
 // This class contain the following method:
-	//register() => call methods from Checker class to verify if inputs are valid and authorized
-	//then register() => add the user in the database
+	//register() => register a user in db
+	//activate() => valid user account in db (token become valid)
  
 class RegisterManager extends Checker
 {
@@ -10,7 +10,6 @@ class RegisterManager extends Checker
 	{
 		$email = trim($email);
 		$username = trim($username);
-
 		if (!$this->checkUsernameSyntax($username))
 			throw new Exception('Invalid Username');
 		if (!$this->checkPasswordSyntax($password, $password_conf))
@@ -22,8 +21,26 @@ class RegisterManager extends Checker
 		if (!is_null($this->getEmailId($email)))
 			throw new Exception('Email already exist');
 		$hash = hash('sha256', $password);
-		$values = array(':username' => $username, ':password' => $hash, ':email' => $email);
-		$query = "INSERT INTO `users` (`username`, `password`, `email`) VALUES (:username, :password, :email)";
+		$token = hash('ripemd160', hash('ripemd160', $email));
+		$values = array(':username' => $username, ':password' => $hash, ':email' => $email, ':token' => $token);
+		$query = "INSERT INTO `users` (`username`, `password`, `email`, `token`) VALUES (:username, :password, :email, :token)";
+		try
+		{
+			$req = $this->getDb()->prepare($query);
+			$req->execute($values);
+			$req->closeCursor();
+		}
+		catch (PDOException $e)
+		{
+			throw new Exception('Query error');
+		}
+	}
+
+	public function activate($token)
+	{
+		$valid = "valid";
+		$values = array(':token' => $token, ':valid' => $valid);
+		$query = "UPDATE `users` SET `token` = :valid WHERE `token` = :token";
 		try
 		{
 			$req = $this->getDb()->prepare($query);

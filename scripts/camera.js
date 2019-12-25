@@ -22,8 +22,7 @@ function cameraStart() {
 		}).catch(function(error) {});
 }
 
-function uploadImg(image)
-{
+function uploadImg(image) {
 	filterCanvas.width = cameraSensor.width;
 	filterCanvas.height = cameraSensor.height;
 	let ctx = filterCanvas.getContext('2d');
@@ -59,7 +58,6 @@ cameraSaver.onclick = () => {
 	if (name != null)
 		imageNameWebcam.value = name;
 	uploadImg(cameraSensor.toDataURL("image/png"));
-	// location.reload(true);
 };
 
 uploadFile.onclick = () => {
