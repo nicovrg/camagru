@@ -1,9 +1,9 @@
 <?php
-// This class contain the following methods:
+	// This class contain the following methods:
 	// login() => filter input, get user hash pwd from db and compare them
-	// registerLoginSession() => update session_id and account_id in sessions table
-	// sessionLogin() => check if user session is valid and active (return true if yes)
 	// logout() => reset ConnexionManager attributes to null/false and delete from db user session
+	// sessionLogin() => check if user session is valid and active (return true if yes)
+	// registerLoginSession() => update session_id and account_id in sessions table
 
 class ConnexionManager extends Checker
 {

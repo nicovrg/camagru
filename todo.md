@@ -17,6 +17,13 @@
         error:
             - fix bug with <script type='text/javascript'>alert('THE GAME');</script> in camera when you enter picture name
 
+        react start:
+            - brew install node
+            - brew install yarn
+            - yarn global add create-react-app
+            - create-react-app --help
+
+
 
 # Questions:
         - pourquoi en js on peut pas faire string[2] = 'X' ? c'est bizarre de pas supporter ça
