@@ -1,11 +1,22 @@
 <?php
 
-// This class contain the following method:
+	// This class contain the following method:
 	//register() => register a user in db
 	//activate() => valid user account in db (token become valid)
- 
+
 class RegisterManager extends Checker
 {
+	private function sendmail($email, $token)
+	{
+		$to = $email;
+		$subject = "Account Activation Code";
+		$message = "activation link:" . $_SERVER['SERVER_NAME'] . "/activation" . "/" . $token;
+		$headers =	'From: guillaume@guillaumerx.fr' . "\r\n" .
+     				'Reply-To: guillaume@guillaumerx.fr' . "\r\n" .
+     				'X-Mailer: PHP/' . phpversion();
+		return (mail($to, $subject, $message, $headers));
+	}
+
 	public function register($username, $password, $password_conf, $email)
 	{
 		$email = trim($email);
@@ -21,7 +32,7 @@ class RegisterManager extends Checker
 		if (!is_null($this->getEmailId($email)))
 			throw new Exception('Email already exist');
 		$hash = hash('sha256', $password);
-		$token = hash('ripemd160', hash('ripemd160', $email));
+		$token = substr(md5(mt_rand()),0,15);
 		$values = array(':username' => $username, ':password' => $hash, ':email' => $email, ':token' => $token);
 		$query = "INSERT INTO `users` (`username`, `password`, `email`, `token`) VALUES (:username, :password, :email, :token)";
 		try
@@ -34,23 +45,43 @@ class RegisterManager extends Checker
 		{
 			throw new Exception('Query error');
 		}
+		if (!$this->sendmail($email, $token))
+			throw new Exception('SA A MERDE JACKY');
 	}
 
 	public function activate($token)
 	{
-		$valid = "valid";
-		$values = array(':token' => $token, ':valid' => $valid);
-		$query = "UPDATE `users` SET `token` = :valid WHERE `token` = :token";
+		$values = array(':token' => $token);
+
+		$query = "SELECT * FROM users WHERE (token = :token)";
 		try
 		{
 			$req = $this->getDb()->prepare($query);
 			$req->execute($values);
-			$req->closeCursor();
 		}
 		catch (PDOException $e)
 		{
 			throw new Exception('Query error');
 		}
+		$data = $req->fetch(PDO::FETCH_ASSOC);
+		if (is_array($data))
+		{
+			$query = "UPDATE users SET activated = 1 WHERE (token = :token)";
+			try
+			{
+				$req = $this->getDb()->prepare($query);
+				$req->execute($values);
+				$req->closeCursor();
+			}
+			catch (PDOException $e)
+			{
+				throw new Exception('Query error');
+			}
+			return true;
+		}
+		else
+			return false;
+		$req->closeCursor();
 	}
 }
 ?>

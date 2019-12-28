@@ -11,7 +11,6 @@ class CommentManager extends Checker
 		$to = $email;
 		$subject = "activation code";
 		$message = "activation link:" . $_SERVER['SERVER_NAME'] . "/activation" . "/" . $token;
-		echo ("<script type='text/javascript'>console.log('".$_SERVER['SERVER_NAME']."')</script>");
 		$headers = 'From: guillaume@guillaumerx.fr' . "\r\n" .
      				'Reply-To: guillaume@guillaumerx.fr' . "\r\n" .
      				'X-Mailer: PHP/' . phpversion();

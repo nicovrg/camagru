@@ -8,18 +8,19 @@ class ControllerActivation
 		if (isset($url) && count($url) < 2 || count($url) > 2)
 			throw new Exception('Page not found');
 		else
-			$this->activation();
+			$this->activation($url[1]);
 	}
 	
-	private function activation()
+	private function activation($token)
 	{
 		$this->_registerManager = new RegisterManager;
-		if ($url[1] == hash('ripemd160', hash('ripemd160', $email)))
-			$this->_registerManager->activate($url[1]);
+		if ($this->_registerManager->activate($token))
+		{
+			$this->_view = new View('Activation');
+			$this->_view->generate(array());
+		}
 		else
 			throw new Exception('Wrong activation token');
-		$this->_view = new View('Activation');
-		$this->_view->generate(array());
 	}
 }
 ?>

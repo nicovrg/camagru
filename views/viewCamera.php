@@ -9,7 +9,7 @@
 	<form action="/camera" method="post" id="formDeletePicture">
 		<input type="hidden" id="inputDeletePicture" name="inputDeletePicture" style="display: none;">
 	</form>
-	<input type="file" id="imageDataFile" name="imageDataFile" style="display: none;">
+	<input type="file" accept="image/*" id="imageDataFile" name="imageDataFile" style="display: none;">
 	<div id="cameraBlock">
 		<video id="camera--view" autoplay playsinline muted></video>
 		<canvas id="camera--sensor"></canvas>
