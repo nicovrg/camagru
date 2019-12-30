@@ -12,9 +12,9 @@ class ConnexionManager extends Checker
 	{
 		$username = trim($username);
 		if (!$this->checkUsernameSyntax($username))
-			return false;
+		return false;
 		if (!$this->checkPasswordSyntax($password, $password))
-			return false;
+		return false;
 		$values = array(':username' => $username);
 		$query = "SELECT * FROM `users` WHERE (`username` = :username)";
 		try
@@ -28,6 +28,7 @@ class ConnexionManager extends Checker
 		}
 		$data = $req->fetch(PDO::FETCH_ASSOC);
 		$req->closeCursor();
+		// echo ("<script type='text/javascript'>console.log('YIPIKAI')</script>");
 		if (is_array($data))
 		{
 			$user = new User($data);
@@ -71,7 +72,7 @@ class ConnexionManager extends Checker
 		if (session_status() == PHP_SESSION_ACTIVE)
 		{
 			$values = array(':sid' => session_id());
-			echo ("<script type='text/javascript'>console.log('".session_id()."')</script>");
+			// echo ("<script type='text/javascript'>console.log('".session_id()."')</script>");
 			$query = "SELECT * FROM `users`, `sessions` WHERE (`session_id` = :sid)";
 			$query = $query. " AND (`login_time` >= (NOW() - INTERVAL 7 DAY))";
 			$query = $query. " AND (users.account_id = sessions.account_id)";
@@ -86,7 +87,6 @@ class ConnexionManager extends Checker
 			}
 			$data = $req->fetch(PDO::FETCH_ASSOC);
 			$req->closeCursor();
-			echo ("<script type='text/javascript'>console.log('".$data."')</script>");
 			if (is_array($data))
 			{
 				return new User($data);
@@ -95,23 +95,20 @@ class ConnexionManager extends Checker
 		return null;
 	}
 
-	public function userMailActivate()
+	public function userMailActivate($account_id)
 	{
-		if (session_status() == PHP_SESSION_ACTIVE)
+		$values = array(':account_id' => $account_id);
+		$query = "SELECT * FROM `users` WHERE (`account_id` = :account_id)";
+		try
 		{
-			$values = array(':sid' => session_id());
-			$query = "DELETE FROM `sessions` WHERE (`session_id` = :sid)";
-			try
-			{
-				$req = $this->getDb()->prepare($query);
-				$req->execute($values);
-			}
-			catch (PDOException $e)
-			{
-				throw new Exception('Database query error');
-			}
-			$req->closeCursor();
+			$req = $this->getDb()->prepare($query);
+			$req->execute($values);
 		}
+		catch (PDOException $e)
+		{
+			throw new Exception('Database query error');
+		}
+		$req->closeCursor();
 		return true;
 	}
 
