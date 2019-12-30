@@ -11,9 +11,7 @@ class RegisterManager extends Checker
 		$to = $email;
 		$subject = "Account Activation Code";
 		$message = "activation link:" . $_SERVER['SERVER_NAME'] . "/activation" . "/" . $token;
-		$headers =	'From: guillaume@guillaumerx.fr' . "\r\n" .
-     				'Reply-To: guillaume@guillaumerx.fr' . "\r\n" .
-     				'X-Mailer: PHP/' . phpversion();
+		$headers =	'From: guillaume@guillaumerx.fr' . "\r\n" . 'Reply-To: guillaume@guillaumerx.fr' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
 		return (mail($to, $subject, $message, $headers));
 	}
 
