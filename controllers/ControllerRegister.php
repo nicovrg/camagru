@@ -18,11 +18,8 @@ class ControllerRegister
 		$subject = "activation code";
 		$message = "activation link:" . $_SERVER['SERVER_NAME'] . "/activation" . "/" . $token;
 		$headers = 'From: guillaume@guillaumerx.fr' . "\r\n" . 'Reply-To: guillaume@guillaumerx.fr' . "\r\n" . 'X-Mailer: PHP/' . phpversion();
-		// echo ("<script type='text/javascript'>console.log('".$_SERVER['SERVER_NAME']."')</script>");
 		return (mail($to, $subject, $message, $headers));
 	}
-
-	//move post from register to activation?
 
 	private function register()
 	{

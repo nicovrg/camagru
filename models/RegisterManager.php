@@ -46,7 +46,7 @@ class RegisterManager extends Checker
 			throw new Exception('Query error');
 		}
 		if (!$this->sendmail($email, $token))
-			throw new Exception('SA A MERDE JACKY');
+			throw new Exception('mail error');
 	}
 
 	public function activate($token)

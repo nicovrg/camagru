@@ -11,7 +11,6 @@ class ConnexionManager extends Checker
 	public function login($username, $password)
 	{
 		$username = trim($username);
-		
 		if (!$this->checkUsernameSyntax($username))
 			return false;
 		if (!$this->checkPasswordSyntax($password, $password))
@@ -32,6 +31,11 @@ class ConnexionManager extends Checker
 		if (is_array($data))
 		{
 			$user = new User($data);
+			if ($data['activated'] == 0)
+			{
+				throw new Exception('activate your account to login');
+				return false;
+			}
 			if (hash('sha256', $password) === $data['password'])
 			{
 				if ($this->registerLoginSession($user->getAccount_id()))
@@ -67,6 +71,7 @@ class ConnexionManager extends Checker
 		if (session_status() == PHP_SESSION_ACTIVE)
 		{
 			$values = array(':sid' => session_id());
+			echo ("<script type='text/javascript'>console.log('".session_id()."')</script>");
 			$query = "SELECT * FROM `users`, `sessions` WHERE (`session_id` = :sid)";
 			$query = $query. " AND (`login_time` >= (NOW() - INTERVAL 7 DAY))";
 			$query = $query. " AND (users.account_id = sessions.account_id)";
@@ -81,10 +86,33 @@ class ConnexionManager extends Checker
 			}
 			$data = $req->fetch(PDO::FETCH_ASSOC);
 			$req->closeCursor();
+			echo ("<script type='text/javascript'>console.log('".$data."')</script>");
 			if (is_array($data))
+			{
 				return new User($data);
+			}
 		}
 		return null;
+	}
+
+	public function userMailActivate()
+	{
+		if (session_status() == PHP_SESSION_ACTIVE)
+		{
+			$values = array(':sid' => session_id());
+			$query = "DELETE FROM `sessions` WHERE (`session_id` = :sid)";
+			try
+			{
+				$req = $this->getDb()->prepare($query);
+				$req->execute($values);
+			}
+			catch (PDOException $e)
+			{
+				throw new Exception('Database query error');
+			}
+			$req->closeCursor();
+		}
+		return true;
 	}
 
 	public function logout()
