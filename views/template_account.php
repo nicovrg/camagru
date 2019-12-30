@@ -1,7 +1,7 @@
 <div class="dropdown">
 	<button class="dropbtn" onclick="myFunction()">
 		<?= $manager->sessionLogin()->getUsername() ?>
-		<?php $manager->userMailActivate($manager->sessionLogin()->getAccount_id()) == false ? $mail = "enable notification" : $mail = "disable notification" ?>
+		<?php $manager->isUserMailActivated($manager->sessionLogin()->getAccount_id()) == false ? $mail = "Enable notification" : $mail = "Disable notification" ?>
 	</button>
 	<div class="dropdown-content" id="myDropdown">
 		<a href="/logout">Logout</a>

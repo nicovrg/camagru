@@ -28,7 +28,6 @@ class ConnexionManager extends Checker
 		}
 		$data = $req->fetch(PDO::FETCH_ASSOC);
 		$req->closeCursor();
-		// echo ("<script type='text/javascript'>console.log('YIPIKAI')</script>");
 		if (is_array($data))
 		{
 			$user = new User($data);
@@ -72,7 +71,6 @@ class ConnexionManager extends Checker
 		if (session_status() == PHP_SESSION_ACTIVE)
 		{
 			$values = array(':sid' => session_id());
-			// echo ("<script type='text/javascript'>console.log('".session_id()."')</script>");
 			$query = "SELECT * FROM `users`, `sessions` WHERE (`session_id` = :sid)";
 			$query = $query. " AND (`login_time` >= (NOW() - INTERVAL 7 DAY))";
 			$query = $query. " AND (users.account_id = sessions.account_id)";
@@ -88,17 +86,52 @@ class ConnexionManager extends Checker
 			$data = $req->fetch(PDO::FETCH_ASSOC);
 			$req->closeCursor();
 			if (is_array($data))
-			{
 				return new User($data);
-			}
 		}
 		return null;
 	}
 
-	public function userMailActivate($account_id)
+	public function isUserMailActivated($account_id)
 	{
 		$values = array(':account_id' => $account_id);
 		$query = "SELECT * FROM `users` WHERE (`account_id` = :account_id)";
+		try
+		{
+			$req = $this->getDb()->prepare($query);
+			$req->execute($values);
+		}
+		catch (PDOException $e)
+		{
+			throw new Exception('Database query error');
+		}
+		$data = $req->fetch(PDO::FETCH_ASSOC);
+		$req->closeCursor();
+		if (is_array($data))
+			$data['mail'] == 1 ? $ret = true : $ret = false;
+		return $ret;
+	}
+
+	public function enableMail($account_id)
+	{
+		$values = array(':account_id' => $account_id);
+		$query = "UPDATE `users` SET `mail` = 1 WHERE (`account_id` = :account_id)";
+		try
+		{
+			$req = $this->getDb()->prepare($query);
+			$req->execute($values);
+		}
+		catch (PDOException $e)
+		{
+			throw new Exception('Database query error');
+		}
+		$req->closeCursor();
+		return true;
+	}
+
+	public function disableMail($account_id)
+	{
+		$values = array(':account_id' => $account_id);
+		$query = "UPDATE `users` SET `mail` = 0 WHERE (`account_id` = :account_id)";
 		try
 		{
 			$req = $this->getDb()->prepare($query);
