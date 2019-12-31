@@ -3,6 +3,7 @@ class ControllerRenew
 {
 	private $_view;
 	private $_renewManager;
+	private $_connexionManager;
 
 	public function __construct($url)
 	{
@@ -14,8 +15,10 @@ class ControllerRenew
 
 	public function renew()
 	{
-		$_renewManager = new RenewManager;
-		$this->_renewManager->sendRenewMail();
+		$this->_connexionManager = new ConnexionManager;
+		$user = $this->_connexionManager->sessionLogin();
+		$this->_renewManager = new RenewManager;
+		$this->_renewManager->sendRenewMail($user);
 		$this->_view = new View('Renew');
 		$this->_view->generate(array());
 	}
