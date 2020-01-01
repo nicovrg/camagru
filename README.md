@@ -31,6 +31,7 @@ You can find the subject in the pdf directory.
 
 ### Easter Egg
 ![Nyancat](img_readme/nyan.png)
+<img src="img_readme/nyan.png" alt="nyancat" width="200px"/>
 
 
 ## Setup:
