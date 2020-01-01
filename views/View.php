@@ -8,7 +8,7 @@ class View
 	public function __construct($action)
 	{
 		$this->_file = 'views/view'.$action.'.php';
-		$this->_array = htmlspecialchars($_POST);
+		$this->_array = $_POST;
 	}
 
 	public function generate($data)

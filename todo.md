@@ -4,11 +4,6 @@
     ## Compulsory:
                 
         security:
-            - check router and htmlspecialchar
-
-        error:
-            - image name
-            - size of field when 255
 
         react start:
             - brew install node
