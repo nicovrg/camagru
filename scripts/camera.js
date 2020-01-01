@@ -49,8 +49,8 @@ cameraSaver.onclick = () => {
 	console.log(`fileUpload = ${fileUpload}`);
 	console.log(`picUpload = ${picUpload}`);
 	console.log(`filterSelected = ${filterSelected}`);
-	if ((fileUpload == false && picUpload == false) || filterSelected == null) {
-		alert("you need both a picture and a filter to save because of strange guidelines");
+	if ((!fileUpload && !picUpload)) {
+		alert("you need both a base picture");
 		return ;
 	}
 	var name = prompt("Enter picture name:");

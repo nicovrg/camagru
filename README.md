@@ -29,6 +29,10 @@ You can find the subject in the pdf directory.
 - They can add a filter on top of it and take a picture.
 - The picture is then added to the homepage where it can be liked an comment by other users.
 
+### Easter Egg
+![Nyancat](img_readme/nyan.png)
+
+
 ## Setup:
 
 I choose to use docker to host services i needed for the deployment and developement:
