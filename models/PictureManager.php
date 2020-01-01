@@ -27,7 +27,7 @@ class PictureManager extends Model
 
 	public function uploadPicture($picture_name, $picture_data, $filter_data, $picture_owner_id)
 	{
-		if ($picture_name != htmlspecialchars($picture_name))
+		if ($picture_name != htmlspecialchars($picture_name) || strlen($picture_name) > 200)
 			$picture_name = "_";
 		while (file_exists("img/" . $picture_name . ".png"))
 			$picture_name = $picture_name . "_";
