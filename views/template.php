@@ -11,6 +11,7 @@
 		<link rel="stylesheet" type="text/css" href="/style/camera.css">
 		<link rel="stylesheet" type="text/css" href="/style/register.css">
 		<link rel="stylesheet" type="text/css" href="/style/modify.css">
+		<link rel="stylesheet" type="text/css" href="/style/renew.css">
 		<link rel="stylesheet" type="text/css" href="/style/login.css">
 		<link rel="stylesheet" type="text/css" href="/style/nyan.css">
 		<script type="text/javascript" src="/scripts/account.js"></script>

@@ -17,6 +17,7 @@ class RenewManager extends checker
 
 	public function sendRenewMail($user)
 	{
+		echo ("<script type='text/javascript'>console.log('start sendRenewMail')</script>");
 		$account_id = $user->getAccount_id();
 		$token = substr(md5(mt_rand()),0,15);
 		$values = array(':account_id' => $account_id, ':token' => $token);
@@ -35,10 +36,26 @@ class RenewManager extends checker
 		return true;
 	}
 
-	public function renewPassword()
+	public function renewPassword($user, $token, $new, $confirm)
 	{
-		
-		return true;
+		if ($new === $confirm)
+		{
+			$account_id = $user->getAccount_id();
+			$password = hash('sha256', $new);
+			$values = array(':account_id' => $account_id, ':password' => $password);
+			$query = "UPDATE `users` SET `password` = :password WHERE (`account_id` = :account_id)";
+			try
+			{
+				$req = $this->getDb()->prepare($query);
+				$req->execute($values);
+			}
+			catch (PDOException $e)
+			{
+				throw new Exception('Database query error');
+			}
+			return true;
+		}
+		return false;
 	}
 
 }

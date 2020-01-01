@@ -7,7 +7,6 @@
 
 class ConnexionManager extends Checker
 {
-	
 	public function login($username, $password)
 	{
 		$username = trim($username);

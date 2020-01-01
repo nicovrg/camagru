@@ -1,0 +1,22 @@
+.renew_title
+{
+	margin-top: 35vh;
+}
+
+#renew
+{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-top: 35vh;
+	/* margin-top: 10em; */
+}
+
+.renew_form_cell
+{
+	display: flex;
+	margin-top: 1em;
+	margin-bottom: 1em;
+	font-family: Helvetica Neue;
+}
