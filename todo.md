@@ -2,10 +2,6 @@
 
 # Stuff to do:
     ## Compulsory:
-        mail:
-#           - new account
-#           - new password
-#           - new comment
                 
         security:
             - check router and htmlspecialchar

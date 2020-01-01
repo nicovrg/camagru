@@ -22,7 +22,7 @@ class ControllerCamera
 		if ($user && isset($_POST["imageDataWebcam"]) && isset($_POST["filterDataWebcam"]) && isset($_POST["imageNameWebcam"]))
 			$this->_picturesManager->uploadPicture(htmlspecialchars($_POST["imageNameWebcam"]), htmlspecialchars($_POST["imageDataWebcam"]), htmlspecialchars($_POST["filterDataWebcam"]), $user->getAccount_id());
 		if ($user && isset($_POST["inputDeletePicture"]))
-			$this->_picturesManager->deletePicture($_POST["inputDeletePicture"]);
+			$this->_picturesManager->deletePicture(htmlspecialchars($_POST["inputDeletePicture"]));
 		$pictures = $this->_picturesManager->getRecentPictures($owner);
 		$this->_view = new View('Camera');
 		$this->_view->generate(array('pictures' => $pictures));

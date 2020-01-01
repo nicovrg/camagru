@@ -18,7 +18,7 @@ class ControllerLogin
 		{
 			if (!$this->_connexionManager->sessionLogin())
 			{
-				if ($this->_connexionManager->login($_POST['username'], $_POST['password']))
+				if ($this->_connexionManager->login(htmlspecialchars($_POST['username']), htmlspecialchars($_POST['password'])))
 					header("Location: /");
 				else
 					throw new Exception('Login fail');

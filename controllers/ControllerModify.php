@@ -21,7 +21,7 @@ class ControllerModify
 		{
 			if (isset($_POST['username']) && isset($_POST['email']) && isset($_POST['confirm']))
 			{
-				$this->_modifyManager->modify_account($_POST['username'], $_POST['email']);
+				$this->_modifyManager->modify_account(htmlspecialchars($_POST['username']), htmlspecialchars($_POST['email']));
 				header("Refresh: 2; URL='/modify'");
 			}
 			$this->_view = new View('Modify');
