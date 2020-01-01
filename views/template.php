@@ -18,6 +18,7 @@
 		<script type="text/javascript" src="/scripts/image_zoom.js"></script>
 		<script type="text/javascript" src="/scripts/particules.js"></script>
 		<script type="text/javascript" src="/scripts/app.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 		<title><?= $t ?></title>
 	</head>
 	<body>

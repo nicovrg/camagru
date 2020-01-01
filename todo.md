@@ -10,3 +10,5 @@
             - brew install yarn
             - yarn global add create-react-app
             - create-react-app --help
+
+    $(sélecteur).méthode(paramètres);
