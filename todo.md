@@ -3,9 +3,6 @@
 # Stuff to do:
     ## Compulsory:
                 
-        ajax/jquery:
-            - $(sélecteur).méthode(paramètres);
-        
         readme:
             add images
     

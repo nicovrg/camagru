@@ -17,17 +17,21 @@ You can find the subject in the pdf directory.
 - They can delete their account
 - They can renew their password (with a email containing the renew link token).
 - All of these features are accessible from the navbar
+<img src="img_readme/edit.png" alt="nyancat" width="500px"/>
 
 ### Homepage
 - On the homepage, you can see all pictures that have been taken.
 - If a user is log, he can like and comment pictures.
 - If a picture is commented, the picture owner will receive an email notification.
+<img src="img_readme/homepage.png" alt="nyancat" width="500px"/>
 
 
 ### Gallery
 - Then on the gallery page, user can upload a picture from either their local storage or the webcam.
 - They can add a filter on top of it and take a picture.
 - The picture is then added to the homepage where it can be liked an comment by other users.
+<img src="img_readme/camera.png" alt="nyancat" width="500px"/>
+
 
 ### Easter Egg
 <img src="img_readme/nyan.png" alt="nyancat" width="500px"/>
@@ -50,3 +54,7 @@ then your can run it by doing:
 - docker-machine create --driver=virtualbox server
 - eval $(docker-machine env server)
 - docker-compose up
+
+
+## Made with love
+<img src="img_readme/chill.png" alt="nyancat" width="500px"/>

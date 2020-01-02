@@ -156,7 +156,7 @@ body
 
 @media screen and (min-width: 200px) and (max-width: 800px) {
 	#canvas {
-		height: 280vh;
+		height: 300vh;
 	}
 }
 
