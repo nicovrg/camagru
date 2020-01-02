@@ -156,13 +156,13 @@ body
 
 @media screen and (min-width: 200px) and (max-width: 800px) {
 	#canvas {
-		height: 300vh;
+		height: 350vh;
 	}
 }
 
 @media screen and (min-width: 800px) and (max-width: 1600px) {
 	#canvas {
-		height: 180vh;
+		height: 150vh;
 	}
 }
 
