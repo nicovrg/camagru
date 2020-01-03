@@ -19,7 +19,8 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	width: 20%;
+	min-width: 20%;
+	min-width: 25%;
 	height: auto;
 	margin-top: 5em;
 	margin-bottom: 5em;	
@@ -45,7 +46,7 @@
 {
 	align-items: center;
 	justify-content: center;
-	width: 50%;
+	width: 80%;
 	height: auto;
 }
 

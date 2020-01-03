@@ -26,7 +26,6 @@
     }
     catch (PDOException $e)
     {
-        echo 'merde';
+        return ;
     }
-
 ?>
