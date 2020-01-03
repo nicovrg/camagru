@@ -86,6 +86,7 @@ CREATE TABLE `users` (
   `username` varchar(255) CHARACTER SET utf8 NOT NULL,
   `password` varchar(255) CHARACTER SET utf8 NOT NULL,
   `mail` int(10) UNSIGNED DEFAULT NULL,
+  `activated` int(10) UNSIGNED DEFAULT 0,
   `token` varchar(255) CHARACTER SET utf8 NOT NULL,
   `reg_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

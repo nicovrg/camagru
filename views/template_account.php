@@ -8,7 +8,7 @@
 		<a href="/modify">Edit account</a>
 		<a href="/renew">Renew password</a>
 		<a href="/notification"><?= $mail ?></a>
-		<a href="/delete">Delete account</a>
+		<!-- <a href="/delete">Delete account</a> -->
 	</div>
 	<script src="/scripts/account.js"></script> 
 </div>
