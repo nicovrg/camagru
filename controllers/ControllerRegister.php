@@ -29,7 +29,7 @@ class ControllerRegister
 			$email = htmlspecialchars($_POST['email']);
 			$token = hash('ripemd160', hash('ripemd160', $email));
 			$this->sendmail($email, $token);
-			$this->_registerManager->register(htmlspecialchars($_POST['username']), htmlspecialchars($_POST['password']), htmlspecialchars($_POST['confirm_password'], $_POST['email']));
+			$this->_registerManager->register(htmlspecialchars($_POST['username']), htmlspecialchars($_POST['password']), htmlspecialchars($_POST['confirm_password']), htmlspecialchars($_POST['email']));
 			header("Refresh: 1; URL='/login'");
 		}
 		$this->_view = new View('Register');

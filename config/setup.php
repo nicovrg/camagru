@@ -1,6 +1,6 @@
 <?php
     require_once('database.php');
-    $db = new PDO($DB_DSN, $DB_USER, $DB_PASSWORD);
+    $db = new PDO($DB_DSN, $DB_USER, $DB_PWD);
     if (!$db)
         die();
     $query = file_get_contents('export/cleanDb.sql');
