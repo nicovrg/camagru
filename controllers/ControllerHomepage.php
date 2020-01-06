@@ -27,7 +27,7 @@ class ControllerHomepage extends Model
 			$_GET["page"] = 0;
 		$_GET["page"] = round($_GET["page"]);
 		if ($user && isset($_POST["like"]) && isset($_POST["picture_id"]))
-			$this->_likeManager->likeBtn(htmlspecialchars($_POST["picture_id"], $user->getAccount_id()));
+			$this->_likeManager->likeBtn(htmlspecialchars($_POST["picture_id"]), htmlspecialchars($user->getAccount_id()));
 		if ($user && isset($_POST["picture_id"]) && isset($_POST["comment_content"]))
 			$this->_commentManager->commentBtn(htmlspecialchars($_POST["picture_id"]), htmlspecialchars($_POST["comment_content"]), $user->getAccount_id());
 		if ($user && isset($_POST["delete"]) && isset($_POST["picture_id"]))
