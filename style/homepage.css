@@ -2,7 +2,6 @@
 {
 	display: flex;
 	flex-direction: row;
-	overflow: scroll;
 	flex-wrap: wrap;
 	height: 90%;
 	justify-content: center;
