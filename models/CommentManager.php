@@ -37,6 +37,8 @@ class CommentManager extends Checker
 
 	public function commentBtn($picture_id, $comment_content, $owner_account_id)
 	{
+		if (!$comment_content)
+			return false;
 		$comment_content = htmlspecialchars(substr($comment_content, 0, 200));
 		$values = array(':picture_id' => $picture_id, ':comment_content' => $comment_content, ':owner_account_id' => $owner_account_id);
 		$query = 'INSERT INTO `comments` (`picture_id`, `comment_content`, `owner_account_id`) VALUES (:picture_id, :comment_content, :owner_account_id)';

@@ -7,8 +7,8 @@ class ControllerDelete
 	{
 		if (isset($url) && count($url) > 1)
 			throw new Exception('Page not found');
-		else
-			$this->delete();
+		// else
+		// 	$this->delete();
 	}
 
 	private function delete()

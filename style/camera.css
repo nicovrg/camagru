@@ -1,4 +1,4 @@
-	#viewCamera
+#viewCamera
 {
 	display: flex;
 	justify-content: center;
@@ -22,7 +22,6 @@
 
 #viewCamera #cameraBlock #camera--sensor
 {
-	/* display: none; */
 	position: absolute;
 	margin-left: 27em;
 	width: 25em;
@@ -35,7 +34,6 @@
 
 #viewCamera #cameraBlock #canvas--filter
 {
-	/* display: none; */
 	position: absolute;
 	margin-left: 27em;
 	width: 25em;
@@ -110,3 +108,47 @@
 	margin-top: 1em;
 	margin-bottom: 1em;
 }
+
+@media screen and (min-width: 500px) and (max-width: 1200px) {
+	#viewCamera #cameraBlock #camera--view {
+		margin-left: 7em;
+	}
+	
+	#viewCamera #cameraBlock #camera--sensor {
+		position: absolute;
+		margin-top: 17em;
+		margin-left: 7em;
+		width: 25em;
+		height: 14em;
+		border: solid;
+		border-radius: 2em;
+		border-color: blue;
+		z-index: 1;
+	}
+
+	#viewCamera #cameraBlock #canvas--filter {
+		position: absolute;
+		margin-top: 17em;
+		margin-left: 7em;
+		width: 25em;
+		height: 14em;
+		border: solid;
+		border-radius: 2em;
+		border-color: rgb(25, 39, 53);
+		z-index: 2;
+	}
+
+	#viewCamera #filter {
+		margin-top: 20em;
+	}
+}
+
+
+
+
+
+@media screen and (min-width: 800px) and (max-width: 1200px) {
+	#viewCamera #cameraBlock #camera--sensor {
+	}
+}
+

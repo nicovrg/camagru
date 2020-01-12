@@ -4,6 +4,7 @@
 <?php $connexion_manager = new ConnexionManager; ?>
 <div class="first_container">
 	<div class="gallery">
+		<?php if ($pictures): ?>
 		<?php foreach ($pictures as $picture): ?>
 		<div class='gallery_elements'>
 			<div class='gallery_element'>
@@ -55,6 +56,7 @@
 			</div>
 		</div>
 		<?php endforeach; ?>
+		<?php endif; ?>
 	</div>
 	<div>
 		<div id="pageBtn">

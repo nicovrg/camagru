@@ -12,6 +12,8 @@ class PictureManager extends Model
 
 	public function combinePicture($path, $picture_data, $filter_data)
 	{
+		if (!$picture_data)
+			return false;
 		$width = 200;
 		$height = 200;
 		$dest_image = imagecreatetruecolor($width, $height);
@@ -23,18 +25,22 @@ class PictureManager extends Model
 		imagecopy($dest_image, $picture_string, 0, 0, 0, 0, $width, $height);
 		imagecopy($dest_image, $filter_string, 0, 0, 0, 0, $width, $height);
 		imagepng($dest_image, $path);
+		return true;
 	}
 
 	public function uploadPicture($picture_name, $picture_data, $filter_data, $picture_owner_id)
 	{
-		if ($picture_name != htmlspecialchars($picture_name) || strlen($picture_name) > 200)
+		if (!$picture_name || $picture_name != htmlspecialchars($picture_name) || strlen($picture_name) > 200)
 			$picture_name = "_";
 		while (file_exists("img/" . $picture_name . ".png"))
 			$picture_name = $picture_name . "_";
 		$path = "img/" . $picture_name . ".png";
+		if (!$picture_data)
+			return ;
 		$picture_data = base64_decode(explode(",", $picture_data)[1]);
 		$filter_data = base64_decode(explode(",", $filter_data)[1]);
-		$this->combinePicture($path, $picture_data, $filter_data);
+		if (!$this->combinePicture($path, $picture_data, $filter_data))
+			return false;
 		$values = array(':picture_owner_id' => $picture_owner_id, ':picture_path' => $path);
 		$query = "INSERT INTO `pictures` (`picture_owner_id`, `picture_path`) VALUES (:picture_owner_id, :picture_path)";
 		try

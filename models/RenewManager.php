@@ -17,7 +17,6 @@ class RenewManager extends checker
 
 	public function sendRenewMail($user)
 	{
-		echo ("<script type='text/javascript'>console.log('start sendRenewMail')</script>");
 		$account_id = $user->getAccount_id();
 		$token = substr(md5(mt_rand()),0,15);
 		$values = array(':account_id' => $account_id, ':token' => $token);
